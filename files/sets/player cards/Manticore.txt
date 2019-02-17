@@ -1,0 +1,19 @@
+14
+
+hand effect:
+[b1]
+atta tr 6
+invo sl
+
+hand effect:
+[y2]
+atta tr 6
+invo sl
+
+field effect:
+[]
+atta ch 10
+call g2
+
+description:
+This card is like a hand trap

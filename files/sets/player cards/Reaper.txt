@@ -1,0 +1,15 @@
+10
+
+hand effect:
+[]
+atta ch 3
+
+hand effect:
+[y1 y2]
+dama op 16
+disc sl
+
+description:
+This is a hand card.
+It can do a little of damage each turn, from your hand.
+When its sequence is executed it does a lot of damage.

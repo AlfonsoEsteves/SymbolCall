@@ -1,0 +1,20 @@
+18
+
+hand effect:
+[]
+call b1
+invo sl
+
+field effect:
+[]
+atta op 6
+call g1
+
+field effect:
+[]
+call y1
+atta ch 3
+
+description:
+This is a field card.
+It is very resilient, but in does very litle damage.

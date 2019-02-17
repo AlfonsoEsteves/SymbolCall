@@ -1,0 +1,12 @@
+Note:
+  Maybe I don't have to completely finish my rivals turn to be sure that he is not going to wreck me.
+  Because, if I give my rival an opportunity to wreck me, he most likely will be able to pull it off in his first moves.
+
+Note:
+  It is pointless to project if I only take into account 1 branch.
+  I is the same as just choosing the immediate best move.
+
+For instance, let's say that each turn is around 8 moves.
+If executing 2 whole turns with only 1 branch costs 16 nodes.
+Then those 16 nodes would be much better spent if I covered only 4 moves with 2 branches.
+Note that I wouldn't even finish my turn, but it is still much better.

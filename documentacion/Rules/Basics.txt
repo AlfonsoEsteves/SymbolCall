@@ -1,0 +1,29 @@
+Cards can have multiple effects.
+
+An effect can be a hand effect, or a field effect.
+  A hand effect can be executed only if the card is in the hand.
+  A field effect can be executed only if the card is in the field.
+
+Besides that, effects can also be classified as active or passive effects.
+
+Active effects can be executed (activated) during the turn of the owner of the card.
+  Only one active effect can be activated per turn, for each card.
+Passive effects are executed (triggered) when a specific sequence of symbols is called.
+
+There is an execution stack.
+  If an effect triggers another, then its execution gets paused (and later resumed).
+
+The actions are:
+  call call (essence)
+  atta attack (amount) (target)
+  invo invoke (target)
+  with withdraw (target)
+  disc discard (target)
+
+The targets are:
+  ow owner
+  op opponent
+  tr trigger
+  ch choose
+  sl self
+

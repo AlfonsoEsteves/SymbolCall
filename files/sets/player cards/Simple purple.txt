@@ -1,0 +1,19 @@
+10
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 5
+call r1
+
+field effect:
+[]
+dama op 8
+call r1
+
+description:
+This is a very simple field card.
+You can chose between attacking or damaging, and in both casses it calls the same essence.

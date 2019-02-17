@@ -1,0 +1,19 @@
+10
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 5
+call b2
+
+field effect:
+[]
+atta ch 5
+call g1
+
+description:
+This is a very simple field card.
+You can choose between 2 equal attacks, that call different essences.

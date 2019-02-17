@@ -1,0 +1,21 @@
+19
+
+hand effect:
+[]
+invo sl
+call r1
+call y1
+
+field effect:
+[]
+atta ch 5
+
+field effect:
+[g0]
+atta sl 3
+
+description:
+This is a field card.
+It has a lot of health but gets damaged each time a certain essence is called.
+
+I do not know why this card gets bad results, it should be overpowerd

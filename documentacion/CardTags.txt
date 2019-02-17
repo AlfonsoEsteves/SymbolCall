@@ -1,0 +1,4 @@
+Only things that can not be automatically computed can be tags
+
+interruption
+  the card needs to be interrupted to avoid some bad consequence

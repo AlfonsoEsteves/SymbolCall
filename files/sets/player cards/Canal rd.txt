@@ -1,0 +1,21 @@
+8
+
+hand effect:
+[]
+atta op 10
+invo sl
+
+field effect:
+[g1]
+atta op 8
+call r2
+
+field effect:
+[b2]
+atta op 8
+call r2
+
+description:
+This is a field card.
+This card calls a certain essence when one of two others are called.
+It helps invoke bomb, cause it interupts the autodestruction sequence.

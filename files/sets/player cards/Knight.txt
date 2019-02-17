@@ -1,0 +1,19 @@
+12
+
+hand effect:
+[b1]
+invo sl
+call g1
+
+hand effect:
+[g1]
+invo sl
+call b1
+
+field effect:
+[]
+call y1
+atta ch 5
+
+description:
+This card is kind of a filler for defensive

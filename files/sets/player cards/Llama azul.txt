@@ -1,0 +1,19 @@
+10
+
+hand effect:
+[]
+call g2
+call y1
+invo sl
+
+field effect:
+[]
+atta op 10
+
+field effect:
+[]
+call b2
+
+description:
+This is a field card.
+Besides doing damage, it can call an essence.

@@ -1,0 +1,12 @@
+Battle
+
+Victory/Lose screen
+
+Bosses
+
+Deck builder
+  multiple decks
+  filters
+  statistics
+
+Market

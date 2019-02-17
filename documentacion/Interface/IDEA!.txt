@@ -1,0 +1,2 @@
+poner una layer muy transparente que modifique un poco el color de las imagenes de las cartas
+  para que de uniformidad a los masos

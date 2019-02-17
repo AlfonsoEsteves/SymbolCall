@@ -1,0 +1,22 @@
+10
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 5
+call y1
+call r1
+
+field effect:
+[b2 r1]
+atta op 12
+
+description:
+This is a field card.
+It is complemented by it's "brother".
+The attack of this card triggers its brother's passive effect, which causes damage.
+And this card's brother's attack triggers the passive effect of this card, which causes damage.
+Note that having more than one card of this type can be really beneficial.

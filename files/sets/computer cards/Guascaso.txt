@@ -1,0 +1,17 @@
+7
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 4
+
+field effect:
+[y0 r0]
+dama op 11
+
+description:
+This is a field card.
+It causes a lot of damage if a specific sequence is triggered.

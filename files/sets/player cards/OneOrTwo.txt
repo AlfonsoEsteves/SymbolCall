@@ -1,0 +1,20 @@
+9
+
+hand effect:
+[b0]
+invo sl
+
+field effect:
+[]
+atta ch 4
+call r1
+atta ch 3
+
+field effect:
+[]
+atta ch 9
+call g1
+
+description:
+This is a field card.
+You can choose between a single strong attack, or two weak attacks.

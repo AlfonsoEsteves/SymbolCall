@@ -1,0 +1,22 @@
+15
+
+hand effect:
+[y1 r1]
+invo sl
+call g1
+
+field effect:
+[]
+with ch
+
+field effect:
+[]
+atta op 12
+
+description:
+This card can choose to withdraw another card.
+I have to see how this card plays out.
+It could be overpowerd, or underpowered.
+
+interesting:
+80

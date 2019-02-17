@@ -1,0 +1,21 @@
+9
+
+hand effect:
+[]
+invo sl
+call y1
+
+hand effect:
+[r2 b1]
+with tr
+atta op 14
+
+field effect:
+[]
+atta ch 6
+
+description:
+This card is complemented by "Axe minotaur".
+
+interesting:
+70

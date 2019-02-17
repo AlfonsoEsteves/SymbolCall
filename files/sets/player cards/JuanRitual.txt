@@ -1,0 +1,10 @@
+1
+
+hand effect:
+[b1 g2 g2 r1]
+invo tr
+disc sl
+
+description:
+This is a hand card.
+Its only purpose is to invoke Juan

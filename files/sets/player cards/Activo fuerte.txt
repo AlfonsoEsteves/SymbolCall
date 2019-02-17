@@ -1,0 +1,18 @@
+18
+
+hand effect:
+[b1 r2]
+invo sl
+call y1
+
+field effect:
+[]
+atta op 24
+
+field effect:
+[]
+atta ch 11
+
+description:
+This is a strong field card, that can only be invoked passively.
+It has a 'call' just to make it a little more distintive.

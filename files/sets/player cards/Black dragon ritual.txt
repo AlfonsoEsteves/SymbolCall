@@ -1,0 +1,23 @@
+10
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[b1 b2 r1 r2]
+invo tr
+atta sl 10
+
+field effect:
+[]
+atta op 6
+call b1
+call b2
+
+description:
+This is a weak card.
+Is is meant to be used to invoked the card "Black dragon".
+
+interesting:
+75

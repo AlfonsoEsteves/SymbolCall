@@ -1,0 +1,15 @@
+11
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+dama op 6
+call g1
+call g1
+
+description:
+This is a field card.
+It complements Brazil.

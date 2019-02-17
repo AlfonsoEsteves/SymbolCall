@@ -1,0 +1,13 @@
+10
+
+hand effect:
+[y1]
+invo sl
+
+field effect:
+[]
+atta op 10
+call b1
+
+description:
+This is a filler in the "Activo Fuerte" deck, to make "Forest maiden" stronger.

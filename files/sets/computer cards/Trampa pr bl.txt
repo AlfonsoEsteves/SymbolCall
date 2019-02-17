@@ -1,0 +1,18 @@
+12
+
+hand effect:
+[]
+dama op 6
+invo sl
+
+field effect:
+[r0]
+atta tr 5
+
+field effect:
+[r0 b0]
+atta tr 5
+
+description:
+This is a field card.
+It passively attacks the cards that call two essences.

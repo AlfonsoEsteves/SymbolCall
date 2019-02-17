@@ -1,0 +1,61 @@
+Una de las cosas mas importantes es que la interfaz permita entender facilmente
+  el sistema del stack de acciones
+  las essencias ya llamadas
+
+Si la c esta en la mano, que des-resalte los efectos de campo y viseversa
+
+Talves similar para los efectos activos en las c sin turno
+
+Capas estaria bueno poder notar facil cuando se trigerea algo (comparado cuando simplemente se continua la cadena)
+  adding a new card picture to the stack solves this issue
+
+Capas que un log
+
+Overwhelmed by information
+  Pretty much every thing is important, except for the log
+    So the log shouldn't be resalted
+
+Tengo que buscar la manera de que
+  permita jugar rapido y comodo
+  que sea facil de entender para low newbs
+
+
+
+Maybe the action stack would be better at the left (at the right it looks kind of distant and unimportant)
+
+Things to show:
+Player health
+Board
+History of symbols
+Stack of actions
+Log
+Main info (who’s turn is it, what he has to do)
+buttons
+
+
+El log no tiene sentido que loguee todo, que logue solo una cadena o un turno
+
+
+¿los botones de passar accion/card/everything, van a estar ubicados en el mismo lugar que el de pasar turno?
+
+si el jugador deja el mouse sobre una carta, el log muestra una imagen cn iconos grandes de la carta, o de los effectos
+
+
+ESTO:
+cuando la AI usa una carta, estaria bueno que la resalte
+  y lo mismo se escoje un target
+Para darle uniformidad, esto tambien se podria hacer para el turno del player
+
+
+Tengo que indicar de alguna manera cual es la mano y cual es el campo
+
+
+
+
+Va a ser complicado que quede bien lo de choosear durante el turno dle rival
+
+
+esplicar que la mitad de abajo es tu board, y el de arriba dle rival
+
+
+maybe new players should have active effects resaltados

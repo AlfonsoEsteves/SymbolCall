@@ -1,0 +1,17 @@
+9
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[y0]
+atta tr 4
+
+field effect:
+[g0]
+atta tr 4
+
+description:
+This is a field card.
+It has a passive effect that damages the trigger.

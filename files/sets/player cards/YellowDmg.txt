@@ -1,0 +1,15 @@
+12
+
+hand effect:
+[y0]
+atta op 7
+invo sl
+
+field effect:
+[y1]
+atta op 14
+with sl
+
+description:
+This is a both a hand and a field card.
+And it is absolutely passive, it will damage the opponent each time a yellow is called.

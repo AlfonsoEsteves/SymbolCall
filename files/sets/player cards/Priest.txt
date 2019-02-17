@@ -1,0 +1,18 @@
+11
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 4
+
+field effect:
+[]
+call r1
+call y1
+
+description:
+This card is a filler in the Salado deck.
+It makes Salado and Transfer more invocable

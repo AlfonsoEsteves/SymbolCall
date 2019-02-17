@@ -1,0 +1,21 @@
+8
+
+hand effect:
+[]
+call r1
+invo sl
+call r2
+
+field effect:
+[r0]
+dama ow 3
+
+field effect:
+[r0 r0 r0]
+dama op 14
+
+description:
+The first 2 consecutive red symbols will damage a bit. But the following ones will make much more damage to your opponent.
+
+interesting:
+85

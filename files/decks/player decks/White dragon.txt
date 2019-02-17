@@ -1,0 +1,30 @@
+White dragon
+Summoner
+Summoner
+Desert rider
+Desert rider
+Desert wanderer
+Desert wanderer
+Gargoyle
+Guardian
+Guardian
+Blonde archer
+Barely useful
+Simple atta
+Fire guardian
+Pegasus
+Pegasus
+Trampa bl
+Trampa gr
+Trampa yl
+Trampa pr
+
+description:
+
+
+tiene la carta inembocable
+
+2 cartas que se invocan la una a la otra
+  tenes que elegir cual elegis
+
+la que no invocas  podrias invocar con el summoner

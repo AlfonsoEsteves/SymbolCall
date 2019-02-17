@@ -1,0 +1,4 @@
+If I'm not gonna let the player deviate from the tutorial, then
+when he tries to do something doable, I should notify that just for the tutorial's sake
+  he shouldn't do that now
+     (please, stick to the tutorial)

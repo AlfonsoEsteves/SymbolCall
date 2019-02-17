@@ -1,0 +1,21 @@
+12
+
+hand effect:
+[]
+invo sl
+call b2
+
+field effect:
+[]
+atta op 9
+
+field effect:
+[y2]
+disc tr
+
+description:
+This card has a very particular effect, it has a trigger discard.
+I have to make sure that that effect is not completely useless.
+
+interesting:
+78

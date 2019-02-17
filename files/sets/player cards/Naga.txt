@@ -1,0 +1,19 @@
+14
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[b0]
+atta tr 3
+atta op 20
+
+description:
+This card damages its trigger.
+But it makes enough damage to the opponent to make it worth having it in a purple deck.
+In fact, the card is pretty much useless if there is not a lot of purple being called.
+Also note it damages its trigger only if the trigger is on the field.
+
+interesting:
+87

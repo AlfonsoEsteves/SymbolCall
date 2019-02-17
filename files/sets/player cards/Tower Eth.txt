@@ -1,0 +1,20 @@
+13
+
+hand effect:
+[g1]
+invo sl
+
+field effect:
+[]
+atta ch 5
+
+field effect:
+[g1 b2 y1]
+atta op 14
+call g1
+
+description:
+The 3 towers can make infinite damage, but it is up to you to trigger it.
+
+interesting:
+85

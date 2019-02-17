@@ -1,0 +1,22 @@
+15
+
+hand effect:
+[]
+call r1
+call g2
+atta sl 5
+
+hand effect:
+[r0 g0]
+invo sl
+
+field effect:
+[]
+atta ch 6
+
+description:
+This is a field card.
+It can be invoked passively. But it has an effect that invokes it but then damages it.
+
+interesting:
+71

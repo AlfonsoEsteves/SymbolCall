@@ -1,0 +1,25 @@
+12
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta sl 7
+call y1
+call y2
+invo sl
+
+field effect:
+[y1 y2]
+atta op 24
+
+description:
+If this card has enough life, it can cause a lot of damage. It will end up low in health, though.
+If it is low in health, it can be destroyed and withdrawn from the deck.
+It has a powerful passive damage effect. If you can can trigger the effect often, then you may want to use this card defensively.
+In other words, you wouldn't use its effect if it is full health. Only to retreat it.
+
+interesting:
+90

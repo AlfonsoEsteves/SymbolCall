@@ -1,0 +1,42 @@
+Should bosses share cards?
+Should bosses use player cards?
+
+The adventage of sharing is that the player has to learn about less cards.
+
+So the idea is that bosses will have some unique cards, that they do not share with the other bosses, nor with the player.
+And the rest will be player cards.
+
+The player cards will also increase in strength as the bosses levels up.
+
+Should the bosses card be stronger?
+
+Yes.
+Sinse the boss's player cards will also level up, it is not really necessary.
+But if I do it the right way, it can give a David vs Goliath feeling.
+
+For instance, compare these two scenarios:
+1) The boss cards are 5% stronger
+2) The boss has 80% of player cards, and 20% of cards that are 25% stronger.
+The second scenario gives a stronger feeling of David vs Goliath.
+
+How much stronger should be the computer cards?
+
+The increment in strength shouldn't be too big and the porcentage of computer cards in the hand shouldn't be to low.
+Otherwise, the computer performance will vary a lot depending on the cards it draws.
+This could persuade the player to quit and restart games fast, waiting for the computer to draw a bad hand.
+
+A reasonable amount could be:
+  66.6% of the boss cards are player cards
+  33.3% of the boss cards are 20% stronger
+  On average, the boss would have cards 6.6% stronger
+
+Having 33% of forbidden cards will make the computer draw them quite frequently.
+  More than 33% of forbidden cards will make them look not rare. 
+  That can decrase the feeling of David vs Goliath, even though the boss would be stronger.
+A 20% strength increment, may be very important to myself, but the player may not even notice it at all.
+
+Note that the boss has an extra adventage at the start of the game:
+  It has a balanced deck, while the player doesn't.
+
+
+

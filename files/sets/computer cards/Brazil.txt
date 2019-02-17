@@ -1,0 +1,15 @@
+23
+
+hand effect:
+[g1 y1 g1]
+invo sl
+
+field effect:
+[]
+atta ch 13
+
+description:
+This is a strong field card.
+It is complemented by two other cards.
+The idea is that one of the cards triggers the first and third symbol.
+And the the other adds the second and forth passively.

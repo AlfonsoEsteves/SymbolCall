@@ -1,0 +1,14 @@
+10
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+call b1
+dama op 8
+
+description:
+This is a very simple field card.
+It has a 'call' just to make it a little more distintive.

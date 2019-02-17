@@ -1,0 +1,23 @@
+Black dragon
+Black dragon
+Black dragon ritual
+Black dragon ritual
+BlackMage
+BlackMage
+Barely useful
+Barely useful
+Blonde archer
+Blonde archer
+Cagon
+Cagon
+Damaatta
+Damaatta
+Passive dyer
+Passive dyer
+Trampa gr
+Trampa bl
+Trampa rd
+Trampa yl
+
+description:
+

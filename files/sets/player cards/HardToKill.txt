@@ -1,0 +1,16 @@
+9
+
+hand effect:
+[y2]
+invo sl
+
+field effect:
+[]
+atta op 22
+with sl
+
+description:
+This is a hand card.
+This rune is hard to kill cause, if it is invoked during the owner's turn, he will withdraw it.
+If it is invoked in the opponent's turn, he has to kill it in that turn.
+Note that it attacks once every 2 turns.

@@ -1,0 +1,15 @@
+9
+
+hand effect:
+invo sl
+
+field effect:
+call b1
+
+field effect:
+[b1 b0]
+atta ch 10
+
+description:
+This card attacks (choose) after 2 blues. And it can call 1 bl.
+It can be very strong in a blue heavy deck.

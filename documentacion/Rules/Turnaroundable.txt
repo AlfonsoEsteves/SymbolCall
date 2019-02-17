@@ -1,0 +1,26 @@
+It want the games to be relatively turnaroundable.
+
+To avoid accumulating too much power, I could cap the amount of cards in the field to 5.
+
+Also note that a lot of cards on the field, can make it hard to keep track of all the passive effects
+  Although that could be said of the hand too.
+
+Another thing that I could do is give the loosing players an extra drawn card (only one per turn).
+The extra card will have a health cost, and it will be very small if he is loosing bad.
+
+  I have to be carful though.
+  If I do it based on the field cards difference, it could overpower hand cards and spendable cards.
+  If I do it based on both, it could still overpower spendable cards.
+
+  If he has X cards less on the field, the extra draw will cost him Y.
+  For instance:
+    1 card less => 16
+    2 card less => 8
+    3 card less => 4
+    4 card less => 2
+    5 card less => 1
+ 
+  I really dislike this idea, though. It it a weird rule.
+
+Another option is that each card looses 1 point of health each turn.
+  I like this much better

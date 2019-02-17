@@ -1,0 +1,20 @@
+12
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[g0]
+atta op 6
+
+field effect:
+[g0 r0]
+atta ch 6
+
+description:
+This card is passive, has an easy sequence that damages.
+And that sequence can be continues to attack.
+
+interesting:
+79

@@ -1,0 +1,19 @@
+10
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+call g1
+atta ch 5
+
+field effect:
+[]
+call r2
+atta op 10
+
+description:
+This is a simple field card.
+You can choose between attacking a field card or do direct damage.

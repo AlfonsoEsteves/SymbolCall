@@ -1,0 +1,15 @@
+23
+
+hand effect:
+[r2 y1]
+invo sl
+
+field effect:
+[]
+atta op 10
+
+field effect:
+[g0]
+atta op 5
+
+description:

@@ -1,0 +1,14 @@
+14
+
+hand effect:
+[r1 r2]
+invo sl
+atta ch 9
+
+field effect:
+[r2 r1]
+atta op 9
+
+description:
+Makes some damage at invocation.
+With the reversed sequence it does direct damage.

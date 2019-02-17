@@ -1,0 +1,15 @@
+16
+
+hand effect:
+[]
+atta ow 12
+invo sl
+
+field effect:
+[]
+atta ch 7
+call r2
+
+description:
+This is a field card.
+It is a little stronger because it costs health to invoke.

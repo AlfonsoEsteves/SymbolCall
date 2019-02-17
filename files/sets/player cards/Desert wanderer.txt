@@ -1,0 +1,19 @@
+18
+
+hand effect:
+[]
+call y1
+call y1
+call b2
+call r1
+
+hand effect:
+[y0 y0 g0 r1]
+invo sl
+
+field effect:
+[]
+atta ch 10
+
+description:
+Desc in Desert rider

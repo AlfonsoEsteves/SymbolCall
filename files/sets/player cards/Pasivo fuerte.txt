@@ -1,0 +1,19 @@
+15
+
+hand effect:
+[r1]
+invo sl
+
+field effect:
+[r0 r0]
+call g1
+dama op 17
+
+field effect:
+[g0 g0]
+call y2
+dama op 17
+
+description:
+This is a totally passive field card. It is relatively easy to invoke, though.
+It has a good passive field effects to compensate the lack of active field effects.

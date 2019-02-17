@@ -1,0 +1,17 @@
+9
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 4
+
+field effect:
+[g1 g2]
+with tr
+
+description:
+This is a trap that withdraws the target.
+It is specially good in the deck of the three towers, cause it can be use to restore the health of "Duro".

@@ -1,0 +1,14 @@
+12
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 5
+call r1
+
+description:
+This is a very simple field card.
+It has a 'call' just to make it a little more distintive.

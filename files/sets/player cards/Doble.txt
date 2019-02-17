@@ -1,0 +1,15 @@
+6
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 4
+call g2
+atta ch 5
+
+description:
+This is a field card.
+It has a double attack, which allows to distribute the damage better.

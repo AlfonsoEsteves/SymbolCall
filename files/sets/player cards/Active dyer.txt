@@ -1,0 +1,15 @@
+13
+
+hand effect:
+[]
+call r1
+invo sl
+
+field effect:
+[]
+atta sl 2
+atta ch 5
+
+description:
+This is a field card.
+It has a lot of health but gets damaged each time it attacks.

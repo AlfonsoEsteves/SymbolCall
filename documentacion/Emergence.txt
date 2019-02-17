@@ -1,0 +1,16 @@
+Trap
+  Cards that damage or withdraw or discards its trigger
+
+Invunerable to traps
+  A card that doesn't call symbols (in the hand, field, or both)
+
+Chain link:
+  Passive effects that call symbols.
+
+Field card
+
+Hand card
+
+Defensive
+
+Offensive

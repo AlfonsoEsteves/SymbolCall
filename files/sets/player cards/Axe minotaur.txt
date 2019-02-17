@@ -1,0 +1,24 @@
+10
+
+hand effect:
+[]
+call y1
+invo sl
+
+hand effect:
+[]
+disc sl
+call r2
+call b1
+atta op 14
+
+field effect:
+[]
+atta ch 5
+
+description:
+This card is complemented by "Mallet minotaur".
+Normally, the second hand effect wouldn't be worth using. But if you have a "Mallet minotaur" in your hand, the card will be recovered after it is discarted, and they will cause a lot of damage.
+
+interesting:
+70

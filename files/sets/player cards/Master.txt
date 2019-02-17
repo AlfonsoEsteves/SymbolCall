@@ -1,0 +1,21 @@
+18
+
+hand effect:
+[]
+call g2
+call g2
+call g2
+
+hand effect:
+[g2 g2 b2 g2]
+invo sl
+
+field effect:
+[]
+atta ch 5
+atta ch 7
+
+description:
+This is a strong field card.
+It is complemented by its slave.
+The idea is that the slave add the missing essence in the middle of the sequence that invokes the master.

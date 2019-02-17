@@ -1,0 +1,18 @@
+I don't want to have very unimportant effects.
+So few decisive effects are better than a lot of unimportant ones.
+
+I don't want to have very unimportant actions in the effects.
+So few decisive action are better than a lot of unimportant ones.
+
+An action that only does 1 of damage will probably be unimportant.
+I almost made the mistake of duplicating all the values in order to avoid 1 damage actions.
+But that wouldn't make the effect more or less relevant.
+
+So,
+How big/small should be the values unit?
+Small enough to make subtle changes, but big enough to make each point as relevant as possible.
+
+Bear in mind that as a boss levels up, its cards will have a very small increment in power.
+If the unit is too small, some cards may not improve with each level.
+  For instance, 105% of 3 is 3.
+But it is not necesary that all the cards and all the attacks improve with each level.

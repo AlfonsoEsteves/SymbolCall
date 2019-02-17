@@ -1,0 +1,11 @@
+Hard sequences do not become useless against a good AI (or human player)
+  because, even if they are never triggered, they can restrict a lot the options of the rival.
+
+Hard to invoke cards that call symbols once they are in the field are vulnerable to withdraws.
+
+Passive invocation doesn't make a card lose its turn.
+
+When the order of actions matter:
+  call-call   yes
+  call-other  yes
+  other-other no

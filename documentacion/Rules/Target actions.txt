@@ -1,0 +1,32 @@
+What actions will have targets?
+
+Some actions can be super strong if you can pick the target.
+  For instance the invoke action.
+
+If I make the effect that invokes a target hard enough to pull off, everything will be ok (balanced)
+But the effects have to be passive, not active.
+
+Will passive effects have targets?
+
+The issue with this is that the player may need to take a decision in his opponent's turn.
+That can be confusing for the player.
+
+The adventage is that it adds new possibilities. And allows me to balance overpowered target-actions.
+
+What zone/player will the player choose from?
+
+The obious options are:
+attack: rival's field
+discard: rival's hand
+invoke: my own hand
+
+withdraw will often be useful for both purposes
+  - withdraw an opponent's card that is strong and hard-to-invoke
+  - withdraw my own card that is about to die, or could interrupt a sequence that I want to execute
+
+although rare
+  you could still want to attack or discard your own cards
+    to avoid the execution of a passive
+  you could want to invoke an opponent's card
+    to invoke a hand ritual for instance
+

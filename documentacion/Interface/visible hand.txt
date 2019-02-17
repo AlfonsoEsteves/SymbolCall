@@ -1,0 +1,11 @@
+how to make it so it looks good?
+
+The issues are:
+  In the opponent's hand
+    I don't like a lot of contrast between the seen and hidden cards
+  In the player's hand, I have to indicate somehow that a card has been seen
+
+So one basic idea, is not to make very dark the hidden card sprite.
+Another option (not mutually exclusive) is to add a little border to the top and bottom of the card,
+If a card is 60x100 then the border can be 60x20
+  and it would fade out as it approaches the middle of the card.

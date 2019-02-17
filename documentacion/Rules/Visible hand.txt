@@ -1,0 +1,36 @@
+I like the idea of the hand NOT being visible.
+Because:
+  it will be more familiar to TCG players
+  it makes it easier for the player, because he doesn't have to keep up with all of the passive effects
+    (the effects, would still be executed, but it is not his responsability to be aware of them)
+  it makes the game more interesting
+    not knowing exactly what your rival is gonna do
+      for instance, when your rival invokes a really strong card
+    to decide if you want to show a card, or keep it secret
+
+At first, the thing that I did not like about it is that there will be
+  passive effects that will be triggered without the player foreseeing it
+
+But now that I think about it, it is a very interesting feature.
+  It really brings back the feeling of trap cards.
+(The card will be shown when it gets triggered, at least for an instant)
+
+Will the revealed cards stay visible?
+Will withdrawn cards stay revealed?
+  I guess, yes and yes
+
+Note that this affects a lot the effects that discard a target card.
+Regardless of whether there are some visibles or not, the player could still know that the (right/left) most cards
+  in his opponent hands are older and probably harder to invoke
+
+Should I show all the opponent's cards when a choose-discard action is executed?
+I believe not, for 2 reasons:
+  it is more simple not to do it
+  it makes the discard choose effect less overpowerd
+Discard choose effect could end up being very opponent dependant, though.
+Now that I think about this again,
+  I think yes, I should reveal all the hand and keep it revealed.
+  First of all, discard is not that overpowerful. Hands tend to accumulate cards that are hard to invoke
+    and it will probably not be critical get rid of them.
+    (mmm, this can be OP agains decks like the 3 towers)
+

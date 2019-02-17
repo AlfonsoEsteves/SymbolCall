@@ -1,0 +1,18 @@
+8
+
+hand effect:
+[]
+invo sl
+call y1
+
+field effect:
+[]
+atta ch 5
+
+field effect:
+[g0]
+atta tr 4
+call b1
+
+description:
+A pretty normal card, I added it to make a pr/yl deck.

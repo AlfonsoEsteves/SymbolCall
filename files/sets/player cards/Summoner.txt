@@ -1,0 +1,23 @@
+9
+
+hand effect:
+[r1 g1 g1]
+invo sl
+
+field effect:
+[]
+invo ch
+atta sl 5
+
+field effect:
+[]
+call r1
+atta ch 15
+
+description:
+This card can choose to invoke another card.
+Can do it up to 2 times
+This card could be very unbalanced. I have to watch out.
+
+interesting:
+82

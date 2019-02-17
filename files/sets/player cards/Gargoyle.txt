@@ -1,0 +1,21 @@
+12
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 5
+
+field effect:
+[g2]
+atta sl 4
+call r1
+call g2
+
+description:
+This card was added just to have a self damaging loop.
+
+interesting:
+70

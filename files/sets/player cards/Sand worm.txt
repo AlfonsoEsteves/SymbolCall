@@ -1,0 +1,17 @@
+15
+
+hand effect:
+[y2 b2]
+invo sl
+
+field effect:
+[]
+atta ch 5
+
+field effect:
+[r0]
+atta tr 12
+with sl
+
+description:
+This is a defensive card, to fill the defensive deck.

@@ -1,0 +1,18 @@
+11
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 5
+
+field effect:
+[r0]
+atta ow 6
+call y1
+
+description:
+This card is pretty normal.
+It does help invoke "Transfer" and "Salado" in the PurpleYellowRed deck.

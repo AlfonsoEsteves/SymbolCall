@@ -1,0 +1,22 @@
+The actions that can move a card are:
+withdraw
+invoke
+discard
+attack
+
+withdraw is analogous to invoke
+  both send a card to the hand/field, regardless of where it is
+
+discard is analogous to attack
+  both send a card to the deck, if they are in the hand/field
+
+This way the field and the hand will be almost symmetrical.
+The only diffecences being:
+ - drawn cards go to the hand
+ - you can't directely destroy a field card, you need to remove all its health point
+
+I almost made discard similar to withdraw and invoke
+  It would destroy the card regardless of where it is.
+  But that would be too overpower against strong hard-to-invoke field cards.
+  Imaging putting a passive effect that discards its trigger.
+

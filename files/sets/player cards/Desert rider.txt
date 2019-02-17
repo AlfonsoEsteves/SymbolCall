@@ -1,0 +1,23 @@
+13
+
+hand effect:
+[]
+call y2
+call y2
+call g2
+call r1
+
+hand effect:
+[y0 y0 b0 r1]
+invo sl
+
+field effect:
+[]
+atta op 22
+
+description:
+This card is complemented by "Desert wanderer"
+When you have both in the hand, you have to choose which one you will invoke.
+You could still incoke the other with "Summoner".
+One is offensive (low health, direct damage)
+The other is defensive (more health, field damage)

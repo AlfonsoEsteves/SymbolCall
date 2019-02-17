@@ -1,0 +1,23 @@
+15
+
+hand effect:
+[y0]
+invo sl
+
+field effect:
+[]
+atta ch 3
+atta ch 4
+
+field effect:
+[y0]
+atta sl 3
+
+description:
+This is a field card.
+It has a triple attack. They are weak attacks, so the effect is perfect to wipe out the cards that are low on health.
+It has a lot of heath.
+And its disadventage is that the same symbol that invokes it damages it.
+
+fancy name:
+Weakling wrecker

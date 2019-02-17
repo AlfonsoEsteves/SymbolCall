@@ -1,0 +1,24 @@
+Active dyer
+Double call
+HardToKill
+Horseman
+Horseman
+Reaper
+Restored
+Salado
+Simple dama
+Simple purple
+Try hard
+Try hard
+YellowDmg
+Canal rd
+Transfer
+Archer
+Costoso
+Priest
+Naga
+Trampa gr
+
+description:
+this deck is primarely Yellow and Purple, then Red.
+Note that the Blue from "Double call" also goes will with "Salado"

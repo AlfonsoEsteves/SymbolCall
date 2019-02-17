@@ -1,0 +1,24 @@
+Swamp creature
+Swamp creature
+Swamp beast
+Swamp beast
+Swamp monster
+Swamp monster
+Swamp monster
+Damaatta
+Damaatta
+Lizard warrior
+Lizard warrior
+Blonde archer
+Doble
+Reborn devil
+Reborn devil
+BlackMage
+BlackMage
+Trampa rd
+Trampa bl
+Trampa yl
+
+description:
+The main strategy is to use the 3 swamp monsters to do damage.
+The lizard warrior doesn't help trigger the monsters, but it does extra damage when they are triggered.

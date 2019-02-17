@@ -1,0 +1,18 @@
+8
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+dama op 4
+
+field effect:
+[g2 g2]
+call b2
+
+description:
+This is a weak field card.
+It is complemented by its master.
+The idea is that the slave add the missing essence in the middle of the sequence that invokes the master.

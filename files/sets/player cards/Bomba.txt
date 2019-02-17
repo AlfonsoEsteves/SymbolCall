@@ -1,0 +1,20 @@
+18
+
+hand effect:
+[]
+invo sl
+call r1
+call g1
+call b1
+
+field effect:
+[r0 g0 b0]
+atta sl 17
+
+field effect:
+[]
+atta op 26
+
+description:
+This is a strong field card if you interrupt the sequence.
+invo sl

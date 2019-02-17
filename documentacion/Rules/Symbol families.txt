@@ -1,0 +1,39 @@
+I don't like the idea of symbol families very much, because it makes things harder to understand.
+Without it things are so much neat.
+
+But, they could resolve the issue of traps being super specialized cards.
+
+The issue is that if a trap attacks red, then it is very good against decks with a lot of red
+  and it is very bad against decks without red.
+
+I don't want the player to rebuild his deck each time he faces a new opponent.
+
+If I make more generic types of symbols, for instance 3 super symbols with 3 subsymbols each.
+  Then I can make traps to attack the super symbols.
+
+So rather than making a lot of damage to very few cards, they will make a little damage to a lot of cards.
+
+Trap cards would still be opponent-dependent, but not as much as before.
+
+For instance:
+  A: a card that makes X damage to 1 in 4 symbols.
+  B: a card that makes Y damage to 1 in 12 symbols
+  A will perform: worst_performace*3/4+best_performance*1/4
+  B will perform: worst_performace*11/12+best_performance*1/12
+Let's say that these traps perform 80% of what a normal card does, when faced to a deck that doesn't contain that specific symbol.
+Then, to balance them they should perform against a deck with that specific symbol:
+  A: 160%
+  B: 320%
+So B would be super overpower against those particular decks.
+  That is what is important to avoid.
+The fact that some cards/decks will be better against other decks is not necessarily an undesirable feature.
+
+Besides, if there are let's say 12 specific symbol, and your deck uses only 5, you would need 7 traps to cover everything.
+  In the other hand, if there are 4 generic symbols, and your deck uses only 2, you only have to cover the other 2 generic symbols with traps.
+
+I don't want either, cards that are extremely vulnerable to a specific symbol.
+Because again, I don't want the player to rebuild his deck each time he faces a new opponent.
+
+
+
+So the idea is that the required sequences will sometimes have generic symbols, but the actions will only call specific ones.

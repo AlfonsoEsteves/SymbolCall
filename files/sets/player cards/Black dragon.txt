@@ -1,0 +1,25 @@
+27
+
+hand effect:
+[b1 b2]
+call r1
+call r2
+disc sl
+
+field effect:
+[]
+atta ch 10
+atta op 20
+
+field effect:
+[]
+atta op 40
+
+description:
+This is a strong card.
+Is is meant to be invoked by the card "Black dragon ritual".
+It is also invunerable to trap cards, cause it doesn't call any symbol.
+Note this card is frail on the hand.
+
+interesting:
+75

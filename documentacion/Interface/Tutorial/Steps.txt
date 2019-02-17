@@ -1,0 +1,19 @@
+(highlight your board)
+You are the player on the bottom side.
+
+(highlight your opponent's board)
+Your opponent is the player on the top side.
+
+(highlight your hand and your field)
+Right now you have X cards in your hand, and 0 on the field.
+
+(blinking highlight **** first effect)
+Invoke **** clicking on its first effect.
+
+(highlight execution stack)
+This is the execution stack, it shows you what effects are about to be executed.
+
+(blinking highlight next action button)
+Click the **** button to let the stack get executed.
+
+Good, you will be able to attack with **** in the next turn.

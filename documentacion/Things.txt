@@ -1,0 +1,101 @@
+even if I make the bosses have a high porcentage of forbidden cards,
+  the player can still quit and restart games to have an adventage.
+
+Things I could do:
+  forbid the player to quit in its first 3 (either) turns
+  each turn played increses the consolation reward, specially the first ones.
+  a reward baffer that is lost when a player surrenders or quits
+
+ANOTHER OPTION, reward the player based on the enemy remaining HP
+
+
+
+aspectos que quiero controlar
+  duracion de las partidas en turnos
+    suficientemente largas como para poder ejecutar las estrategias
+    pero lo mas cortas posibles
+  acumulacion de cartas en el campo
+    si hay muchas, deberia aumentar los ataques y reducir las vidas
+  acumulacion de cartas en la mano
+  cantidas de cartas por mazo
+  cantidad de symbolos
+  que tan turnaraoubleble es
+
+
+tengo que ver que sean turnaroundable 
+
+
+
+
+Capas agregar un indicador abajo del fancy name que diga, que tan interezante es la carta
+  hay cartas que las agrego por fillear, pero otras deberia respetarlas mas porque son las interesantes
+
+CAPAS AGREGAR UN COMENTARIO: LAST CHANGE
+
+
+
+Agregar mas attackes trigger
+
+
+
+
+El tema es que como poder puedo crear miles de c alazar.
+  Pero no es mantenible, no me asegura de que sean todas unicas
+
+goals:
+  que contega todos los funcionalmente distintos
+  que no halla muy parecidas
+  que no hallan shadows
+
+
+que cosas tengo que tener encuenta cuando agrego una carta?
+  a cuales triggeriatria
+  por cuales es triggeriada
+  cuales son similares
+  si ramplaza (shadow) otra
+
+
+
+
+the rarest the card, the longer the name
+
+
+
+a good AI can be interesting
+a bad AI can be very disappointing
+
+
+
+
+The cards that call symbols passively could be considered rare
+
+Not always
+the trigger of an effect is the effect below
+For instance, when two card are triggered at the same time
+
+
+
+
+
+
+
+TENER SOLO 2 DE CADA TORRE INFINITA ES POCO
+  O CAPAS QUE NO...
+  DEPENDE DE CUANTAS CARTAS TENGA UN MAZO
+anyway,
+  taba pensando que capas hacer que la restriccion de cartas repetidas no aplique separado por cada tipo de carta.
+
+Ejemplo:
+  carta1, carta1, carta2, carta2
+
+la idea vieja era que me costara -1 y -1, porque repeti carta1 una vez y carta2 una vez
+
+pero ahora pensaba hacer que cuesta -1 y -2, porque cada carta repetida aumenta, (no importa si es de un tipo nuebo)
+
+de esta manera me permite tener una pocas cartas repetidas, y no me combiene tener todo repetido 2 veces
+
+
+
+
+The rarity of the common trap cards should be medium level
+  They are not really rare, but they are deck specific anyway

@@ -1,0 +1,24 @@
+17
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta sl 5
+call y1
+call g1
+atta sl 5
+
+field effect:
+[y1 g1]
+atta op 7
+
+description:
+It doesn't help the swamp monsters get triggered.
+But it does extra damage when it happens
+It also has an interestinc mechanic
+
+Interesting:
+84

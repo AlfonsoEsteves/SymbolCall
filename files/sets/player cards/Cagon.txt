@@ -1,0 +1,18 @@
+4
+
+hand effect:
+[]
+atta op 12
+
+hand effect:
+[g0]
+invo sl
+call b2
+
+field effect:
+[]
+call b1
+
+description:
+This is a hand card that inflicts damage.
+Its weakness is that it can be passively invoked, and it is bad in the field.

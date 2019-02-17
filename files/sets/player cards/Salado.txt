@@ -1,0 +1,20 @@
+23
+
+hand effect:
+[r1 r2 y2]
+invo sl
+
+field effect:
+[]
+atta ch 6
+dama op 16
+
+field effect:
+[b0]
+dama op 4
+call r1
+
+description:
+This is a strong field card, that can only be invoked passively.
+It has a strong active effect.
+It also has 2 passive effects that do damage. One of the passive effects also triggers the other.

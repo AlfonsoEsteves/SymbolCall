@@ -1,0 +1,20 @@
+15
+
+hand effect:
+[r2 b2]
+invo sl
+
+field effect:
+[]
+call y1
+atta ch 9
+
+field effect:
+[y1 b2]
+disc ch
+
+description:
+This card has an passive effect that allows it to choose a card to be discarted.
+
+interesting:
+80

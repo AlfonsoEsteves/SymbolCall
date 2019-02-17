@@ -1,0 +1,20 @@
+13
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 4
+
+field effect:
+[g2 y1]
+atta op 9
+
+description:
+The idea, is that by having the 3 swamp monsters, you can attack 4 times.
+  If you have more, you can increase a lot the times (not exactly x2)
+
+Interesting:
+84

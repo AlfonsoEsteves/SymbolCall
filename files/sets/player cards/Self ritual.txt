@@ -1,0 +1,26 @@
+12
+
+hand effect:
+[]
+dama ow 6
+call r2
+call g1
+
+hand effect:
+[r0 g0]
+invo sl
+
+field effect:
+[]
+atta ch 6
+dama op 3
+
+description:
+This is a field card.
+It can be invoked passively. But it has an effect that triggers the invocation at a cost.
+
+interesting:
+68
+
+fancy name:
+Self invoked demon

@@ -1,0 +1,11 @@
+34
+
+field effect:
+[]
+atta ch 28
+
+description:
+This card can only be invoked by a choose invoke effect.
+
+interesting:
+77

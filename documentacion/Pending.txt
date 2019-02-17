@@ -1,0 +1,5 @@
+No crear battles con el copy, que el battle de un node se actulize, pero q no se recree
+
+
+
+Save games
