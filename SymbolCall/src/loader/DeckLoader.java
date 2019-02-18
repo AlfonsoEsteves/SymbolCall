@@ -6,11 +6,11 @@ import java.io.FileReader;
 import java.util.LinkedList;
 
 import battle.Card;
-import battle.Player;
+import battle.BPlayer;
 
 public class DeckLoader {
 	
-	public static LinkedList<Player> decks;
+	public static LinkedList<BPlayer> decks;
 	
 	public static void loadDecks() {
 		decks=new LinkedList<>();
@@ -19,7 +19,7 @@ public class DeckLoader {
 			File[] listOfFiles = folder.listFiles();
 			for (File file : listOfFiles) {
 			    if (file.isFile()) {
-			    	Player player=new Player();
+			    	BPlayer player=new BPlayer();
 			        BufferedReader in = new BufferedReader(new FileReader(file.getAbsolutePath()));
 			        player.name=file.getName().split("\\.")[0];
 			        String line;
@@ -45,7 +45,7 @@ public class DeckLoader {
 	}
 	
 	public static LinkedList<Card> getPlayer(String name) {
-		for(Player player : decks) {
+		for(BPlayer player : decks) {
 			if(player.name.equals(name)) {
 				return player.deck;
 			}

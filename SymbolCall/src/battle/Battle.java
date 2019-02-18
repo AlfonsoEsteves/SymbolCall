@@ -45,7 +45,7 @@ public class Battle {
 	public LinkedList<ActionExecution> executionStack;
 	public LinkedList<Integer> calledSymbols;
 	public int state;
-	public String[] playerNames=new String[2];
+	public BPlayer[] players=new BPlayer[2];
 	public LinkedList<String> log;
 	public Action choosingTargetStateAction;
 	public int targetCard=-1;
@@ -53,7 +53,8 @@ public class Battle {
 	
 	public Battle() {}
 
-	public Battle(Player[] players, int startingPlayer) {
+	public Battle(BPlayer[] players, int startingPlayer) {
+		this.players = players;
 		turn = startingPlayer;
 		decidingPlayer=turn;
 		executionStack = new LinkedList<>();
@@ -61,7 +62,6 @@ public class Battle {
 		log=new LinkedList<>();
 		turnCount=0;
 		for (int i = 0; i < 2; i++) {
-			playerNames[i]=players[i].name;
 			healths[i] = 120;
 			zones[i][Battle.handZone] = new LinkedList<>();
 			zones[i][Battle.fieldZone] = new LinkedList<>();
@@ -70,27 +70,6 @@ public class Battle {
 				draw(i);
 			}
 		}
-	}
-
-	private LinkedList<Integer> shuffle(LinkedList<Card> deck, int player) {
-		int position=0;
-		LinkedList<Integer> ordered=new LinkedList<>();
-		for(Card model : deck){
-			BCard card=new BCard(model);
-			card.battleId=player*Battle.deckSize+position;
-			card.player=player;
-			card.zone = Battle.deckZone;
-			card.drawn=false;
-			ordered.addLast(card.battleId);
-			cards[card.battleId]=card;
-			position++;
-		};
-		LinkedList<Integer> shuffled = new LinkedList<>();
-		while (!ordered.isEmpty()) {
-			Integer card = ordered.remove(Rnd.nextInt(ordered.size()));
-			shuffled.addLast(card);
-		}
-		return shuffled;
 	}
 
 	//Deep copy of the cards, because they have attributes
@@ -135,25 +114,10 @@ public class Battle {
 		decidingPlayer=turn;
 	}
 
-	private void draw(int player) {
-		//if(!zones[player][Battle.deckZone].isEmpty()) {
-			int c = zones[player][Battle.deckZone].removeFirst();
-			BCard card = cards[c];
-			card.zone = Battle.handZone;
-			card.health = card.model.maxHealth;
-			card.turn = true;
-			card.drawn=true;
-			zones[player][Battle.handZone].addLast(c);
-		/*}
-		else {
-			System.out.println("Warning: EMPTY DECK");
-		}*/
-	}
-
 	public void executeActiveEffect(int c, int effectNumber) {
 		if(log!=null){
 			log.clear();
-			logMessage(playerNames[turn]+" activated effect "+effectNumber+" of "+cards[c].model.name);
+			logMessage(players[turn].name+" activated effect "+effectNumber+" of "+cards[c].model.name);
 		}
 		cards[c].turn = false;
 		addEffectToExecutionStack(c, effectNumber, -1);
@@ -223,17 +187,53 @@ public class Battle {
 	public void setChosenTarget(int chosenTargetCard) {
 		if(chosenTargetCard==-1){
 			if(choosingTargetStateAction.type==Battle.atkAction && zones[1-decidingPlayer][Battle.fieldZone].isEmpty()) {
-				logMessage(playerNames[decidingPlayer]+" chose to attack directly to the opponent");
+				logMessage(players[decidingPlayer].name+" chose to attack directly to the opponent");
 			}
 			else {
-				logMessage(playerNames[decidingPlayer]+" chose not to "+actionString(choosingTargetStateAction.type));
+				logMessage(players[decidingPlayer].name+" chose not to "+actionString(choosingTargetStateAction.type));
 			}
 		}
 		else{
-			logMessage(playerNames[decidingPlayer]+" chose to "+actionString(choosingTargetStateAction.type)+" "+cards[chosenTargetCard]);
+			logMessage(players[decidingPlayer].name+" chose to "+actionString(choosingTargetStateAction.type)+" "+cards[chosenTargetCard]);
 		}
 		targetCard=chosenTargetCard;
 		executeAction();
+	}
+
+	private LinkedList<Integer> shuffle(LinkedList<Card> deck, int player) {
+		int position=0;
+		LinkedList<Integer> ordered=new LinkedList<>();
+		for(Card model : deck){
+			BCard card=new BCard(model);
+			card.battleId=player*Battle.deckSize+position;
+			card.player=player;
+			card.zone = Battle.deckZone;
+			card.drawn=false;
+			ordered.addLast(card.battleId);
+			cards[card.battleId]=card;
+			position++;
+		};
+		LinkedList<Integer> shuffled = new LinkedList<>();
+		while (!ordered.isEmpty()) {
+			Integer card = ordered.remove(Rnd.nextInt(ordered.size()));
+			shuffled.addLast(card);
+		}
+		return shuffled;
+	}
+
+	private void draw(int player) {
+		//if(!zones[player][Battle.deckZone].isEmpty()) {
+			int c = zones[player][Battle.deckZone].removeFirst();
+			BCard card = cards[c];
+			card.zone = Battle.handZone;
+			card.health = card.model.maxHealth;
+			card.turn = true;
+			card.drawn=true;
+			zones[player][Battle.handZone].addLast(c);
+		/*}
+		else {
+			System.out.println("Warning: EMPTY DECK");
+		}*/
 	}
 	
 	//This should be a verb
@@ -264,10 +264,10 @@ public class Battle {
 	}
 
 	private boolean damagePlayer(int player, int amount) {
-		logMessage(playerNames[player]+" receives "+amount+" damage");
+		logMessage(players[player].name+" receives "+amount+" damage");
 		healths[player] -= amount;
 		if (healths[player] <= 0) {
-			logMessage(playerNames[1-player]+" defeated "+playerNames[player]);
+			logMessage(players[1-player]+" defeated "+players[player].name);
 			return true;
 		}
 		return false;
@@ -399,10 +399,5 @@ public class Battle {
 			//System.out.println(message);
 			log.addLast(message);
 		}
-	}
-	
-	@Override
-	public String toString(){
-		return "0H:"+zones[0][Battle.handZone].size()+" 0F:"+zones[0][Battle.fieldZone].size()+" 1F:"+zones[1][Battle.fieldZone].size()+" 1H:"+zones[1][Battle.handZone].size();
 	}
 }

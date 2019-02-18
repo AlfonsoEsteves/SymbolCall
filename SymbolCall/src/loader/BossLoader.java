@@ -6,11 +6,11 @@ import java.io.FileReader;
 import java.util.LinkedList;
 
 import battle.Card;
-import battle.Player;
+import battle.BPlayer;
 
 public class BossLoader {
 	
-	public static LinkedList<Player> bosses;
+	public static LinkedList<BPlayer> bosses;
 	
 	public static void loadBosses() {
 		bosses=new LinkedList<>();
@@ -19,7 +19,7 @@ public class BossLoader {
 			File[] listOfFiles = folder.listFiles();
 			for (File file : listOfFiles) {
 			    if (file.isFile()) {
-			    	Player boss=new Player();
+			    	BPlayer boss=new BPlayer();
 			        BufferedReader in = new BufferedReader(new FileReader(file.getAbsolutePath()));
 			        boss.name=file.getName().split("\\.")[0];
 			        String line;

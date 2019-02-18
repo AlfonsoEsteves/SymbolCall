@@ -3,7 +3,7 @@ package automatic;
 import java.util.LinkedList;
 
 import battle.Battle;
-import battle.Player;
+import battle.BPlayer;
 import bruteForceAI.BruteForceAI;
 import loader.CardLoader;
 import loader.DeckLoader;
@@ -16,7 +16,7 @@ public class Test {
 		CardLoader.loadCards();
 		DeckLoader.loadDecks();
 		testPlayers=new LinkedList<>();
-		for(Player player : DeckLoader.decks){
+		for(BPlayer player : DeckLoader.decks){
 			TestedPlayer testPlayer=new TestedPlayer(player);
 			testPlayer.player.computerAI=BruteForceAI.getInstance();
 			testPlayers.add(testPlayer);

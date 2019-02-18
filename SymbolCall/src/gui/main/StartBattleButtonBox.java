@@ -1,28 +1,28 @@
-package gui.battle;
+package gui.main;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 
+import game.Game;
 import gui.Box;
 
 @SuppressWarnings("serial")
-public class BattleThirdButtonBox extends Box {
+public class StartBattleButtonBox extends Box {
 
-	public BattleThirdButtonBox(int x, int y, int width, int height, Box container) {
+	public StartBattleButtonBox(int x, int y, int width, int height, Box container) {
 		super(x, y, width, height, container);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		System.out.println("surrender");
+		Game.newRound();
 	}
 
 	@Override
 	public void paint(Graphics graphics) {
 		graphics.setColor(Color.orange);
 		graphics.fillRect(0, 0, getWidth()-1, getHeight()-1);
-		paintChildren(graphics);
 	}
 
 }

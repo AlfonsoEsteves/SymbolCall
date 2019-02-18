@@ -4,10 +4,11 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 
 import battle.Battle;
-import game.Game;
+import game.BattleExecutor;
 import gui.Box;
 import gui.MainFrame;
 
+@SuppressWarnings("serial")
 public class BattleCardsRowBox extends Box {
 	
 	private int player;
@@ -32,13 +33,13 @@ public class BattleCardsRowBox extends Box {
 	@Override
 	public void refresh() {
 		int space=BattleCardBox.cardWidth+2;
-		if(Game.battle.zones[player][zone].size()>5) {
-			space=(getWidth()-5)/Game.battle.zones[player][zone].size()-1;
+		if(BattleExecutor.battle.zones[player][zone].size()>5) {
+			space=(getWidth()-5)/BattleExecutor.battle.zones[player][zone].size()-1;
 		}
 		int cardX=3;
 		for(int i=0;i<Battle.handAndFieldMaxSize;i++){
-			if(i<Game.battle.zones[player][zone].size()){
-				battleCardBoxes[i].card=Game.battle.cards[Game.battle.zones[player][zone].get(i)];
+			if(i<BattleExecutor.battle.zones[player][zone].size()){
+				battleCardBoxes[i].card=BattleExecutor.battle.cards[BattleExecutor.battle.zones[player][zone].get(i)];
 				for(int j=0;j<Battle.cardMaxEffects;j++) {
 					BattleEffectBox battleEffectBox=battleCardBoxes[i].battleEffectBoxs.get(j);
 					battleEffectBox.card=battleCardBoxes[i].card;

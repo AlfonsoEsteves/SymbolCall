@@ -8,7 +8,7 @@ import battle.Action;
 import battle.BCard;
 import battle.Battle;
 import battle.Effect;
-import game.Game;
+import game.BattleExecutor;
 import gui.Box;
 import gui.FontList;
 import gui.MainFrame;
@@ -41,7 +41,7 @@ public class BattleEffectBox extends Box {
 		boolean grayed=false;
 		Effect effect=card.model.effects.get(effectNumber);
 		if(effect.sequence.isEmpty()) {
-			if(!card.turn || Game.battle.turn!=card.player) {
+			if(!card.turn || BattleExecutor.battle.turn!=card.player) {
 				grayed=true;
 			}
 		}
@@ -107,12 +107,12 @@ public class BattleEffectBox extends Box {
 		if(card.model.effects.size()<=effectNumber){
 			return;
 		}
-		if(Game.battle.turn==0) {
-			if(Game.battle.state==Battle.choosingActiveEffectState) {
+		if(BattleExecutor.battle.turn==0) {
+			if(BattleExecutor.battle.state==Battle.choosingActiveEffectState) {
 				if(card.player==0) {
 					Effect effect=card.model.effects.get(effectNumber);
 					if(card.turn && effect.zone==card.zone && effect.sequence.isEmpty()) {
-						Game.battle.executeActiveEffect(card.battleId, effectNumber);
+						BattleExecutor.battle.executeActiveEffect(card.battleId, effectNumber);
 						MainFrame.instance.refresh();
 					}
 				}

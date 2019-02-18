@@ -6,10 +6,11 @@ import java.awt.event.MouseEvent;
 
 import battle.Battle;
 import battle.ComputerAI;
-import game.Game;
+import game.BattleExecutor;
 import gui.Box;
 import gui.MainFrame;
 
+@SuppressWarnings("serial")
 public class BattleFirstButtonBox extends Box {
 
 	public BattleFirstButtonBox(int x, int y, int width, int height, Box container) {
@@ -17,12 +18,12 @@ public class BattleFirstButtonBox extends Box {
 		MainFrame.instance.addKeyListener(this);
 	}
 	
-	@Override
+	@Override	
 	public void mousePressed(MouseEvent arg0) {
-		if(Game.battle.state==Battle.choosingActiveEffectState) {
-			ComputerAI computerAI=Game.players[Game.battle.turn].computerAI;
+		if(BattleExecutor.battle.state==Battle.choosingActiveEffectState) {
+			ComputerAI computerAI=BattleExecutor.battle.players[BattleExecutor.battle.turn].computerAI;
 			if(computerAI==null) {
-				Game.battle.passTurn();
+				BattleExecutor.battle.passTurn();
 			}
 			MainFrame.instance.refresh();
 		}
@@ -33,32 +34,32 @@ public class BattleFirstButtonBox extends Box {
 	
 	@Override
 	public void keyPressed(KeyEvent e){
-		//if(e.getKeyCode()==KeyEvent.VK_SPACE) {
+		if(e.getKeyCode()==KeyEvent.VK_SPACE) {
 			next();
-		//}
+		}
 	}
 	
 	public void next() {
-		if(Game.battle.state==Battle.choosingActiveEffectState) {
-			ComputerAI computerAI=Game.players[Game.battle.turn].computerAI;
+		if(BattleExecutor.battle.state==Battle.choosingActiveEffectState) {
+			ComputerAI computerAI=BattleExecutor.battle.players[BattleExecutor.battle.turn].computerAI;
 			if(computerAI!=null) {
-				computerAI.play(Game.battle);
+				computerAI.play(BattleExecutor.battle);
 			}
 			MainFrame.instance.refresh();
 		}
-		else if(Game.battle.state==Battle.choosingTargetCardState) {
-			ComputerAI computerAI=Game.players[Game.battle.decidingPlayer].computerAI;
+		else if(BattleExecutor.battle.state==Battle.choosingTargetCardState) {
+			ComputerAI computerAI=BattleExecutor.battle.players[BattleExecutor.battle.decidingPlayer].computerAI;
 			if(computerAI==null) {
-				Game.battle.setChosenTarget(-1);
+				BattleExecutor.battle.setChosenTarget(-1);
 				MainFrame.instance.refresh();
 			}
 			else {
-				computerAI.chooseTarget(Game.battle);
+				computerAI.chooseTarget(BattleExecutor.battle);
 				MainFrame.instance.refresh();
 			}
 		}
-		else if(Game.battle.state==Battle.executingActionState) {
-			Game.battle.executeAction();
+		else if(BattleExecutor.battle.state==Battle.executingActionState) {
+			BattleExecutor.battle.executeAction();
 			MainFrame.instance.refresh();
 		}
 	}
@@ -66,8 +67,8 @@ public class BattleFirstButtonBox extends Box {
 	@Override
 	public void paint(Graphics graphics) {
 		graphics.drawRect(0, 0, getWidth()-1, getHeight()-1);
-		if(Game.battle.state==Battle.choosingActiveEffectState) {
-			ComputerAI computerAI=Game.players[Game.battle.turn].computerAI;
+		if(BattleExecutor.battle.state==Battle.choosingActiveEffectState) {
+			ComputerAI computerAI=BattleExecutor.battle.players[BattleExecutor.battle.turn].computerAI;
 			if(computerAI==null) {
 				graphics.drawString("Pass turn", 14, 19);
 			}
@@ -75,10 +76,10 @@ public class BattleFirstButtonBox extends Box {
 				graphics.drawString("Next opponent's move", 14, 19);
 			}
 		}
-		else if(Game.battle.state==Battle.choosingTargetCardState) {
-			ComputerAI computerAI=Game.players[Game.battle.decidingPlayer].computerAI;
+		else if(BattleExecutor.battle.state==Battle.choosingTargetCardState) {
+			ComputerAI computerAI=BattleExecutor.battle.players[BattleExecutor.battle.decidingPlayer].computerAI;
 			if(computerAI==null) {
-				if(Game.battle.choosingTargetStateAction.type==Battle.atkAction && Game.battle.zones[1-Game.battle.decidingPlayer][Battle.fieldZone].isEmpty()) {
+				if(BattleExecutor.battle.choosingTargetStateAction.type==Battle.atkAction && BattleExecutor.battle.zones[1-BattleExecutor.battle.decidingPlayer][Battle.fieldZone].isEmpty()) {
 					graphics.drawString("Attack directly", 14, 19);
 				}
 				else {
@@ -89,7 +90,7 @@ public class BattleFirstButtonBox extends Box {
 				graphics.drawString("Next (op choosing)", 14, 19);
 			}
 		}
-		else if(Game.battle.state==Battle.executingActionState) {
+		else if(BattleExecutor.battle.state==Battle.executingActionState) {
 			graphics.drawString("Next action", 14, 19);
 		}
 	}

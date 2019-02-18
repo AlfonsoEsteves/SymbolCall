@@ -3,9 +3,10 @@ package gui.battle;
 import java.awt.Graphics;
 
 import battle.Battle;
-import game.Game;
+import game.BattleExecutor;
 import gui.Box;
 
+@SuppressWarnings("serial")
 public class BattleDescriptionBox extends Box {
 
 	public BattleDescriptionBox(int x, int y, int width, int height, Box container) {
@@ -14,10 +15,9 @@ public class BattleDescriptionBox extends Box {
 
 	@Override
 	public void paint(Graphics graphics) {
-		//graphics.setColor(Color.yellow);
 		graphics.drawRect(0, 0, getWidth()-1, getHeight()-1);
 		String turnString;
-		if(Game.battle.turn==0) {
+		if(BattleExecutor.battle.turn==0) {
 			turnString="Bottom player's turn";
 		}
 		else {
@@ -25,10 +25,10 @@ public class BattleDescriptionBox extends Box {
 		}
 		graphics.drawString(turnString, 14, 35);
 		String stateString="";
-		if(Game.battle.state==Battle.executingActionState) {
+		if(BattleExecutor.battle.state==Battle.executingActionState) {
 			stateString="Executing chain of actions";
 		}
-		if(Game.battle.state==Battle.choosingTargetCardState) {
+		if(BattleExecutor.battle.state==Battle.choosingTargetCardState) {
 			stateString="Choosing target";
 		}
 		graphics.drawString(stateString, 14, 65);	
