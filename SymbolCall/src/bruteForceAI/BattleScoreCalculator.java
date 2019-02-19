@@ -5,7 +5,7 @@ import battle.Battle;
 public class BattleScoreCalculator {
 
 	public static double calculateInitialScore(Battle scenario) {
-		int winner=scenario.checkWinner();
+		int winner=scenario.winner();
 		if(winner!=-1) {
 			return winner;
 		}

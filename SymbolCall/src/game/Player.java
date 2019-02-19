@@ -1,13 +1,16 @@
 package game;
 
 import battle.BPlayer;
+import bruteForceAI.BruteForceAI;
 
-public class Player implements Comparable<Player>{
-	
-	public BPlayer player;
+public class Player extends BPlayer implements Comparable<Player>{
 	
 	public int score;
 	
+	public Player(String name, BruteForceAI computerAI) {
+		super(name, computerAI);
+	}
+
 	public void addWin() {
 		score = (score * 19 + 100) / 20;
 	}

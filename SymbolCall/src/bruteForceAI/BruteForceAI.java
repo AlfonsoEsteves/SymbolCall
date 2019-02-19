@@ -133,7 +133,7 @@ public class BruteForceAI extends ComputerAI{
 		//That is why I select the following nodes only up to my rival's first move
 		Node node=firstNode;
 		while(true) {
-			if(node.scenario.decidingPlayer!=battle.decidingPlayer || node.scenario.checkWinner()!=-1) {
+			if(node.scenario.decidingPlayer!=battle.decidingPlayer || node.scenario.winner()!=-1) {
 				break;
 			}
 			else {
@@ -236,7 +236,7 @@ public class BruteForceAI extends ComputerAI{
 					newScenario.executeActiveEffect(card.battleId, effectNumber);
 					while(newScenario.state==Battle.executingActionState) {
 						newScenario.executeAction();
-						if(newScenario.checkWinner()!=-1) {
+						if(newScenario.winner()!=-1) {
 							break;
 						}
 					}
@@ -261,7 +261,7 @@ public class BruteForceAI extends ComputerAI{
 			newScenario.setChosenTarget(c);
 			while(newScenario.state==Battle.executingActionState) {
 				newScenario.executeAction();
-				if(newScenario.checkWinner()!=-1) {
+				if(newScenario.winner()!=-1) {
 					break;
 				}
 			}
@@ -275,7 +275,7 @@ public class BruteForceAI extends ComputerAI{
 		newScenario.setChosenTarget(-1);
 		while(newScenario.state==Battle.executingActionState) {
 			newScenario.executeAction();
-			if(newScenario.checkWinner()!=-1) {
+			if(newScenario.winner()!=-1) {
 				break;
 			}
 		}

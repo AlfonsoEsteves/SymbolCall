@@ -2,14 +2,22 @@ package battle;
 
 import java.util.LinkedList;
 
+import bruteForceAI.BruteForceAI;
+
 public class BPlayer {
 	
 	public String name;
-	public LinkedList<Card> deck;
 	public ComputerAI computerAI;
+	public LinkedList<Card> deck;
 	
-	public BPlayer() {
+	public BPlayer(String name, BruteForceAI computerAI) {
+		this.name = name;
+		this.computerAI = computerAI;
 		deck=new LinkedList<>();
+	}
+
+	public boolean isHumanPlayer() {
+		return computerAI == null;
 	}
 	
 }

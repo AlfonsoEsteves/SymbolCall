@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.util.LinkedList;
 
 import battle.Card;
+import bruteForceAI.BruteForceAI;
 import battle.BPlayer;
 
 public class BossLoader {
@@ -19,9 +20,9 @@ public class BossLoader {
 			File[] listOfFiles = folder.listFiles();
 			for (File file : listOfFiles) {
 			    if (file.isFile()) {
-			    	BPlayer boss=new BPlayer();
 			        BufferedReader in = new BufferedReader(new FileReader(file.getAbsolutePath()));
-			        boss.name=file.getName().split("\\.")[0];
+			        String name=file.getName().split("\\.")[0];
+			    	BPlayer boss=new BPlayer(name, BruteForceAI.getInstance());
 			        String line;
 			        while((line = in.readLine()) != null)
 			        {

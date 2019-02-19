@@ -24,7 +24,7 @@ public class Node{
 		node.chosenCard=chosenCard;
 		node.chosenEffect=chosenEffect;
 		node.passedTurns=passedTurns;
-		if(scenario.checkWinner()!=-1 || passedTurns==2) {
+		if(scenario.winner()!=-1 || passedTurns==2) {
 			node.finished=true;
 		}
 		else {

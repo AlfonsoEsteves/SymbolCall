@@ -12,6 +12,7 @@ import battle.Battle;
 import battle.Effect;
 import bruteForceAI.CardScoreCalculator;
 import game.BattleExecutor;
+import game.Game;
 import gui.Box;
 import gui.FontList;
 import gui.ImageDrawer;
@@ -115,25 +116,25 @@ public class BattleCardBox extends Box {
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		if(BattleExecutor.battle.turn==0 && BattleExecutor.battle.state==Battle.choosingTargetCardState) {
+		if(Game.battle.turn==0 && Game.battle.state==Battle.choosingTargetCardState) {
 			int zone;
-			if(BattleExecutor.battle.choosingTargetStateAction.type==Battle.atkAction) {
+			if(Game.battle.choosingTargetStateAction.type==Battle.atkAction) {
 				zone=Battle.fieldZone;
 			}
-			else if(BattleExecutor.battle.choosingTargetStateAction.type==Battle.wdrAction) {
+			else if(Game.battle.choosingTargetStateAction.type==Battle.wdrAction) {
 				zone=Battle.fieldZone;
 			}
-			else if(BattleExecutor.battle.choosingTargetStateAction.type==Battle.invAction) {
+			else if(Game.battle.choosingTargetStateAction.type==Battle.invAction) {
 				zone=Battle.handZone;
 			}
-			else if(BattleExecutor.battle.choosingTargetStateAction.type==Battle.dscAction) {
+			else if(Game.battle.choosingTargetStateAction.type==Battle.dscAction) {
 				zone=Battle.handZone;
 			}
 			else {
 				throw new RuntimeException();
 			}
 			if(card.zone==zone) {
-				BattleExecutor.battle.setChosenTarget(card.battleId);
+				Game.battle.setChosenTarget(card.battleId);
 				MainFrame.instance.refresh();
 			}
 		}
