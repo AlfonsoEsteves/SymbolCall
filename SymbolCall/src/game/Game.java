@@ -2,6 +2,7 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import battle.Battle;
@@ -29,11 +30,13 @@ public class Game {
 		players = new ArrayList<>();
 
 		for (int i = 0; i < 49; i++) {
-			Player player = createRandomPlayer();
+			Player player = new Player("player_"+ Rnd.nextInt(1000), BruteForceAI.getInstance());
+			player.deck = createRandomDeck();
 			players.add(player);
 		}
 		
 		humanPlayer = new Player("human_player", null);
+		humanPlayer.deck  = createRandomDeck();
 		players.add(humanPlayer);
 	}
 	
@@ -74,12 +77,12 @@ public class Game {
 		Collections.sort(players);
 	}
 	
-	private static Player createRandomPlayer() {
-		Player player = new Player("player_"+ Rnd.nextInt(1000), BruteForceAI.getInstance());
+	private static LinkedList<Card> createRandomDeck() {
+		LinkedList<Card> deck = new LinkedList<>();
 		for(int i=0;i<Battle.deckSize;i++) {
 			Card card = CardLoader.playerCards.get(Rnd.nextInt(CardLoader.playerCards.size()));
-			player.deck.add(card);
+			deck.add(card);
 		}
-		return player;
+		return deck;
 	}
 }

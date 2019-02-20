@@ -18,6 +18,7 @@ public class StartBattleButtonBox extends Box {
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		Game.initializeHumanPlayerBattle();
+		MainFrame.instance.changeToBattleBox();
 	}
 
 	@Override
