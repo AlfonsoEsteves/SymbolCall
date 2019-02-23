@@ -88,6 +88,7 @@ public class Battle {
 		}
 		battle.executionStack = (LinkedList<ActionExecution>) executionStack.clone();
 		battle.calledSymbols = (LinkedList<Integer>) calledSymbols.clone();
+		battle.players = players;
 		battle.turn = turn;
 		battle.decidingPlayer = decidingPlayer;
 		battle.state = state;

@@ -61,7 +61,14 @@ public class BattleFirstButtonBox extends Box {
 		}
 		else if(Game.battle.state==Battle.executingActionState) {
 			Game.battle.executeAction();
-			MainFrame.instance.refresh();
+			if(Game.battle.winner() == -1) {
+				MainFrame.instance.refresh();
+			}
+			else {
+				Game.executeRound();
+				MainFrame.instance.changeToMainBox();
+				MainFrame.instance.refresh();
+			}
 		}
 	}
 
