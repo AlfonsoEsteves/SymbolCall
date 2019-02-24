@@ -16,7 +16,7 @@ public class BattleFirstButtonBox extends Box {
 
 	public BattleFirstButtonBox(int x, int y, int width, int height, Box container) {
 		super(x, y, width, height, container);
-		MainFrame.instance.addKeyListener(this);
+		container.addKeyListener(this);
 	}
 	
 	@Override	
