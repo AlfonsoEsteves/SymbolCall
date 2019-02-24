@@ -29,7 +29,7 @@ public class Game {
 
 		players = new ArrayList<>();
 
-		for (int i = 0; i < 49; i++) {
+		for (int i = 0; i < 19; i++) {
 			Player player = new Player("player_" + Rnd.nextInt(1000), BruteForceAI.getInstance());
 			player.deck = createRandomDeck();
 			players.add(player);

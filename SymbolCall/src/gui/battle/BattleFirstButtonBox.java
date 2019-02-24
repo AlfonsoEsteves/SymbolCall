@@ -66,8 +66,7 @@ public class BattleFirstButtonBox extends Box {
 			}
 			else {
 				Game.executeRound();
-				MainFrame.instance.changeToMainBox();
-				MainFrame.instance.refresh();
+				MainFrame.instance.enterBox(MainFrame.instance.mainBox);
 			}
 		}
 	}

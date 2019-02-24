@@ -15,6 +15,7 @@ import gui.FontList;
 import gui.ImageDrawer;
 import loader.ImageLoader;
 
+@SuppressWarnings("serial")
 public class BattleStackBox extends Box {
 	
 	public static int entryHeight=75;

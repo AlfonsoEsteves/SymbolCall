@@ -2,6 +2,7 @@ package gui.main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import game.Game;
@@ -18,7 +19,7 @@ public class StartBattleButtonBox extends Box {
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		Game.initializeHumanPlayerBattle();
-		MainFrame.instance.changeToBattleBox();
+		MainFrame.instance.enterBox(MainFrame.instance.battleBox);
 	}
 
 	@Override

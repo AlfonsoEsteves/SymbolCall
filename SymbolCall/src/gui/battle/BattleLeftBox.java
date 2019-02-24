@@ -2,6 +2,7 @@ package gui.battle;
 
 import gui.Box;
 
+@SuppressWarnings("serial")
 public class BattleLeftBox extends Box {
 	
 	private BattleDescriptionBox battleDescriptionBox;

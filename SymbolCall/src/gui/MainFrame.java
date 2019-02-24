@@ -27,10 +27,8 @@ public class MainFrame extends JFrame {
 		mainBox = new MainBox(0, 0, width, height, null);
 		battleBox = new BattleBox(0, 0, width, height, null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		enterBox(mainBox);
 		instance.setVisible(true);
-		currentBox = mainBox;
-		add(currentBox);
-		refresh();
 	}
 
 	public static void main(String[] args) {
@@ -38,18 +36,18 @@ public class MainFrame extends JFrame {
 		new MainFrame();
 	}
 
-	public void changeToBattleBox() {
-		remove(currentBox);
-		currentBox = battleBox;
+	public void enterBox(Box box) {
+		exitCurrentBox();
+		currentBox = box;
 		add(currentBox);
 		refresh();
 	}
 
-	public void changeToMainBox() {
-		remove(currentBox);
-		currentBox = mainBox;
-		add(currentBox);
-		refresh();
+	public void exitCurrentBox() {
+		if(currentBox != null) {
+			remove(currentBox);
+			currentBox = null;
+		}
 	}
 
 	public void refresh() {

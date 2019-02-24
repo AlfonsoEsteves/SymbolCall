@@ -15,10 +15,16 @@ public abstract class Box extends JPanel implements MouseInputListener, KeyListe
 	public Box(int x, int y, int width, int height, Box container){
 		setBounds(x, y, width, height);
 		setLayout(null);
-		addMouseListener(this);
-		if(container!=null) {
+		
+		if(container != null) {
 			container.add(this);
 		}
+		
+		//Mouse listeners need to be added to themselves to have the correct mouse position values
+		addMouseListener(this);
+		
+		//Key listeners need to be added to the main frame, because they need to be in a focused component
+		MainFrame.instance.addKeyListener(this);
 	}
 	
 	public void refresh() {}
