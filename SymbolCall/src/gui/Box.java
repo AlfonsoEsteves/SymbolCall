@@ -10,60 +10,79 @@ import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 
 @SuppressWarnings("serial")
-public abstract class Box extends JPanel implements MouseInputListener, KeyListener{
-	
-	public Box(int x, int y, int width, int height, Box container){
+public abstract class Box extends JPanel implements MouseInputListener, KeyListener {
+
+	public Box container;
+
+	public Box(int x, int y, int width, int height, Box container) {
 		setBounds(x, y, width, height);
 		setLayout(null);
-		
-		if(container != null) {
+
+		this.container = container;
+		if (container != null) {
 			container.add(this);
 		}
-		
-		//Mouse listeners need to be added to themselves to have the correct mouse position values
+
+		// Mouse listeners need to be added to themselves to have the correct mouse
+		// position values
 		addMouseListener(this);
-		
-		//Key listeners need to be added to the main frame, because they need to be in a focused component
+
+		// Key listeners need to be added to the main frame, because they need to be in
+		// a focused component
 		MainFrame.instance.addKeyListener(this);
 	}
-	
-	public void refresh() {}
+
+	public void refresh() {
+	}
 
 	@Override
 	public void paint(Graphics graphics) {
 		graphics.setColor(Color.RED);
-		graphics.drawRect(0, 0, getWidth()-1, getHeight()-1);
+		graphics.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 		paintChildren(graphics);
 	}
 
 	@Override
-	public final void mouseClicked(MouseEvent arg0) {}
+	public void mouseEntered(MouseEvent e) {
+		if (container != null) {
+			container.mouseEntered(e);
+		}
+	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {}
+	public final void mouseClicked(MouseEvent arg0) {
+	}
 
 	@Override
-	public void mouseExited(MouseEvent e) {}
+	public void mouseExited(MouseEvent e) {
+	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {}
+	public void mousePressed(MouseEvent e) {
+	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e) {
+	}
 
 	@Override
-	public void mouseDragged(MouseEvent e) {}
+	public void mouseDragged(MouseEvent e) {
+	}
 
 	@Override
-	public void mouseMoved(MouseEvent e) {}
+	public void mouseMoved(MouseEvent e) {
+	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {}
+	public void keyPressed(KeyEvent e) {
+	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {}
+	public void keyReleased(KeyEvent e) {
+	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {}
-	
+	public void keyTyped(KeyEvent e) {
+	}
+
 }
