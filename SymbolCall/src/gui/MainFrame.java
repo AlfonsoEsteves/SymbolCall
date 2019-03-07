@@ -1,6 +1,12 @@
 package gui;
 
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+
 import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 import game.Game;
 import gui.battle.BattleBox;
@@ -22,12 +28,15 @@ public class MainFrame extends JFrame {
 		instance = this;
 		setUndecorated(true);
 		setSize(width, height);
+		setLayout(null);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		mainBox = new MainBox(0, 0, width, height, null);
 		battleBox = new BattleBox(0, 0, width, height, null);
+		setMinimumSize(new Dimension(width, height));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		enterBox(mainBox);
+		enterBox(mainBox);		
+
 		instance.setVisible(true);
 	}
 
@@ -40,6 +49,8 @@ public class MainFrame extends JFrame {
 		exitCurrentBox();
 		currentBox = box;
 		add(currentBox);
+        setFocusable(true);
+        requestFocusInWindow();
 		refresh();
 	}
 

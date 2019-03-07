@@ -21,11 +21,9 @@ public class BattleFirstButtonBox extends Box {
 	
 	@Override	
 	public void mousePressed(MouseEvent arg0) {
-		if(Game.battle.state==Battle.choosingActiveEffectState) {
-			ComputerAI computerAI=Game.battle.players[Game.battle.turn].computerAI;
-			if(computerAI==null) {
-				Game.battle.passTurn();
-			}
+		ComputerAI computerAI=Game.battle.players[Game.battle.turn].computerAI;
+		if(computerAI==null && Game.battle.state==Battle.choosingActiveEffectState) {
+			Game.battle.passTurn();
 			MainFrame.instance.refresh();
 		}
 		else {

@@ -74,7 +74,7 @@ public class Game {
 				p2.addWin();
 				p1.addDefeat();
 			}
-		}
+		}		
 		Collections.sort(players);
 	}
 
