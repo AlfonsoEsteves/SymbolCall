@@ -44,28 +44,25 @@ public class BattleFirstButtonBox extends Box {
 			if(computerAI!=null) {
 				computerAI.play(Game.battle);
 			}
-			MainFrame.instance.refresh();
 		}
 		else if(Game.battle.state==Battle.choosingTargetCardState) {
 			ComputerAI computerAI=Game.battle.players[Game.battle.decidingPlayer].computerAI;
 			if(computerAI==null) {
 				Game.battle.setChosenTarget(-1);
-				MainFrame.instance.refresh();
 			}
 			else {
 				computerAI.chooseTarget(Game.battle);
-				MainFrame.instance.refresh();
 			}
 		}
 		else if(Game.battle.state==Battle.executingActionState) {
 			Game.battle.executeAction();
-			if(Game.battle.winner() == -1) {
-				MainFrame.instance.refresh();
-			}
-			else {
-				Game.executeRound();
-				MainFrame.instance.enterBox(MainFrame.instance.mainBox);
-			}
+		}
+		if(Game.battle.winner() == -1) {
+			MainFrame.instance.refresh();
+		}
+		else {
+			Game.executeRound();
+			MainFrame.instance.enterBox(MainFrame.instance.mainBox);
 		}
 	}
 
