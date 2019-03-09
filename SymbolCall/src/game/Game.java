@@ -67,12 +67,14 @@ public class Game {
 			} else {
 				currentBattle = BattleExecutor.executeBattle(p1, p2);
 			}
+			Player player0 = (Player) currentBattle.players[0];
+			Player player1 = (Player) currentBattle.players[1];
 			if (currentBattle.winner() == 0) {
-				p1.addWin();
-				p2.addDefeat();
+				player0.addWin();
+				player1.addDefeat();
 			} else {
-				p2.addWin();
-				p1.addDefeat();
+				player1.addWin();
+				player0.addDefeat();
 			}
 		}		
 		Collections.sort(players);
