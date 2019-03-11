@@ -6,35 +6,6 @@ import battle.Battle;
 
 public class Node{
 	
-	private static Node[] nodes;
-	
-	static {
-		nodes=new Node[BruteForceAI.nodesArraySize];
-		for(int i=0;i<BruteForceAI.nodesArraySize;i++){
-			nodes[i]=new Node();
-		}
-	}
-	
-	public static Node getNewNode(Battle scenario, int chosenCard, int chosenEffect, int passedTurns, String debuggingName) {
-		Node node=nodes[BruteForceAI.checkedNodes];
-		BruteForceAI.checkedNodes++;
-		node.continuations.clear();
-		node.debuggingName=debuggingName;
-		node.scenario=scenario;
-		node.chosenCard=chosenCard;
-		node.chosenEffect=chosenEffect;
-		node.passedTurns=passedTurns;
-		if(scenario.winner()!=-1 || passedTurns==2) {
-			node.finished=true;
-		}
-		else {
-			node.finished=false;
-		}
-		node.initialScore=BattleScoreCalculator.calculateInitialScore(scenario);
-		node.finalScore=-1;
-		return node;
-	}
-	
 	public String debuggingName;
 	public Battle scenario;
 	public int passedTurns;
@@ -53,7 +24,7 @@ public class Node{
 	public LinkedList<Node> continuations;
 	public Node bestContinuation;
 	
-	private Node() {
+	public Node() {
 		continuations=new LinkedList<>();
 	}
 

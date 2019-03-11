@@ -8,7 +8,7 @@ public class BattleExecutorManual {
 	
 	public static BattleExecutorManual instance = new BattleExecutorManual();
 	
-	public synchronized Battle executeBattleOfHumanPlayer() {
+	public Battle executeBattleOfHumanPlayer() {
 		
 		// Find the player rival
 		int index = Game.players.indexOf(Game.humanPlayer);
@@ -22,7 +22,7 @@ public class BattleExecutorManual {
 		
 		// Initialize battle
 		Game.battle = new Battle(Game.humanPlayer, rival, Rnd.nextInt(2));
-		
+
 		// The GUI is notified that it can go on with the battle
 		synchronized(MainFrame.instance) {
 			MainFrame.instance.notify();
@@ -30,7 +30,9 @@ public class BattleExecutorManual {
 		
 		// The GUI should notify when the battle is over
 		try {
-			wait();
+			synchronized (BattleExecutorManual.instance) {
+				BattleExecutorManual.instance.wait();
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

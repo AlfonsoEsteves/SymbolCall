@@ -2,11 +2,8 @@ package gui.main;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-import game.BattleExecutorManual;
-import game.Game;
 import game.ThreadManager;
 import gui.Box;
 import gui.MainFrame;

@@ -1,15 +1,11 @@
 package gui.main;
 
-import java.awt.Dimension;
-
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import game.Game;
-import game.Player;
 import gui.Box;
-import gui.MainFrame;
 
 @SuppressWarnings("serial")
 public class MainBox extends Box {

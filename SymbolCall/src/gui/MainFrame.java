@@ -1,12 +1,8 @@
 package gui;
 
 import java.awt.Dimension;
-import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
 
 import game.Game;
 import game.ThreadManager;

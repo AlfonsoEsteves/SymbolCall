@@ -19,6 +19,7 @@ public class BattleExecutorAutomatic {
 				battle.executeAction();
 			}
 		}
+		System.out.println("battle finished");
 		return battle;
 	}
 

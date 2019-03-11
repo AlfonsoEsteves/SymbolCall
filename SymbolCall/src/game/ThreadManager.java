@@ -12,13 +12,16 @@ import battle.Battle;
 
 public class ThreadManager implements Runnable {
 	
+	//This does not count the AWT thread and ThreadManager thread itself
+	public static final int numberOfThreads = 3;
+	
 	public static ThreadManager instance = new ThreadManager();
 	
 	private ExecutorService executorService;
 
 	@Override
 	public void run() {
-		executorService = Executors.newFixedThreadPool(10);
+		executorService = Executors.newFixedThreadPool(numberOfThreads);
 		while(true) {
 			try {
 				synchronized(ThreadManager.instance) {

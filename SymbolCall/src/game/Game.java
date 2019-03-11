@@ -14,6 +14,8 @@ import loader.DeckLoader;
 import loader.ImageLoader;
 
 public class Game {
+	
+	public static final int cumputerPlayers = 79;
 
 	public static Player humanPlayer;
 	public static List<Player> players;
@@ -28,8 +30,8 @@ public class Game {
 
 		players = new ArrayList<>();
 
-		for (int i = 0; i < 19; i++) {
-			Player player = new Player("player_" + Rnd.nextInt(1000), BruteForceAI.getInstance());
+		for (int i = 0; i < cumputerPlayers; i++) {
+			Player player = new Player("player_" + Rnd.nextInt(1000), new BruteForceAI());
 			player.deck = createRandomDeck();
 			players.add(player);
 		}

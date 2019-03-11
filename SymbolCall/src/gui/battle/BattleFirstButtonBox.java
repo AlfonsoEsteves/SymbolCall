@@ -62,7 +62,9 @@ public class BattleFirstButtonBox extends Box {
 			MainFrame.instance.refresh();
 		}
 		else {
-			BattleExecutorManual.instance.notify();
+			synchronized (BattleExecutorManual.instance) {
+				BattleExecutorManual.instance.notify();
+			}
 			MainFrame.instance.enterBox(MainFrame.instance.mainBox);
 		}
 	}
