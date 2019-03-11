@@ -4,9 +4,11 @@ import battle.BPlayer;
 import battle.Battle;
 import battle.Rnd;
 
-public class BattleExecutor {
+public class BattleExecutorAutomatic {
+	
+	public static BattleExecutorAutomatic instance = new BattleExecutorAutomatic();
 
-	public static Battle executeBattle(BPlayer p1, BPlayer p2) {
+	public Battle executeBattle(BPlayer p1, BPlayer p2) {
 		Battle battle = new Battle(p1, p2, Rnd.nextInt(2));
 		while (battle.winner() == -1) {
 			if (battle.state == Battle.choosingActiveEffectState) {

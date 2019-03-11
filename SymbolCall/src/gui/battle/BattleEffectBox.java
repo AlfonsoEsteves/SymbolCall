@@ -8,7 +8,7 @@ import battle.Action;
 import battle.BCard;
 import battle.Battle;
 import battle.Effect;
-import game.BattleExecutor;
+import game.BattleExecutorAutomatic;
 import game.Game;
 import gui.Box;
 import gui.FontList;

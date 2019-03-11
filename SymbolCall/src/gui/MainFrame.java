@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import game.Game;
+import game.ThreadManager;
 import gui.battle.BattleBox;
 import gui.main.MainBox;
 
@@ -35,13 +36,14 @@ public class MainFrame extends JFrame {
 		battleBox = new BattleBox(0, 0, width, height, null);
 		setMinimumSize(new Dimension(width, height));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		enterBox(mainBox);		
-
+		enterBox(mainBox);
 		instance.setVisible(true);
 	}
 
 	public static void main(String[] args) {
 		Game.initialize();
+		Thread threadManager = new Thread(ThreadManager.instance);
+		threadManager.start();
 		new MainFrame();
 	}
 

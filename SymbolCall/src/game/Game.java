@@ -1,7 +1,6 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,46 +37,6 @@ public class Game {
 		humanPlayer = new Player("human_player", null);
 		humanPlayer.deck = createRandomDeck();
 		players.add(humanPlayer);
-	}
-
-	public static void initializeHumanPlayerBattle() {
-		Player rival = null;
-		for (int i = 0; i < players.size(); i += 2) {
-			Player p1 = players.get(i);
-			Player p2 = players.get(i + 1);
-			if (p1.isHumanPlayer()) {
-				rival = p2;
-			}
-			if (p2.isHumanPlayer()) {
-				rival = p1;
-			}
-		}
-		battle = new Battle(humanPlayer, rival, Rnd.nextInt(2));
-	}
-
-	// This method should be called after the player finishes a battle
-	// This method will execute all the remaining battles
-	public static void executeRound() {
-		for (int i = 0; i < players.size(); i += 2) {
-			Player p1 = players.get(i);
-			Player p2 = players.get(i + 1);
-			Battle currentBattle;
-			if (p1.isHumanPlayer() || p2.isHumanPlayer()) {
-				currentBattle = battle;
-			} else {
-				currentBattle = BattleExecutor.executeBattle(p1, p2);
-			}
-			Player player0 = (Player) currentBattle.players[0];
-			Player player1 = (Player) currentBattle.players[1];
-			if (currentBattle.winner() == 0) {
-				player0.addWin();
-				player1.addDefeat();
-			} else {
-				player1.addWin();
-				player0.addDefeat();
-			}
-		}		
-		Collections.sort(players);
 	}
 
 	private static LinkedList<Card> createRandomDeck() {

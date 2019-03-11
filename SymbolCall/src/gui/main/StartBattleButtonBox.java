@@ -5,7 +5,9 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import game.BattleExecutorManual;
 import game.Game;
+import game.ThreadManager;
 import gui.Box;
 import gui.MainFrame;
 
@@ -18,7 +20,16 @@ public class StartBattleButtonBox extends Box {
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		Game.initializeHumanPlayerBattle();
+		synchronized(ThreadManager.instance) {
+			ThreadManager.instance.notify();
+		}
+		try {
+			synchronized(MainFrame.instance) {
+				MainFrame.instance.wait();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		MainFrame.instance.enterBox(MainFrame.instance.battleBox);
 	}
 

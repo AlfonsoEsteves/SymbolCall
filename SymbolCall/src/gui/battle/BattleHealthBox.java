@@ -2,7 +2,7 @@ package gui.battle;
 
 import java.awt.Graphics;
 
-import game.BattleExecutor;
+import game.BattleExecutorAutomatic;
 import game.Game;
 import gui.Box;
 

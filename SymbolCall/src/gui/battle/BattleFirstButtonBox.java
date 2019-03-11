@@ -6,7 +6,8 @@ import java.awt.event.MouseEvent;
 
 import battle.Battle;
 import battle.ComputerAI;
-import game.BattleExecutor;
+import game.BattleExecutorAutomatic;
+import game.BattleExecutorManual;
 import game.Game;
 import gui.Box;
 import gui.MainFrame;
@@ -61,7 +62,7 @@ public class BattleFirstButtonBox extends Box {
 			MainFrame.instance.refresh();
 		}
 		else {
-			Game.executeRound();
+			BattleExecutorManual.instance.notify();
 			MainFrame.instance.enterBox(MainFrame.instance.mainBox);
 		}
 	}

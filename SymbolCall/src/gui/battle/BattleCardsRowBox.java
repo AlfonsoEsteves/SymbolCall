@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 
 import battle.Battle;
-import game.BattleExecutor;
+import game.BattleExecutorAutomatic;
 import game.Game;
 import gui.Box;
 import gui.MainFrame;

@@ -1,12 +1,12 @@
 package automatic;
 
 import battle.Battle;
-import game.BattleExecutor;
+import game.BattleExecutorAutomatic;
 
 public class AutoBattle {
 
 	public static void executeBattle(TestedPlayer player0, TestedPlayer player1) {
-		Battle battle = BattleExecutor.executeBattle(player0.player, player1.player);
+		Battle battle = BattleExecutorAutomatic.executeBattle(player0.player, player1.player);
 		if (battle.winner() == 0) {
 			player0.wonGamesAsFirst++;
 			player0.winTurnsCount += battle.turnCount;
