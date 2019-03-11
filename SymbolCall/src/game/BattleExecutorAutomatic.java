@@ -2,19 +2,26 @@ package game;
 
 import battle.BPlayer;
 import battle.Battle;
+import battle.ComputerAI;
 import battle.Rnd;
+import bruteForceAI.BruteForceAI;
 
 public class BattleExecutorAutomatic {
 	
 	public static BattleExecutorAutomatic instance = new BattleExecutorAutomatic();
 
 	public Battle executeBattle(BPlayer p1, BPlayer p2) {
+		//I can not use a single instance of the ComputerAI due to parallelism
+		//And I prefer not to have a ComputerAI in each player because
+		//the node trees can consume a lot of memory
+		ComputerAI computerAI = new BruteForceAI();
+		
 		Battle battle = new Battle(p1, p2, Rnd.nextInt(2));
 		while (battle.winner() == -1) {
 			if (battle.state == Battle.choosingActiveEffectState) {
-				battle.players[battle.turn].computerAI.play(battle);
+				computerAI.play(battle);
 			} else if (battle.state == Battle.choosingTargetCardState) {
-				battle.players[battle.decidingPlayer].computerAI.chooseTarget(battle);
+				computerAI.chooseTarget(battle);
 			} else if (battle.state == Battle.executingActionState) {
 				battle.executeAction();
 			}

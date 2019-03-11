@@ -7,14 +7,13 @@ import java.util.List;
 import battle.Battle;
 import battle.Card;
 import battle.Rnd;
-import bruteForceAI.BruteForceAI;
 import loader.BossLoader;
 import loader.CardLoader;
 import loader.DeckLoader;
 import loader.ImageLoader;
 
 public class Game {
-	
+
 	public static final int cumputerPlayers = 79;
 
 	public static Player humanPlayer;
@@ -31,12 +30,12 @@ public class Game {
 		players = new ArrayList<>();
 
 		for (int i = 0; i < cumputerPlayers; i++) {
-			Player player = new Player("player_" + Rnd.nextInt(1000), new BruteForceAI());
+			Player player = new Player("player_" + Rnd.nextInt(1000), false);
 			player.deck = createRandomDeck();
 			players.add(player);
 		}
 
-		humanPlayer = new Player("human_player", null);
+		humanPlayer = new Player("human_player", true);
 		humanPlayer.deck = createRandomDeck();
 		players.add(humanPlayer);
 	}
