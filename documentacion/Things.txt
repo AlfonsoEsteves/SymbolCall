@@ -99,3 +99,12 @@ de esta manera me permite tener una pocas cartas repetidas, y no me combiene ten
 
 The rarity of the common trap cards should be medium level
   They are not really rare, but they are deck specific anyway
+
+
+
+
+
+
+
+ademas de hacer que as cartsa de field pierdan 1 de vida por turno
+  puedo hacer que el player pierda 1 de vida por cada carta en la mano

@@ -21,8 +21,7 @@ public class MainFrame extends JFrame {
 	public MainBox mainBox;
 	public BattleBox battleBox;
 
-	public MainFrame() {
-		instance = this;
+	public void initialize() {
 		setUndecorated(true);
 		setSize(width, height);
 		setLayout(null);
@@ -33,14 +32,15 @@ public class MainFrame extends JFrame {
 		setMinimumSize(new Dimension(width, height));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		enterBox(mainBox);
-		instance.setVisible(true);
+		setVisible(true);
 	}
 
 	public static void main(String[] args) {
 		Game.initialize();
-		Thread threadManager = new Thread(ThreadManager.instance);
+		Thread threadManager = new Thread(ThreadManager.instance, "Symbol Call Thread Manager");
 		threadManager.start();
-		new MainFrame();
+		instance = new MainFrame();
+		instance.initialize();
 	}
 
 	public void enterBox(Box box) {

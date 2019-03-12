@@ -13,7 +13,7 @@ import battle.Battle;
 public class ThreadManager implements Runnable {
 	
 	//This does not count the AWT thread and ThreadManager thread itself
-	public static final int numberOfThreads = 3;
+	public static final int numberOfThreads = 5;
 	
 	public static ThreadManager instance = new ThreadManager();
 	
