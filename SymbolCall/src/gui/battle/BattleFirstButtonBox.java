@@ -55,7 +55,17 @@ public class BattleFirstButtonBox extends Box {
 			MainFrame.instance.refresh();
 		} else {
 			synchronized (BattleExecutorManual.instance) {
+				// Notify that the current battle is over
 				BattleExecutorManual.instance.notify();
+			}
+			try {
+				synchronized (MainFrame.instance) {
+					// Wait for the ThradManager to notify that
+					// all the battles of the round has been completed
+					MainFrame.instance.wait();
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 			MainFrame.instance.enterBox(MainFrame.instance.mainBox);
 		}

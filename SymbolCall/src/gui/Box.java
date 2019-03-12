@@ -34,6 +34,9 @@ public abstract class Box extends JPanel implements MouseInputListener, KeyListe
 
 	public void refresh() {
 	}
+	
+	public void enter() {
+	}
 
 	@Override
 	public void paint(Graphics graphics) {

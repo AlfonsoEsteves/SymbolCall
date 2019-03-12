@@ -9,11 +9,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import battle.Battle;
+import gui.MainFrame;
 
 public class ThreadManager implements Runnable {
 	
 	//This does not count the AWT thread and ThreadManager thread itself
-	public static final int numberOfThreads = 3;
+	public static final int numberOfThreads = 2;
 	
 	public static ThreadManager instance = new ThreadManager();
 	
@@ -67,5 +68,11 @@ public class ThreadManager implements Runnable {
 		}
 
 		Collections.sort(Game.players);
+		
+		synchronized(MainFrame.instance) {
+			// Notify the main frame that all the battles of the round
+			// have completed
+			MainFrame.instance.notify();
+		}
 	}
 }

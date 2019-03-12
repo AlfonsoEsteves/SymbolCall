@@ -63,7 +63,7 @@ public class Battle {
 		log = new LinkedList<>();
 		turnCount = 0;
 		for (int i = 0; i < 2; i++) {
-			healths[i] = 150;
+			healths[i] = 10;
 			zones[i][Battle.handZone] = new LinkedList<>();
 			zones[i][Battle.fieldZone] = new LinkedList<>();
 			zones[i][Battle.deckZone] = shuffle(players[i].deck, i);

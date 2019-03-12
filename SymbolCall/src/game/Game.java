@@ -14,7 +14,7 @@ import loader.ImageLoader;
 
 public class Game {
 
-	public static final int cumputerPlayers = 79;
+	public static final int cumputerPlayers = 49;
 
 	public static Player humanPlayer;
 	public static List<Player> players;

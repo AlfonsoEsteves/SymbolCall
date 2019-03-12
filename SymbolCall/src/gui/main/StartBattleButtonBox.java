@@ -22,6 +22,8 @@ public class StartBattleButtonBox extends Box {
 		}
 		try {
 			synchronized(MainFrame.instance) {
+				// This is meant to be notified by the BattleExecutorManual
+				// when the battle has been initialized
 				MainFrame.instance.wait();
 			}
 		} catch (InterruptedException e) {
