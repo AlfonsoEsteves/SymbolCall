@@ -47,7 +47,6 @@ public class MainFrame extends JFrame {
 	}
 
 	public void enterBox(Box box) {
-        box.enter();
 		exitCurrentBox();
 		currentBox = box;
 		add(currentBox);

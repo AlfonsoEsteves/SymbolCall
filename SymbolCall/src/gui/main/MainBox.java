@@ -31,13 +31,9 @@ public class MainBox extends Box {
 	}
 	
 	@Override
-	public void enter() {
-		list.setListData(Game.players.toArray());
-	}
-	
-	@Override
 	public void refresh() {
-		startBattleButtonBox.refresh();
+		list.setListData(Game.players.toArray());
+		//startBattleButtonBox.refresh();
 	}
 	
 }
