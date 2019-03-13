@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import game.Game;
 import game.ThreadManager;
 import gui.battle.BattleBox;
+import gui.deckbuilding.DeckBuildingBox;
 import gui.main.MainBox;
 
 @SuppressWarnings("serial")
@@ -20,6 +21,7 @@ public class MainFrame extends JFrame {
 	public Box currentBox;
 	public MainBox mainBox;
 	public BattleBox battleBox;
+	public DeckBuildingBox deckBuildingBox;
 
 	public void initialize() {
 		setUndecorated(true);
@@ -29,6 +31,7 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		mainBox = new MainBox(0, 0, width, height, null);
 		battleBox = new BattleBox(0, 0, width, height, null);
+		deckBuildingBox = new DeckBuildingBox(0, 0, width, height, null);
 		setMinimumSize(new Dimension(width, height));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		enterBox(mainBox);
