@@ -43,9 +43,6 @@ public class DeckBuildingBox extends Box {
 		inventoryScroller.setBounds(50, 10, 120, 200);
 		add(inventoryScroller);
 		
-		//SwitchCardsButtonBox switchCardsButtonBox = new SwitchCardsButtonBox(100, 300, 100, 50, null);
-		//add(switchCardsButtonBox);
-		
 		AbstractButtonBox switchCardsButton = new AbstractButtonBox("Switch Cards", 100, 300, 100, 50, null) {
 			
 			@Override
