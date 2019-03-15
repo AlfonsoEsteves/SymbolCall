@@ -139,6 +139,15 @@ public class BattleCardBox extends Box {
 			}
 		}
 	}
+	
+	@Override
+	public void refresh() {
+		for(int j=0;j<Battle.cardMaxEffects;j++) {
+			BattleEffectBox battleEffectBox = battleEffectBoxs.get(j);
+			battleEffectBox.card = card;
+		}
+		repaint();
+	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {

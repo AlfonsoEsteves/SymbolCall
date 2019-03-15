@@ -41,12 +41,9 @@ public class BattleCardsRowBox extends Box {
 		for(int i=0;i<Battle.handAndFieldMaxSize;i++){
 			if(i<Game.battle.zones[player][zone].size()){
 				battleCardBoxes[i].card=Game.battle.cards[Game.battle.zones[player][zone].get(i)];
-				for(int j=0;j<Battle.cardMaxEffects;j++) {
-					BattleEffectBox battleEffectBox=battleCardBoxes[i].battleEffectBoxs.get(j);
-					battleEffectBox.card=battleCardBoxes[i].card;
-				}
 				battleCardBoxes[i].setBounds(cardX, 0, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
 				battleCardBoxes[i].setVisible(true);
+				battleCardBoxes[i].refresh();
 				cardX+=space;
 			}
 			else{
