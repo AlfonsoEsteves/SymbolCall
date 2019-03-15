@@ -138,7 +138,7 @@ public class DeckBuildingBox extends Box {
 	@Override
 	public void paint(Graphics graphics) {
 		graphics.setColor(Color.black);
-		graphics.drawString("Gold: " + Circumstances.instance.gold, 400, 50);
+		graphics.drawString("Gold: " + Circumstances.instance.gold, 600, 500);
 		paintChildren(graphics);
 	}
 

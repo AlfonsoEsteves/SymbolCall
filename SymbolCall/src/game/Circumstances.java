@@ -6,6 +6,8 @@ import loader.CardLoader;
 
 public class Circumstances {
 	
+	public static final int cardCost = 27;
+	
 	public static Circumstances instance = new Circumstances();
 
 	public int gold;
@@ -22,7 +24,10 @@ public class Circumstances {
 	}
 	
 	public void buyAvailableToBuy() {
-		Game.humanPlayer.inventory.add(availableToBuy);
-		availableToBuy = CardLoader.playerCards.get(Rnd.nextInt(CardLoader.playerCards.size()));
+		if(gold > cardCost) {
+			gold -= cardCost;
+			Game.humanPlayer.inventory.add(availableToBuy);
+			availableToBuy = CardLoader.playerCards.get(Rnd.nextInt(CardLoader.playerCards.size()));
+		}
 	}
 }
