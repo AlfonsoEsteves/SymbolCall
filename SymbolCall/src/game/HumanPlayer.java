@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import battle.Card;
 import battle.Rnd;
-import loader.CardLoader;
 
 public class HumanPlayer extends Player {
 	
@@ -17,7 +16,7 @@ public class HumanPlayer extends Player {
 		super(name, true);
 		inventory = new LinkedList<>();
 		for (int i = 0; i < 5; i++) {
-			Card card = CardLoader.playerCards.get(Rnd.nextInt(CardLoader.playerCards.size()));
+			Card card = Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
 			inventory.add(card);
 		}
 	}

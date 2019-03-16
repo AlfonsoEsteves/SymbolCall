@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import battle.BPlayer;
 import battle.Battle;
 import battle.Card;
 import battle.Rnd;
@@ -23,11 +24,17 @@ public class Game {
 
 	public HumanPlayer humanPlayer;
 	
-	public transient List<Player> players;
-
-	public transient int gold;
+	public LinkedList<BPlayer> bosses;
 	
-	public transient Card availableToBuy;
+	public LinkedList<Card> playerCards;
+	
+	public LinkedList<Card> computerCards;
+	
+	public List<Player> players;
+
+	public int gold;
+	
+	public Card availableToBuy;
 
 	public transient Battle battle;
 	
@@ -52,27 +59,27 @@ public class Game {
 		players.add(humanPlayer);
 		
 		gold = initialGold;
-		availableToBuy = CardLoader.playerCards.get(Rnd.nextInt(CardLoader.playerCards.size()));
+		availableToBuy = Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
 	}
 
 	private LinkedList<Card> createRandomDeck() {
 		LinkedList<Card> deck = new LinkedList<>();
 		for (int i = 0; i < Battle.deckSize; i++) {
-			Card card = CardLoader.playerCards.get(Rnd.nextInt(CardLoader.playerCards.size()));
+			Card card = Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
 			deck.add(card);
 		}
 		return deck;
 	}
 	
 	public void updateAvailableToBuy() {
-		availableToBuy = CardLoader.playerCards.get(Rnd.nextInt(CardLoader.playerCards.size()));
+		availableToBuy = Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
 	}
 	
 	public void buyAvailableToBuy() {
 		if(gold > cardCost) {
 			gold -= cardCost;
 			Game.ins.humanPlayer.inventory.add(availableToBuy);
-			availableToBuy = CardLoader.playerCards.get(Rnd.nextInt(CardLoader.playerCards.size()));
+			availableToBuy = Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
 		}
 	}
 }

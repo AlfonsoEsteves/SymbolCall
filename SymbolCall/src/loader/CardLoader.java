@@ -11,15 +11,13 @@ import battle.Card;
 import battle.Effect;
 import battle.Rnd;
 import bruteForceAI.CardScoreCalculator;
+import game.Game;
 
 public class CardLoader {
 	
-	public static LinkedList<Card> playerCards;
-	public static LinkedList<Card> computerCards;
-	
 	public static void loadCards() {
-		playerCards=loadCardsAux(Path.path+"sets\\player cards");
-		computerCards=loadCardsAux(Path.path+"sets\\computer cards");
+		Game.ins.playerCards=loadCardsAux(Path.path+"sets\\player cards");
+		Game.ins.computerCards=loadCardsAux(Path.path+"sets\\computer cards");
 	}
 	
 	private static LinkedList<Card> loadCardsAux(String location) {
@@ -167,14 +165,14 @@ public class CardLoader {
 	public static LinkedList<Card> randomDeck(){
 		LinkedList<Card> deck=new LinkedList<>();
 		for(int i=0;i<Battle.deckSize;i++) {
-			Card card=playerCards.get(Rnd.nextInt(playerCards.size()));
+			Card card=Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
 			deck.add(card);
 		}
 		return deck;
 	}
 
 	public static Card getComputerCard(String line) {
-		for(Card card : computerCards){
+		for(Card card : Game.ins.computerCards){
 			if(card.name.equals(line)){
 				return card;
 			}
@@ -183,7 +181,7 @@ public class CardLoader {
 	}
 
 	public static Card getPlayerCard(String line) {
-		for(Card card : playerCards){
+		for(Card card : Game.ins.playerCards){
 			if(card.name.equals(line)){
 				return card;
 			}

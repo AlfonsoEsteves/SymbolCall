@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import game.Game;
+import loader.ImageLoader;
 
 public class Persistence {
 	
@@ -32,6 +33,7 @@ public class Persistence {
 			Game.ins = (Game)decoder.readObject();
 			decoder.close();
 			fis.close();
+			ImageLoader.loadImages();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

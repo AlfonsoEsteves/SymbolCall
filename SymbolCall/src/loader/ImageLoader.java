@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 
 import battle.Battle;
 import battle.Card;
+import game.Game;
 
 public class ImageLoader {
 
@@ -98,7 +99,7 @@ public class ImageLoader {
 			    if (file.isFile()) {
 			    	String cardName=file.getName().split("\\.")[0];
 			    	boolean found=false;
-			    	for(Card card : CardLoader.playerCards) {
+			    	for(Card card : Game.ins.playerCards) {
 			    		if(card.name.equals(cardName)) {
 			    			card.image=ImageIO.read(new File(file.getAbsolutePath()));
 					        card.background=cardFront[card.name.toCharArray()[0]%6];
@@ -116,7 +117,7 @@ public class ImageLoader {
 			    if (file.isFile()) {
 			    	String cardName=file.getName().split("\\.")[0];
 			    	boolean found=false;
-			    	for(Card card : CardLoader.computerCards) {
+			    	for(Card card : Game.ins.computerCards) {
 			    		if(card.name.equals(cardName)) {
 			    			card.image=ImageIO.read(new File(file.getAbsolutePath()));
 			    			found=true;

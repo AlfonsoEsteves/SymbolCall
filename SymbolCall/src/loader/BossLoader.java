@@ -7,14 +7,13 @@ import java.util.LinkedList;
 
 import battle.Card;
 import bruteForceAI.BruteForceAI;
+import game.Game;
 import battle.BPlayer;
 
 public class BossLoader {
 	
-	public static LinkedList<BPlayer> bosses;
-	
 	public static void loadBosses() {
-		bosses=new LinkedList<>();
+		Game.ins.bosses=new LinkedList<>();
 		try {
 			File folder = new File(Path.path+"decks\\boss decks\\");
 			File[] listOfFiles = folder.listFiles();
@@ -33,7 +32,7 @@ public class BossLoader {
 			        	}
 			        }
 			        in.close();
-			        bosses.add(boss);
+			        Game.ins.bosses.add(boss);
 			    }
 			}
 		}
