@@ -67,11 +67,13 @@ public class DeckBuildingBox extends Box {
 			public void mousePressed(MouseEvent arg0) {
 				Card deckCard = (Card) deck.getSelectedValue();
 				Card inventoryCard = (Card) inventory.getSelectedValue();
-				Game.ins.humanPlayer.deck.remove(deckCard);
-				Game.ins.humanPlayer.inventory.add(deckCard);
-				Game.ins.humanPlayer.inventory.remove(inventoryCard);
-				Game.ins.humanPlayer.deck.add(inventoryCard);
-				MainFrame.instance.refresh();
+				if(deckCard != null && inventoryCard != null) {
+					Game.ins.humanPlayer.deck.remove(deckCard);
+					Game.ins.humanPlayer.inventory.add(deckCard);
+					Game.ins.humanPlayer.inventory.remove(inventoryCard);
+					Game.ins.humanPlayer.deck.add(inventoryCard);
+					MainFrame.instance.refresh();
+				}
 			}
 		};
 		add(switchCardsButton);
