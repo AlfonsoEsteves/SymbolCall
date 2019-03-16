@@ -14,6 +14,7 @@ public class BCard {
 	
 	public BCard(Card model){
 		this.model=model;
+		health = model.maxHealth;
 	}
 
 	public BCard copy(){

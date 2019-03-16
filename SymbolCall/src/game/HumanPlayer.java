@@ -25,4 +25,10 @@ public class HumanPlayer extends Player {
 		super.addWin();
 		Circumstances.instance.gold += 10;
 	}
+	
+	@Override
+	public void addDefeat() {
+		super.addDefeat();
+		Circumstances.instance.gold += 3;
+	}
 }

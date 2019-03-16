@@ -6,7 +6,8 @@ import loader.CardLoader;
 
 public class Circumstances {
 	
-	public static final int cardCost = 27;
+	public static final int initialGold = 15;
+	public static final int cardCost = 12;
 	
 	public static Circumstances instance = new Circumstances();
 
@@ -15,7 +16,7 @@ public class Circumstances {
 	public Card availableToBuy;
 	
 	public Circumstances() {
-		gold = 0;
+		gold = initialGold;
 		availableToBuy = CardLoader.playerCards.get(Rnd.nextInt(CardLoader.playerCards.size())); 
 	}
 	

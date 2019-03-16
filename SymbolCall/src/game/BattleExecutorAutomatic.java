@@ -26,7 +26,7 @@ public class BattleExecutorAutomatic {
 				battle.executeAction();
 			}
 		}
-		System.out.println("battle finished");
+		System.out.println("battle finished: " + p1.name + " vs " + p2.name);
 		return battle;
 	}
 

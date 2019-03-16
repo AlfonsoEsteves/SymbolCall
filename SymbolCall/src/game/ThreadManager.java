@@ -29,6 +29,7 @@ public class ThreadManager implements Runnable {
 					ThreadManager.instance.wait();
 				}
 				executeRound();
+				Circumstances.instance.updateAvailableToBuy();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
