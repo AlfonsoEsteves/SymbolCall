@@ -6,6 +6,8 @@ public class Player extends BPlayer implements Comparable<Player>{
 	
 	public int score;
 	
+	public Player() {}
+	
 	public Player(String name, boolean human) {
 		super(name, human);
 		score = 0;

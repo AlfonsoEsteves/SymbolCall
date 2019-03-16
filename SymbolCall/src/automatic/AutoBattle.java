@@ -1,7 +1,7 @@
 package automatic;
 
 import battle.Battle;
-import game.BattleExecutorAutomatic;
+import Game.ins.battleExecutorAutomatic;
 
 public class AutoBattle {
 

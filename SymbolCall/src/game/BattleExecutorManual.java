@@ -17,16 +17,16 @@ public class BattleExecutorManual {
 	public Battle executeBattleOfHumanPlayer() {
 
 		// Find the player rival
-		int index = Game.players.indexOf(Game.humanPlayer);
+		int index = Game.ins.players.indexOf(Game.ins.humanPlayer);
 		if (index % 2 == 0) {
 			index++;
 		} else {
 			index--;
 		}
-		Player rival = Game.players.get(index);
+		Player rival = Game.ins.players.get(index);
 
 		// Initialize battle
-		Game.battle = new Battle(Game.humanPlayer, rival, Rnd.nextInt(2));
+		Game.ins.battle = new Battle(Game.ins.humanPlayer, rival, Rnd.nextInt(2));
 
 		// The GUI is notified that it can go on with the battle
 		synchronized (MainFrame.instance) {
@@ -42,7 +42,7 @@ public class BattleExecutorManual {
 			e.printStackTrace();
 		}
 
-		return Game.battle;
+		return Game.ins.battle;
 	}
 
 }

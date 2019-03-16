@@ -9,8 +9,8 @@ public class Card {
 	public String name;
 	public int maxHealth;
 	public LinkedList<Effect> effects;
-	public Image image;
-	public Image background;
+	public transient Image image;
+	public transient Image background;
 	
 	//AI values
 	public double fieldScore;

@@ -12,7 +12,6 @@ import javax.swing.event.ListSelectionListener;
 
 import battle.BCard;
 import battle.Card;
-import game.Circumstances;
 import game.Game;
 import gui.AbstractButtonBox;
 import gui.Box;
@@ -68,10 +67,10 @@ public class DeckBuildingBox extends Box {
 			public void mousePressed(MouseEvent arg0) {
 				Card deckCard = (Card) deck.getSelectedValue();
 				Card inventoryCard = (Card) inventory.getSelectedValue();
-				Game.humanPlayer.deck.remove(deckCard);
-				Game.humanPlayer.inventory.add(deckCard);
-				Game.humanPlayer.inventory.remove(inventoryCard);
-				Game.humanPlayer.deck.add(inventoryCard);
+				Game.ins.humanPlayer.deck.remove(deckCard);
+				Game.ins.humanPlayer.inventory.add(deckCard);
+				Game.ins.humanPlayer.inventory.remove(inventoryCard);
+				Game.ins.humanPlayer.deck.add(inventoryCard);
 				MainFrame.instance.refresh();
 			}
 		};
@@ -88,7 +87,7 @@ public class DeckBuildingBox extends Box {
 		AbstractButtonBox buyButton = new AbstractButtonBox("Buy", 800, 400, 100, 50, null) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				Circumstances.instance.buyAvailableToBuy();
+				Game.ins.buyAvailableToBuy();
 				MainFrame.instance.refresh();
 			}
 		};
@@ -109,10 +108,10 @@ public class DeckBuildingBox extends Box {
 
 	@Override
 	public void refresh() {
-		deck.setListData(Game.humanPlayer.deck.toArray());
-		inventory.setListData(Game.humanPlayer.inventory.toArray());
+		deck.setListData(Game.ins.humanPlayer.deck.toArray());
+		inventory.setListData(Game.ins.humanPlayer.inventory.toArray());
 
-		battleCardBoxBuy.card = new BCard(Circumstances.instance.availableToBuy);
+		battleCardBoxBuy.card = new BCard(Game.ins.availableToBuy);
 		battleCardBoxBuy.refresh();
 
 		refreshInventoryCard();
@@ -138,7 +137,7 @@ public class DeckBuildingBox extends Box {
 	@Override
 	public void paint(Graphics graphics) {
 		graphics.setColor(Color.black);
-		graphics.drawString("Gold: " + Circumstances.instance.gold, 600, 500);
+		graphics.drawString("Gold: " + Game.ins.gold, 600, 500);
 		paintChildren(graphics);
 	}
 

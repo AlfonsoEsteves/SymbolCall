@@ -8,6 +8,8 @@ public class Effect {
 	public LinkedList<Integer> sequence;
 	public LinkedList<Action> actions;
 	
+	public Effect() {}
+	
 	public Effect(int zone) {
 		this.zone=zone;
 		sequence=new LinkedList<>();

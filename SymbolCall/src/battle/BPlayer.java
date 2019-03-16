@@ -7,6 +7,8 @@ public class BPlayer {
 	public String name;
 	public boolean human;
 	public LinkedList<Card> deck;
+	
+	public BPlayer() {}
 
 	public BPlayer(String name, boolean human) {
 		this.name = name;

@@ -9,6 +9,7 @@ import game.ThreadManager;
 import gui.battle.BattleBox;
 import gui.deckbuilding.DeckBuildingBox;
 import gui.main.MainBox;
+import persistence.Persistence;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {
@@ -39,7 +40,7 @@ public class MainFrame extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		Game.initialize();
+		Game.ins.initialize();
 		Thread threadManager = new Thread(ThreadManager.instance, "Symbol Call Thread Manager");
 		threadManager.start();
 		instance = new MainFrame();

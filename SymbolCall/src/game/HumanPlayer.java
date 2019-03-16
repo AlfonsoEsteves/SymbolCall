@@ -2,7 +2,6 @@ package game;
 
 import java.util.LinkedList;
 
-import battle.Battle;
 import battle.Card;
 import battle.Rnd;
 import loader.CardLoader;
@@ -10,6 +9,9 @@ import loader.CardLoader;
 public class HumanPlayer extends Player {
 	
 	public LinkedList<Card> inventory;
+	
+	public HumanPlayer() {
+	}
 	
 	public HumanPlayer(String name) {
 		super(name, true);
@@ -23,12 +25,12 @@ public class HumanPlayer extends Player {
 	@Override
 	public void addWin() {
 		super.addWin();
-		Circumstances.instance.gold += 10;
+		Game.ins.gold += 10;
 	}
 	
 	@Override
 	public void addDefeat() {
 		super.addDefeat();
-		Circumstances.instance.gold += 3;
+		Game.ins.gold += 3;
 	}
 }

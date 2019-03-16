@@ -29,7 +29,7 @@ public class ThreadManager implements Runnable {
 					ThreadManager.instance.wait();
 				}
 				executeRound();
-				Circumstances.instance.updateAvailableToBuy();
+				Game.ins.updateAvailableToBuy();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -45,9 +45,9 @@ public class ThreadManager implements Runnable {
 		battleFutures.add(humanBattleFuture);
 		
 		// Initialize the rest of the battles
-		for (int i = 0; i < Game.players.size(); i += 2) {
-			Player p1 = Game.players.get(i);
-			Player p2 = Game.players.get(i + 1);
+		for (int i = 0; i < Game.ins.players.size(); i += 2) {
+			Player p1 = Game.ins.players.get(i);
+			Player p2 = Game.ins.players.get(i + 1);
 			if (!p1.isHuman() && !p2.isHuman()) {
 				Future<Battle> battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(p1, p2));
 				battleFutures.add(battleFuture);
@@ -68,7 +68,7 @@ public class ThreadManager implements Runnable {
 			}
 		}
 
-		Collections.sort(Game.players);
+		Collections.sort(Game.ins.players);
 		
 		synchronized(MainFrame.instance) {
 			// Notify the main frame that all the battles of the round

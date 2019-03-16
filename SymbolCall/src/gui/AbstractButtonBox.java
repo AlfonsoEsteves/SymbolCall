@@ -4,11 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 
-import battle.Card;
-import game.Game;
-import gui.Box;
-import gui.MainFrame;
-
 @SuppressWarnings("serial")
 public abstract class AbstractButtonBox extends Box {
 	

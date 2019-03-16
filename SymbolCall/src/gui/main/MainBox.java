@@ -6,25 +6,20 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
-import battle.Card;
 import game.Game;
 import game.ThreadManager;
 import gui.AbstractButtonBox;
 import gui.Box;
 import gui.MainFrame;
+import persistence.Persistence;
 
 @SuppressWarnings("serial")
 public class MainBox extends Box {
-	
-	//public StartBattleButtonBox startBattleButtonBox;
-	//public DeckBuildingButtonBox deckBuildingButtonBox;
 	
 	private JList<Object> list;
 	
 	public MainBox(int x, int y, int width, int height, Box container){
 		super(x, y, width, height, container);
-		//startBattleButtonBox = new StartBattleButtonBox(50, 50, 100, 100, this);
-		//deckBuildingButtonBox = new DeckBuildingButtonBox(120, 250, 100, 100, this);
 		
 		list = new JList<Object>();
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -36,7 +31,6 @@ public class MainBox extends Box {
 		add(listScroller);
 		
 		AbstractButtonBox startBattleButtonBox = new AbstractButtonBox("Start Battle", 50, 50, 100, 100, null) {
-			
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				synchronized(ThreadManager.instance) {
@@ -63,11 +57,27 @@ public class MainBox extends Box {
 			}
 		};
 		add(deckBuildingButtonBox);
+		
+		AbstractButtonBox saveButtonBox = new AbstractButtonBox("Save", 920, 350, 100, 100, null) {			
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				Persistence.serialize();
+			}
+		};
+		add(saveButtonBox);
+		
+		AbstractButtonBox loadButtonBox = new AbstractButtonBox("Load", 920, 450, 100, 100, null) {			
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				Persistence.deserialize();
+			}
+		};
+		add(loadButtonBox);
 	}
 	
 	@Override
 	public void refresh() {
-		list.setListData(Game.players.toArray());
+		list.setListData(Game.ins.players.toArray());
 		//startBattleButtonBox.refresh();
 	}
 	

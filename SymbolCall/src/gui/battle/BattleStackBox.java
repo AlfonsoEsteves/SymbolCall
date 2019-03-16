@@ -8,7 +8,6 @@ import battle.ActionExecution;
 import battle.Battle;
 import battle.Card;
 import battle.Effect;
-import game.BattleExecutorAutomatic;
 import game.Game;
 import gui.Box;
 import gui.FontList;
@@ -33,18 +32,18 @@ public class BattleStackBox extends Box {
 		int cardX=15;
 		int cardY=15-entryHeight;
 		int actionY=0;
-		for(ActionExecution actionExecution : Game.battle.executionStack) {
+		for(ActionExecution actionExecution : Game.ins.battle.executionStack) {
 			//Action action=actionExecution.action;
-			Effect effect=Game.battle.cards[actionExecution.executingCard].model.effects.get(actionExecution.executingEffect);
+			Effect effect=Game.ins.battle.cards[actionExecution.executingCard].model.effects.get(actionExecution.executingEffect);
 			if(effect!=lastEffect || actionExecution.executingCard!=lastCard) {
 				lastEffect=effect;
 				lastCard=actionExecution.executingCard;
 				cardY+=entryHeight+20;
 				if(actionExecution.triggeringCard!=-1) {
-					Card triggeringCard=Game.battle.cards[actionExecution.triggeringCard].model;
+					Card triggeringCard=Game.ins.battle.cards[actionExecution.triggeringCard].model;
 					ImageDrawer.drawImage(triggeringCard.image, cardX, cardY, entryHeight, entryHeight, graphics);
 				}
-				Card executingCard=Game.battle.cards[actionExecution.executingCard].model;
+				Card executingCard=Game.ins.battle.cards[actionExecution.executingCard].model;
 				ImageDrawer.drawImage(executingCard.image, cardX+12, cardY+12, entryHeight, entryHeight, graphics);
 				actionY=cardY;
 			}
