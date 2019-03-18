@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Random;
+
 import battle.Battle;
 import battle.ComputerAI;
 import battle.Rnd;
@@ -14,7 +16,7 @@ public class BattleExecutorManual {
 	// being used multiple times at the same time).
 	public static ComputerAI computerAI = new BruteForceAI();
 
-	public Battle executeBattleOfHumanPlayer() {
+	public Battle executeBattleOfHumanPlayer(int startingPlayer, Random battleRandom) {
 
 		// Find the player rival
 		int index = Game.ins.players.indexOf(Game.ins.humanPlayer);
@@ -26,7 +28,7 @@ public class BattleExecutorManual {
 		Player rival = Game.ins.players.get(index);
 
 		// Initialize battle
-		Game.ins.battle = new Battle(Game.ins.humanPlayer, rival, Rnd.nextInt(2));
+		Game.ins.battle = new Battle(Game.ins.humanPlayer, rival, startingPlayer, battleRandom);
 
 		// The GUI is notified that it can go on with the battle
 		synchronized (MainFrame.instance) {

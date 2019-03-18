@@ -2,6 +2,7 @@ package battle;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Random;
 
 @SuppressWarnings("unchecked")
 public class Battle {
@@ -50,12 +51,14 @@ public class Battle {
 	public Action choosingTargetStateAction;
 	public int targetCard = -1;
 	public int turnCount;
+	public Random rnd;
 
 	public Battle() {
 	}
 
-	public Battle(BPlayer p1, BPlayer p2, int startingPlayer) {
+	public Battle(BPlayer p1, BPlayer p2, int startingPlayer, Random rnd) {
 		this.players = new BPlayer[] { p1, p2 };
+		this.rnd = rnd;
 		turn = startingPlayer;
 		decidingPlayer = turn;
 		executionStack = new LinkedList<>();
@@ -214,7 +217,7 @@ public class Battle {
 		;
 		LinkedList<Integer> shuffled = new LinkedList<>();
 		while (!ordered.isEmpty()) {
-			Integer card = ordered.remove(Rnd.nextInt(ordered.size()));
+			Integer card = ordered.remove(rnd.nextInt(ordered.size()));
 			shuffled.addLast(card);
 		}
 		return shuffled;

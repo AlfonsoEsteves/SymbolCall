@@ -162,14 +162,14 @@ public class CardLoader {
     	}
 	}
 
-	public static LinkedList<Card> randomDeck(){
+	/*public static LinkedList<Card> randomDeck(){
 		LinkedList<Card> deck=new LinkedList<>();
 		for(int i=0;i<Battle.deckSize;i++) {
 			Card card=Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
 			deck.add(card);
 		}
 		return deck;
-	}
+	}*/
 
 	public static Card getComputerCard(String line) {
 		for(Card card : Game.ins.computerCards){

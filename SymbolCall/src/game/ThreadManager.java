@@ -3,12 +3,14 @@ package game;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import battle.Battle;
+import battle.Rnd;
 import gui.MainFrame;
 
 public class ThreadManager implements Runnable {
@@ -41,7 +43,8 @@ public class ThreadManager implements Runnable {
 		List<Future<Battle>> battleFutures = new ArrayList<>();
 		
 		// Initialize human battle
-		Future<Battle> humanBattleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattleOfHumanPlayer());
+		Random humanBattleRandom = Rnd.newRandom();
+		Future<Battle> humanBattleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattleOfHumanPlayer(Rnd.nextInt(2), humanBattleRandom));
 		battleFutures.add(humanBattleFuture);
 		
 		// Initialize the rest of the battles
@@ -49,7 +52,8 @@ public class ThreadManager implements Runnable {
 			Player p1 = Game.ins.players.get(i);
 			Player p2 = Game.ins.players.get(i + 1);
 			if (!p1.isHuman() && !p2.isHuman()) {
-				Future<Battle> battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(p1, p2));
+				Random battleRandom = Rnd.newRandom();
+				Future<Battle> battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(p1, p2, Rnd.nextInt(2), battleRandom));
 				battleFutures.add(battleFuture);
 			}
 		}
