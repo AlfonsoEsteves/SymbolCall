@@ -5,7 +5,6 @@ import java.util.Random;
 import battle.BPlayer;
 import battle.Battle;
 import battle.ComputerAI;
-import battle.Rnd;
 import bruteForceAI.BruteForceAI;
 
 public class BattleExecutorAutomatic {

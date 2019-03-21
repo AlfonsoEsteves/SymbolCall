@@ -1,8 +1,10 @@
 package battle;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class BPlayer {
+@SuppressWarnings("serial")
+public class BPlayer implements Serializable{
 
 	public String name;
 	public boolean human;

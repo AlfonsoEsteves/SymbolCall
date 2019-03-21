@@ -1,5 +1,6 @@
 package game;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +14,7 @@ import loader.CardLoader;
 import loader.DeckLoader;
 import loader.ImageLoader;
 
-public class Game {
+public class Game implements Serializable{
 	
 	public static Game ins = new Game();
 	

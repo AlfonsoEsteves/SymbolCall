@@ -12,6 +12,7 @@ import java.util.concurrent.Future;
 import battle.Battle;
 import battle.Rnd;
 import gui.MainFrame;
+import persistence.Persistence;
 
 public class ThreadManager implements Runnable {
 	
@@ -73,6 +74,9 @@ public class ThreadManager implements Runnable {
 		}
 
 		Collections.sort(Game.ins.players);
+		
+		// Autosave
+		Persistence.serialize("save");
 		
 		synchronized(MainFrame.instance) {
 			// Notify the main frame that all the battles of the round

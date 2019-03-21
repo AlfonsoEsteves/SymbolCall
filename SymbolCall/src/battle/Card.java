@@ -1,9 +1,11 @@
 package battle;
 
 import java.awt.Image;
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Card {
+@SuppressWarnings("serial")
+public class Card implements Serializable {
 		
 	//Fixed values
 	public String name;

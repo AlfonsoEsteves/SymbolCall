@@ -1,8 +1,10 @@
 package battle;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Effect {
+@SuppressWarnings("serial")
+public class Effect implements Serializable{
 	//Fixed values
 	public int zone;
 	public LinkedList<Integer> sequence;

@@ -4,7 +4,6 @@ import java.util.Random;
 
 import battle.Battle;
 import battle.ComputerAI;
-import battle.Rnd;
 import bruteForceAI.BruteForceAI;
 import gui.MainFrame;
 

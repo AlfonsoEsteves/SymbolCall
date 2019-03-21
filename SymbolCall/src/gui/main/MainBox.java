@@ -61,7 +61,7 @@ public class MainBox extends Box {
 		AbstractButtonBox saveButtonBox = new AbstractButtonBox("Save", 920, 350, 100, 100, null) {			
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				Persistence.serialize();
+				Persistence.serialize("save");
 			}
 		};
 		add(saveButtonBox);
@@ -69,7 +69,7 @@ public class MainBox extends Box {
 		AbstractButtonBox loadButtonBox = new AbstractButtonBox("Load", 920, 450, 100, 100, null) {			
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				Persistence.deserialize();
+				Persistence.deserialize("save");
 			}
 		};
 		add(loadButtonBox);
@@ -78,7 +78,6 @@ public class MainBox extends Box {
 	@Override
 	public void refresh() {
 		list.setListData(Game.ins.players.toArray());
-		//startBattleButtonBox.refresh();
 	}
 	
 }
