@@ -13,6 +13,9 @@ public class BattleExecutorAutomatic {
 	public static BattleExecutorAutomatic instance = new BattleExecutorAutomatic();
 
 	public Battle executeBattle(BPlayer p1, BPlayer p2, int startingPlayer, Random battleRandom) {
+
+		System.out.println("battle started: " + p1.name + " vs " + p2.name);
+		
 		//I can not use a single instance of the ComputerAI due to parallelism
 		//And I prefer not to have a ComputerAI in each player because
 		//the node trees can consume a lot of memory
