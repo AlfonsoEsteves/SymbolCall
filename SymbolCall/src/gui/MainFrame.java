@@ -9,7 +9,6 @@ import game.ThreadManager;
 import gui.battle.BattleBox;
 import gui.deckbuilding.DeckBuildingBox;
 import gui.main.MainBox;
-import persistence.Persistence;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {

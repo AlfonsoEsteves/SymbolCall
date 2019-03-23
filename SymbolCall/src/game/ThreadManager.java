@@ -2,6 +2,7 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
@@ -34,7 +35,38 @@ public class ThreadManager {
 			try {
 				roundCanBeStarted.acquire();
 				
-				executeRound();
+				LinkedList<Player> players1 = new LinkedList<>();
+				LinkedList<Player> players2 = new LinkedList<>();
+				for(int i = 0; i < Game.ins.players.size() / 2; i++) {
+					Player player1 = Game.ins.players.get(i * 2);
+					Player player2 = Game.ins.players.get(i * 2 + 1);
+					if (player1.isHuman() || player2.isHuman()) {
+						players1.addFirst(player1);
+						players2.addFirst(player2);
+					}
+					else {
+						players1.addLast(player1);
+						players2.addLast(player2);
+					}
+				}
+				
+				List<Battle> battles = executeBattles(players1, players2);
+				
+				//Wait for battle to finish and process results
+				for(Battle battle : battles) {
+					Player player0 = (Player) battle.players[0];
+					Player player1 = (Player) battle.players[1];
+					if (battle.winner() == 0) {
+						player0.addWin();
+						player1.addDefeat();
+					} else {
+						player1.addWin();
+						player0.addDefeat();
+					}
+				}
+
+				Collections.sort(Game.ins.players);
+				
 				Game.ins.updateAvailableToBuy();
 
 				// Autosave
@@ -47,40 +79,39 @@ public class ThreadManager {
 		}
 	}
 	
-	private void executeRound() throws InterruptedException, ExecutionException {
+	// Starts executing the battles in the order of the lists
+	// If you want the player's battle to be initialized right away, put it first in the lists
+	public List<Battle> executeBattles(List<Player> players1, List<Player> players2) {
+		List<Battle> battles = new ArrayList<>();
 
 		List<Future<Battle>> battleFutures = new ArrayList<>();
 		
-		// Initialize human battle
-		Random humanBattleRandom = Rnd.newRandom();
-		Future<Battle> humanBattleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattleOfHumanPlayer(Rnd.nextInt(2), humanBattleRandom));
-		battleFutures.add(humanBattleFuture);
-		
 		// Initialize the rest of the battles
-		for (int i = 0; i < Game.ins.players.size(); i += 2) {
-			Player p1 = Game.ins.players.get(i);
-			Player p2 = Game.ins.players.get(i + 1);
-			if (!p1.isHuman() && !p2.isHuman()) {
-				Random battleRandom = Rnd.newRandom();
-				Future<Battle> battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(p1, p2, Rnd.nextInt(2), battleRandom));
-				battleFutures.add(battleFuture);
+		for (int i = 0; i < players1.size(); i ++) {
+			Player player1 = players1.get(i);
+			Player player2 = players2.get(i);
+			Random battleRandom = Rnd.newRandom();
+			Future<Battle> battleFuture;
+			if (player1.isHuman() || player2.isHuman()) {
+				battleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattle(player1, player2, Rnd.nextInt(2), battleRandom));
 			}
+			else {
+				battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(player1, player2, Rnd.nextInt(2), battleRandom));	
+			}
+			battleFutures.add(battleFuture);
 		}
 		
 		//Wait for battle to finish and process results
 		for(Future<Battle> battleFuture : battleFutures) {
-			Battle battle = battleFuture.get();
-			Player player0 = (Player) battle.players[0];
-			Player player1 = (Player) battle.players[1];
-			if (battle.winner() == 0) {
-				player0.addWin();
-				player1.addDefeat();
-			} else {
-				player1.addWin();
-				player0.addDefeat();
+			Battle battle;
+			try {
+				battle = battleFuture.get();
+			} catch (InterruptedException | ExecutionException e) {
+				throw new RuntimeException(e);
 			}
+			battles.add(battle);
 		}
-
-		Collections.sort(Game.ins.players);
+		
+		return battles;
 	}
 }

@@ -2,6 +2,7 @@ package game;
 
 import java.util.Random;
 
+import battle.BPlayer;
 import battle.Battle;
 import battle.ComputerAI;
 import bruteForceAI.BruteForceAI;
@@ -14,19 +15,13 @@ public class BattleExecutorManual {
 	// being used multiple times at the same time).
 	public static ComputerAI computerAI = new BruteForceAI();
 
-	public Battle executeBattleOfHumanPlayer(int startingPlayer, Random battleRandom) {
-
-		// Find the player rival
-		int index = Game.ins.players.indexOf(Game.ins.humanPlayer);
-		if (index % 2 == 0) {
-			index++;
-		} else {
-			index--;
-		}
-		Player rival = Game.ins.players.get(index);
+	public Battle executeBattle(BPlayer player1, BPlayer player2, int startingPlayer, Random battleRandom) {
+		
+		BPlayer humanPlayer = player1.isHuman() ? player1 : player2;
+		BPlayer computerPlayer = player1.isHuman() ? player2 : player1;
 
 		// Initialize battle
-		Game.ins.battle = new Battle(Game.ins.humanPlayer, rival, startingPlayer, battleRandom);
+		Game.ins.battle = new Battle(humanPlayer, computerPlayer, startingPlayer, battleRandom);
 
 		// The GUI is notified that it can go on with the battle
 		ThreadManager.ins.humanBattleCanBeStarted.release();

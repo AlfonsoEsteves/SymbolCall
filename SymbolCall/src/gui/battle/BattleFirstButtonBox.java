@@ -36,29 +36,31 @@ public class BattleFirstButtonBox extends Box {
 	}
 
 	public void next() {
-		if (Game.ins.battle.state == Battle.choosingActiveEffectState) {
-			if (!Game.ins.battle.players[Game.ins.battle.turn].isHuman()) {
-				BattleExecutorManual.computerAI.play(Game.ins.battle);
+		if(MainFrame.instance.currentBox == MainFrame.instance.battleBox) {
+			if (Game.ins.battle.state == Battle.choosingActiveEffectState) {
+				if (!Game.ins.battle.players[Game.ins.battle.turn].isHuman()) {
+					BattleExecutorManual.computerAI.play(Game.ins.battle);
+				}
+			} else if (Game.ins.battle.state == Battle.choosingTargetCardState) {
+				if (Game.ins.battle.players[Game.ins.battle.decidingPlayer].isHuman()) {
+					Game.ins.battle.setChosenTarget(-1);
+				} else {
+					BattleExecutorManual.computerAI.chooseTarget(Game.ins.battle);
+				}
+			} else if (Game.ins.battle.state == Battle.executingActionState) {
+				Game.ins.battle.executeAction();
 			}
-		} else if (Game.ins.battle.state == Battle.choosingTargetCardState) {
-			if (Game.ins.battle.players[Game.ins.battle.decidingPlayer].isHuman()) {
-				Game.ins.battle.setChosenTarget(-1);
+			if (Game.ins.battle.winner() == -1) {
+				MainFrame.instance.refresh();
 			} else {
-				BattleExecutorManual.computerAI.chooseTarget(Game.ins.battle);
+				ThreadManager.ins.humanBattleHasFinished.release();
+				try {
+					ThreadManager.ins.roundHasFinished.acquire();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				MainFrame.instance.enterBox(MainFrame.instance.mainBox);
 			}
-		} else if (Game.ins.battle.state == Battle.executingActionState) {
-			Game.ins.battle.executeAction();
-		}
-		if (Game.ins.battle.winner() == -1) {
-			MainFrame.instance.refresh();
-		} else {
-			ThreadManager.ins.humanBattleHasFinished.release();
-			try {
-				ThreadManager.ins.roundHasFinished.acquire();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			MainFrame.instance.enterBox(MainFrame.instance.mainBox);
 		}
 	}
 
