@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import battle.Card;
 import battle.Rnd;
 
+@SuppressWarnings("serial")
 public class HumanPlayer extends Player {
 	
 	public LinkedList<Card> inventory;

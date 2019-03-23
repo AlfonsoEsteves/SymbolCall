@@ -8,38 +8,46 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.Semaphore;
 
 import battle.Battle;
 import battle.Rnd;
-import gui.MainFrame;
 import persistence.Persistence;
 
-public class ThreadManager implements Runnable {
+public class ThreadManager {
 	
 	//This does not count the AWT thread and ThreadManager thread itself
 	public static final int numberOfThreads = 2;
 	
-	public static ThreadManager instance = new ThreadManager();
+	public static ThreadManager ins = new ThreadManager(); 
 	
 	private ExecutorService executorService;
 
-	@Override
-	public void run() {
+	public Semaphore humanBattleCanBeStarted = new Semaphore(0);
+	public Semaphore humanBattleHasFinished = new Semaphore(0);
+	public Semaphore roundCanBeStarted = new Semaphore(0);
+	public Semaphore roundHasFinished = new Semaphore(0);
+
+	public void runGame() {
 		executorService = Executors.newFixedThreadPool(numberOfThreads);
 		while(true) {
 			try {
-				synchronized(ThreadManager.instance) {
-					ThreadManager.instance.wait();
-				}
+				roundCanBeStarted.acquire();
+				
 				executeRound();
 				Game.ins.updateAvailableToBuy();
+
+				// Autosave
+				Persistence.serialize("save");
+				
+				roundHasFinished.release();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 	}
 	
-	public void executeRound() throws InterruptedException, ExecutionException {
+	private void executeRound() throws InterruptedException, ExecutionException {
 
 		List<Future<Battle>> battleFutures = new ArrayList<>();
 		
@@ -74,14 +82,5 @@ public class ThreadManager implements Runnable {
 		}
 
 		Collections.sort(Game.ins.players);
-		
-		// Autosave
-		Persistence.serialize("save");
-		
-		synchronized(MainFrame.instance) {
-			// Notify the main frame that all the battles of the round
-			// have completed
-			MainFrame.instance.notify();
-		}
 	}
 }

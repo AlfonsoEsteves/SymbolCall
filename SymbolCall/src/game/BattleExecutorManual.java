@@ -5,7 +5,6 @@ import java.util.Random;
 import battle.Battle;
 import battle.ComputerAI;
 import bruteForceAI.BruteForceAI;
-import gui.MainFrame;
 
 public class BattleExecutorManual {
 
@@ -30,15 +29,11 @@ public class BattleExecutorManual {
 		Game.ins.battle = new Battle(Game.ins.humanPlayer, rival, startingPlayer, battleRandom);
 
 		// The GUI is notified that it can go on with the battle
-		synchronized (MainFrame.instance) {
-			MainFrame.instance.notify();
-		}
+		ThreadManager.ins.humanBattleCanBeStarted.release();
 
 		// The GUI should notify when the battle is over
 		try {
-			synchronized (BattleExecutorManual.instance) {
-				BattleExecutorManual.instance.wait();
-			}
+			ThreadManager.ins.humanBattleHasFinished.acquire();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

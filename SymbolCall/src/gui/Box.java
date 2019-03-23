@@ -29,7 +29,9 @@ public abstract class Box extends JPanel implements MouseInputListener, KeyListe
 
 		// Key listeners need to be added to the main frame, because they need to be in
 		// a focused component
-		MainFrame.instance.addKeyListener(this);
+		if(MainFrame.instance != null) {//This is for when I use the StatisticsFrame
+			MainFrame.instance.addKeyListener(this);
+		}
 	}
 
 	public void refresh() {

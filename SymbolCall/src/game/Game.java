@@ -14,6 +14,7 @@ import loader.CardLoader;
 import loader.DeckLoader;
 import loader.ImageLoader;
 
+@SuppressWarnings("serial")
 public class Game implements Serializable{
 	
 	public static Game ins = new Game();

@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import battle.Battle;
 import game.BattleExecutorManual;
 import game.Game;
+import game.ThreadManager;
 import gui.Box;
 import gui.MainFrame;
 
@@ -51,16 +52,9 @@ public class BattleFirstButtonBox extends Box {
 		if (Game.ins.battle.winner() == -1) {
 			MainFrame.instance.refresh();
 		} else {
-			synchronized (BattleExecutorManual.instance) {
-				// Notify that the current battle is over
-				BattleExecutorManual.instance.notify();
-			}
+			ThreadManager.ins.humanBattleHasFinished.release();
 			try {
-				synchronized (MainFrame.instance) {
-					// Wait for the ThradManager to notify that
-					// all the battles of the round has been completed
-					MainFrame.instance.wait();
-				}
+				ThreadManager.ins.roundHasFinished.acquire();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

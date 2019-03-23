@@ -41,10 +41,11 @@ public class MainFrame extends JFrame {
 
 	public static void main(String[] args) {
 		Game.ins.initialize();
-		Thread threadManager = new Thread(ThreadManager.instance, "Symbol Call Thread Manager");
-		threadManager.start();
 		instance = new MainFrame();
 		instance.initialize();
+		
+		//This will run forever
+		ThreadManager.ins.runGame();
 	}
 
 	public void enterBox(Box box) {

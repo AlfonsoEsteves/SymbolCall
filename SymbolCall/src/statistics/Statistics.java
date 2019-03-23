@@ -6,6 +6,7 @@ import battle.Action;
 import battle.Battle;
 import battle.Card;
 import battle.Effect;
+import game.Game;
 import loader.BossLoader;
 import loader.CardLoader;
 import loader.DeckLoader;
@@ -17,7 +18,7 @@ public class Statistics {
 		BossLoader.loadBosses();
 		DeckLoader.loadDecks();
 		
-		LinkedList<Card> set=Filter.filter(CardLoader.playerCards);
+		LinkedList<Card> set=Filter.filter(Game.ins.playerCards);
 		
 		showStatistics(set);
 	}
@@ -45,9 +46,9 @@ public class Statistics {
 	private static void symbolsStatistics(LinkedList<Card> cards) {
 		System.out.println();
 		System.out.println("Needed and produced symbols:");
-		int[] needed=new int[6];
-		int[] producedAct=new int[6];
-		int[] producedPas=new int[6];
+		int[] needed=new int[16];
+		int[] producedAct=new int[16];
+		int[] producedPas=new int[16];
 		for(Card model : cards) {
 			for(Effect effect : model.effects) {
 				if(effect.sequence.isEmpty()) {

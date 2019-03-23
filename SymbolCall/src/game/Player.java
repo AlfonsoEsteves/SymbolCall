@@ -2,6 +2,7 @@ package game;
 
 import battle.BPlayer;
 
+@SuppressWarnings("serial")
 public class Player extends BPlayer implements Comparable<Player>{
 	
 	public int score;
