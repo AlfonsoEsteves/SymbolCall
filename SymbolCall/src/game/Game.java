@@ -23,6 +23,8 @@ public class Game implements Serializable{
 	public static final int cardCost = 12;
 
 	public static final int cumputerPlayers = 49;
+	
+	public transient Rnd rnd;
 
 	public HumanPlayer humanPlayer;
 	
@@ -47,11 +49,13 @@ public class Game implements Serializable{
 		ImageLoader.loadImages();
 		BossLoader.loadBosses();
 		DeckLoader.loadDecks();
+		
+		rnd = new Rnd();
 
 		players = new ArrayList<>();
 
 		for (int i = 0; i < cumputerPlayers; i++) {
-			Player player = new Player("player_" + Rnd.nextInt(1000), false);
+			Player player = new Player("player_" + rnd.nextInt(1000), false);
 			player.deck = createRandomDeck();
 			players.add(player);
 		}
@@ -61,27 +65,27 @@ public class Game implements Serializable{
 		players.add(humanPlayer);
 		
 		gold = initialGold;
-		availableToBuy = Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
+		availableToBuy = Game.ins.playerCards.get(rnd.nextInt(Game.ins.playerCards.size()));
 	}
 
 	private LinkedList<Card> createRandomDeck() {
 		LinkedList<Card> deck = new LinkedList<>();
 		for (int i = 0; i < Battle.deckSize; i++) {
-			Card card = Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
+			Card card = Game.ins.playerCards.get(rnd.nextInt(Game.ins.playerCards.size()));
 			deck.add(card);
 		}
 		return deck;
 	}
 	
 	public void updateAvailableToBuy() {
-		availableToBuy = Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
+		availableToBuy = Game.ins.playerCards.get(rnd.nextInt(Game.ins.playerCards.size()));
 	}
 	
 	public void buyAvailableToBuy() {
 		if(gold > cardCost) {
 			gold -= cardCost;
 			Game.ins.humanPlayer.inventory.add(availableToBuy);
-			availableToBuy = Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
+			availableToBuy = Game.ins.playerCards.get(rnd.nextInt(Game.ins.playerCards.size()));
 		}
 	}
 }

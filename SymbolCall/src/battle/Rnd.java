@@ -1,17 +1,24 @@
 package battle;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Rnd {
+@SuppressWarnings("serial")
+public class Rnd implements Serializable{
 	
-	private static Random random=new Random(794);
+	private int seed = 13;
 	
-	public static int nextInt(int x) {
-		return random.nextInt(x);
+	public int nextInt(int x) {
+		reset();
+		return seed % x;
 	}
 
-	public static Random newRandom() {
-		return new Random(random.nextLong());
+	public Random newRandom() {
+		reset();
+		return new Random(seed);
 	}
 	
+	private void reset() {
+		seed = new Random(seed).nextInt(Integer.MAX_VALUE);
+	}
 }

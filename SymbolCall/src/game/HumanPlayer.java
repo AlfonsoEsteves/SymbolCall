@@ -17,7 +17,7 @@ public class HumanPlayer extends Player {
 		super(name, true);
 		inventory = new LinkedList<>();
 		for (int i = 0; i < 5; i++) {
-			Card card = Game.ins.playerCards.get(Rnd.nextInt(Game.ins.playerCards.size()));
+			Card card = Game.ins.playerCards.get(Game.ins.rnd.nextInt(Game.ins.playerCards.size()));
 			inventory.add(card);
 		}
 	}

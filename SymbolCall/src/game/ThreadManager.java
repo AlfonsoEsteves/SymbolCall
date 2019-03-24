@@ -70,7 +70,7 @@ public class ThreadManager {
 				Game.ins.updateAvailableToBuy();
 
 				// Autosave
-				Persistence.serialize("save");
+				Persistence.serialize("autosave");
 				
 				roundHasFinished.release();
 			} catch (Exception e) {
@@ -90,13 +90,13 @@ public class ThreadManager {
 		for (int i = 0; i < players1.size(); i ++) {
 			Player player1 = players1.get(i);
 			Player player2 = players2.get(i);
-			Random battleRandom = Rnd.newRandom();
+			Random battleRandom = Game.ins.rnd.newRandom();
 			Future<Battle> battleFuture;
 			if (player1.isHuman() || player2.isHuman()) {
-				battleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattle(player1, player2, Rnd.nextInt(2), battleRandom));
+				battleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattle(player1, player2, Game.ins.rnd.nextInt(2), battleRandom));
 			}
 			else {
-				battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(player1, player2, Rnd.nextInt(2), battleRandom));	
+				battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(player1, player2, Game.ins.rnd.nextInt(2), battleRandom));	
 			}
 			battleFutures.add(battleFuture);
 		}
