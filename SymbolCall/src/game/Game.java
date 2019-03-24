@@ -24,7 +24,7 @@ public class Game implements Serializable{
 
 	public static final int cumputerPlayers = 49;
 	
-	public transient Rnd rnd;
+	public Rnd rnd;
 
 	public HumanPlayer humanPlayer;
 	
