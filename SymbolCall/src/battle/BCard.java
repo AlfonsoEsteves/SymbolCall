@@ -9,12 +9,16 @@ public class BCard {
 	public int zone;
 	public boolean turn;
 	
+	//This attribute is only relevant when the card is in the hand
+	public boolean visible;
+	
 	//This attribute is to collect statistics
 	public boolean drawn;
 	
 	public BCard(Card model){
 		this.model=model;
 		health = model.maxHealth;
+		visible = false;
 	}
 
 	public BCard copy(){

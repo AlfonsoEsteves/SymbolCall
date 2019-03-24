@@ -6,7 +6,7 @@ import java.util.Random;
 @SuppressWarnings("serial")
 public class Rnd implements Serializable{
 	
-	private int seed = 15;
+	private int seed = 17;
 	
 	public int nextInt(int x) {
 		reset();

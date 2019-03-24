@@ -12,7 +12,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.Semaphore;
 
 import battle.Battle;
-import battle.Rnd;
 import persistence.Persistence;
 
 public class ThreadManager {

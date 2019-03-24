@@ -224,17 +224,18 @@ public class Battle {
 	}
 
 	private void draw(int player) {
-		// if(!zones[player][Battle.deckZone].isEmpty()) {
-		int c = zones[player][Battle.deckZone].removeFirst();
-		BCard card = cards[c];
-		card.zone = Battle.handZone;
-		card.health = card.model.maxHealth;
-		card.turn = true;
-		card.drawn = true;
-		zones[player][Battle.handZone].addLast(c);
-		/*
-		 * } else { System.out.println("Warning: EMPTY DECK"); }
-		 */
+		if (!zones[player][Battle.deckZone].isEmpty()) {
+			int c = zones[player][Battle.deckZone].removeFirst();
+			BCard card = cards[c];
+			card.zone = Battle.handZone;
+			card.health = card.model.maxHealth;
+			card.visible = false;
+			card.turn = true;
+			card.drawn = true;
+			zones[player][Battle.handZone].addLast(c);
+		} else {
+			System.out.println("Warning: EMPTY DECK");
+		}
 	}
 
 	// This should be a verb
@@ -283,6 +284,7 @@ public class Battle {
 				zones[card.player][Battle.fieldZone].addLast(c);
 				card.zone = Battle.fieldZone;
 				card.health = card.model.maxHealth;
+				card.visible = true;
 			} else {
 				logMessage(card.model.name + " wasn't invoked because it already was on the field");
 			}
@@ -378,6 +380,7 @@ public class Battle {
 	}
 
 	private void addEffectToExecutionStack(int executingCard, int executingEffect, int triggeringCard) {
+		cards[executingCard].visible = true;
 		Effect effect = cards[executingCard].model.effects.get(executingEffect);
 		LinkedList<Action> reversedActions = (LinkedList<Action>) effect.actions.clone();
 		Collections.reverse(reversedActions);
