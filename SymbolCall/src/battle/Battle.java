@@ -61,7 +61,8 @@ public class Battle {
 	public Battle(BPlayer p1, BPlayer p2, int startingPlayer, Random rnd) {
 		this.rnd = rnd;
 		players = new BPlayer[] { p1, p2 };
-		computerAIs = new ComputerAI[] {p1.instantiateComputerAI(), p2.instantiateComputerAI() };
+		// I create new randoms for the AI, so they doesn't alter how the battle turns out
+		computerAIs = new ComputerAI[] {p1.instantiateComputerAI(new Random(rnd.nextLong())), p2.instantiateComputerAI(new Random(rnd.nextLong())) };
 		turn = startingPlayer;
 		decidingPlayer = turn;
 		executionStack = new LinkedList<>();

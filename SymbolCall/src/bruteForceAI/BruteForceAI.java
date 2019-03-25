@@ -10,8 +10,8 @@ import battle.Effect;
 
 public class BruteForceAI extends ComputerAI {
 
-	public static final int maxCheckedNodes = 1000;
-	public static final int leeway = 200;
+	public static final int maxCheckedNodes = 3500;
+	public static final int leeway = 150;
 	public static final int nodesArraySize = maxCheckedNodes + leeway;
 	public static final int maxOptions = 50;
 

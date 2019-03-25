@@ -9,7 +9,7 @@ field effect:
 atta ch 4
 
 field effect:
-[g1 g2]
+[g1 g0]
 with tr
 
 description:

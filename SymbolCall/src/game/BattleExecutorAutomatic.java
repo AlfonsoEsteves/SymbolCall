@@ -24,6 +24,10 @@ public class BattleExecutorAutomatic {
 			}
 		}
 		
+		// Removing the AIs from the battle allows the Garvage Collector erase them
+		// Remember that ThreadManager stores battles in a list after they finish
+		battle.computerAIs = null;
+		
 		System.out.println("battle finished: " + p1.name + " vs " + p2.name);
 		return battle;
 	}

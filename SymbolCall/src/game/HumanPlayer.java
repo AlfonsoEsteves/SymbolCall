@@ -1,6 +1,7 @@
 package game;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 import battle.Card;
 import battle.ComputerAI;
@@ -41,7 +42,7 @@ public class HumanPlayer extends LeaguePlayer {
 	}
 
 	@Override
-	public ComputerAI instantiateComputerAI() {
+	public ComputerAI instantiateComputerAI(Random rnd) {
 		return null;
 	}
 	

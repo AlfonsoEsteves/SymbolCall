@@ -5,6 +5,7 @@ import battle.Card;
 import battle.ComputerAI;
 
 import java.util.List;
+import java.util.Random;
 
 import battle.BPlayer;
 
@@ -61,5 +62,5 @@ public abstract class TestedPlayer extends BPlayer{
 	}
 	
 	@Override
-	public abstract ComputerAI instantiateComputerAI();
+	public abstract ComputerAI instantiateComputerAI(Random rnd);
 }

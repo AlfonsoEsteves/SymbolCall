@@ -3,6 +3,7 @@ package battle;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import bruteForceAI.BruteForceAI;
 
@@ -25,7 +26,8 @@ public class BPlayer implements Serializable{
 	
 	// Automated testing can make a single player have multiple battles at the same time.
 	// So it will need a new instance of a ComputerAI for each battle
-	public ComputerAI instantiateComputerAI() {
+	// Note that some AIs need a random number generator
+	public ComputerAI instantiateComputerAI(Random rnd) {
 		return new BruteForceAI();
 	}
 

@@ -3,6 +3,7 @@ package automatic;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 import battle.BPlayer;
@@ -16,14 +17,14 @@ import loader.CardLoader;
 import loader.DeckLoader;
 import randomAI.RandomAI;
 
+@SuppressWarnings("serial")
 public class AITest {
 
-	public static final int repetitions = 4;
+	public static final int repetitions = 3;
 
 	public static LinkedList<TestedPlayer> brutePlayers;
 	public static LinkedList<TestedPlayer> randomPlayers;
 
-	@SuppressWarnings("serial")
 	public static void main(String[] args) {
 		Game.ins.rnd = new Rnd();
 		
@@ -34,7 +35,7 @@ public class AITest {
 		for (BPlayer player : DeckLoader.decks) {
 			TestedPlayer brutePlayer = new TestedPlayer("BruteForceAI-" + player.name, player.deck) {
 				@Override
-				public ComputerAI instantiateComputerAI() {
+				public ComputerAI instantiateComputerAI(Random rnd) {
 					return new BruteForceAI();
 				}
 			};
@@ -45,8 +46,8 @@ public class AITest {
 		for (BPlayer player : DeckLoader.decks) {
 			TestedPlayer randomPlayer = new TestedPlayer("RandomAI-" + player.name, player.deck) {
 				@Override
-				public ComputerAI instantiateComputerAI() {
-					return new RandomAI(Game.ins.rnd.newRandom());
+				public ComputerAI instantiateComputerAI(Random rnd) {
+					return new RandomAI(rnd);
 				}
 			};
 			randomPlayers.add(randomPlayer);
@@ -95,41 +96,11 @@ public class AITest {
 		
 		if (battle.winner() == 0) {
 			player0.wonGamesAsFirst++;
-			player0.winTurnsCount += battle.turnCount;
-			player1.loseTurnsCount += battle.turnCount;
 		} else {
 			player1.wonGamesAsSecond++;
-			player1.winTurnsCount += battle.turnCount;
-			player0.loseTurnsCount += battle.turnCount;
 		}
 		player0.totalGamesAsFirst++;
 		player1.totalGamesAsSecond++;
-
-		int drawnCards0 = 0;
-		int drawnCards1 = 0;
-		for (int i = 0; i < Battle.deckSize; i++) {
-			if (battle.cards[i].drawn) {
-				drawnCards0++;
-			}
-			if (battle.cards[Battle.deckSize + i].drawn) {
-				drawnCards1++;
-			}
-		}
-
-		for (int i = 0; i < Battle.deckSize; i++) {
-			if (battle.cards[i].drawn) {
-				player0.totalGamesByCards[i] += 1.0 / (double) drawnCards0;
-				if (battle.winner() == 0) {
-					player0.wonGamesByCards[i] += 1.0 / (double) drawnCards0;
-				}
-			}
-			if (battle.cards[Battle.deckSize + i].drawn) {
-				player1.totalGamesByCards[i] += 1.0 / (double) drawnCards1;
-				if (battle.winner() == 1) {
-					player1.wonGamesByCards[i] += 1.0 / (double) drawnCards1;
-				}
-			}
-		}
 	}
 
 	static String round(double x) {
