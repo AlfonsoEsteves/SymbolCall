@@ -1,8 +1,6 @@
 package game;
 
 import battle.BPlayer;
-import battle.ComputerAI;
-import bruteForceAI.BruteForceAI;
 
 @SuppressWarnings("serial")
 public class LeaguePlayer extends BPlayer implements Comparable<LeaguePlayer>{

@@ -5,7 +5,6 @@ import java.util.Random;
 
 import battle.Card;
 import battle.ComputerAI;
-import bruteForceAI.BruteForceAI;
 
 @SuppressWarnings("serial")
 public class HumanPlayer extends LeaguePlayer {

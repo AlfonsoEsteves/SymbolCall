@@ -2,6 +2,7 @@ package gui.battle;
 
 import gui.Box;
 
+@SuppressWarnings("serial")
 public class BattleOptionsBox extends Box {
 
 	private BattleFirstButtonBox battleFirstButtonBox;

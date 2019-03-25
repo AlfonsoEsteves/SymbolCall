@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import battle.Battle;
-import game.BattleExecutorManual;
 import game.Game;
 import game.ThreadManager;
 import gui.Box;

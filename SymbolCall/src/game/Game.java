@@ -9,7 +9,6 @@ import battle.BPlayer;
 import battle.Battle;
 import battle.Card;
 import battle.Rnd;
-import bruteForceAI.BruteForceAI;
 import loader.BossLoader;
 import loader.CardLoader;
 import loader.DeckLoader;

@@ -19,7 +19,7 @@ import loader.DeckLoader;
 @SuppressWarnings("serial")
 public class DeckTest {
 
-	public static final int repetitions = 3;
+	public static final int repetitions = 30;
 	
 	public static LinkedList<TestedPlayer> testPlayers;
 	
