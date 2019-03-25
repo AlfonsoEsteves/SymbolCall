@@ -21,7 +21,7 @@ public class BossLoader {
 			    if (file.isFile()) {
 			        BufferedReader in = new BufferedReader(new FileReader(file.getAbsolutePath()));
 			        String name=file.getName().split("\\.")[0];
-			    	BPlayer boss=new BPlayer(name, false);
+			    	BPlayer boss=new BPlayer(name);
 			        String line;
 			        while((line = in.readLine()) != null)
 			        {

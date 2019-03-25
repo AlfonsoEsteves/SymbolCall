@@ -3,9 +3,11 @@ package game;
 import java.util.LinkedList;
 
 import battle.Card;
+import battle.ComputerAI;
+import bruteForceAI.BruteForceAI;
 
 @SuppressWarnings("serial")
-public class HumanPlayer extends Player {
+public class HumanPlayer extends LeaguePlayer {
 	
 	public LinkedList<Card> inventory;
 	
@@ -13,7 +15,7 @@ public class HumanPlayer extends Player {
 	}
 	
 	public HumanPlayer(String name) {
-		super(name, true);
+		super(name);
 		inventory = new LinkedList<>();
 		for (int i = 0; i < 5; i++) {
 			Card card = Game.ins.playerCards.get(Game.ins.rnd.nextInt(Game.ins.playerCards.size()));
@@ -32,4 +34,15 @@ public class HumanPlayer extends Player {
 		super.addDefeat();
 		Game.ins.gold += 3;
 	}
+
+	@Override
+	public boolean isHuman() {
+		return true;
+	}
+
+	@Override
+	public ComputerAI instantiateComputerAI() {
+		return null;
+	}
+	
 }

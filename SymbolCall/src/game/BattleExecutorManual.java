@@ -11,10 +11,6 @@ public class BattleExecutorManual {
 
 	public static BattleExecutorManual instance = new BattleExecutorManual();
 
-	// This computerAI should only be used in the human player battles (to avoid it
-	// being used multiple times at the same time).
-	public static ComputerAI computerAI = new BruteForceAI();
-
 	public Battle executeBattle(BPlayer player1, BPlayer player2, int startingPlayer, Random battleRandom) {
 		
 		BPlayer humanPlayer = player1.isHuman() ? player1 : player2;

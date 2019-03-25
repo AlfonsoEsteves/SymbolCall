@@ -10,14 +10,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.Semaphore;
+import java.util.stream.IntStream;
 
+import battle.BPlayer;
 import battle.Battle;
 import persistence.Persistence;
 
 public class ThreadManager {
 	
 	//This does not count the AWT thread and ThreadManager thread itself
-	public static final int numberOfThreads = 2;
+	public static final int numberOfThreads = 6;
 	
 	public static ThreadManager ins = new ThreadManager(); 
 	
@@ -27,18 +29,21 @@ public class ThreadManager {
 	public Semaphore humanBattleHasFinished = new Semaphore(0);
 	public Semaphore roundCanBeStarted = new Semaphore(0);
 	public Semaphore roundHasFinished = new Semaphore(0);
+	
+	public ThreadManager() {
+		executorService = Executors.newFixedThreadPool(numberOfThreads);
+	}
 
 	public void runGame() {
-		executorService = Executors.newFixedThreadPool(numberOfThreads);
 		while(true) {
 			try {
 				roundCanBeStarted.acquire();
 				
-				LinkedList<Player> players1 = new LinkedList<>();
-				LinkedList<Player> players2 = new LinkedList<>();
+				LinkedList<BPlayer> players1 = new LinkedList<>();
+				LinkedList<BPlayer> players2 = new LinkedList<>();
 				for(int i = 0; i < Game.ins.players.size() / 2; i++) {
-					Player player1 = Game.ins.players.get(i * 2);
-					Player player2 = Game.ins.players.get(i * 2 + 1);
+					LeaguePlayer player1 = Game.ins.players.get(i * 2);
+					LeaguePlayer player2 = Game.ins.players.get(i * 2 + 1);
 					if (player1.isHuman() || player2.isHuman()) {
 						players1.addFirst(player1);
 						players2.addFirst(player2);
@@ -49,12 +54,13 @@ public class ThreadManager {
 					}
 				}
 				
-				List<Battle> battles = executeBattles(players1, players2);
+				int[] startingPlayers = IntStream.generate(() -> Game.ins.rnd.nextInt(2)).limit(players1.size()).toArray();
+				List<Battle> battles = executeBattles(players1, players2, startingPlayers);
 				
 				//Wait for battle to finish and process results
 				for(Battle battle : battles) {
-					Player player0 = (Player) battle.players[0];
-					Player player1 = (Player) battle.players[1];
+					LeaguePlayer player0 = (LeaguePlayer) battle.players[0];
+					LeaguePlayer player1 = (LeaguePlayer) battle.players[1];
 					if (battle.winner() == 0) {
 						player0.addWin();
 						player1.addDefeat();
@@ -80,33 +86,34 @@ public class ThreadManager {
 	
 	// Starts executing the battles in the order of the lists
 	// If you want the player's battle to be initialized right away, put it first in the lists
-	public List<Battle> executeBattles(List<Player> players1, List<Player> players2) {
+	public List<Battle> executeBattles(List<BPlayer> players1, List<BPlayer> players2, int[] startingPlayers) {
 		List<Battle> battles = new ArrayList<>();
 
 		List<Future<Battle>> battleFutures = new ArrayList<>();
 		
 		// Initialize the rest of the battles
 		for (int i = 0; i < players1.size(); i ++) {
-			Player player1 = players1.get(i);
-			Player player2 = players2.get(i);
+			BPlayer player1 = players1.get(i);
+			BPlayer player2 = players2.get(i);
+			int startingPlayer = startingPlayers[i];
 			Random battleRandom = Game.ins.rnd.newRandom();
 			Future<Battle> battleFuture;
 			if (player1.isHuman() || player2.isHuman()) {
-				battleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattle(player1, player2, Game.ins.rnd.nextInt(2), battleRandom));
+				battleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattle(player1, player2, startingPlayer, battleRandom));
 			}
 			else {
-				battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(player1, player2, Game.ins.rnd.nextInt(2), battleRandom));	
+				battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(player1, player2, startingPlayer, battleRandom));	
 			}
 			battleFutures.add(battleFuture);
 		}
 		
 		//Wait for battle to finish and process results
 		for(Future<Battle> battleFuture : battleFutures) {
-			Battle battle;
+			Battle battle = null;
 			try {
 				battle = battleFuture.get();
 			} catch (InterruptedException | ExecutionException e) {
-				throw new RuntimeException(e);
+				e.printStackTrace();
 			}
 			battles.add(battle);
 		}

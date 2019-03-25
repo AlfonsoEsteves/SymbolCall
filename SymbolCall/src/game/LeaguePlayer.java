@@ -1,16 +1,18 @@
 package game;
 
 import battle.BPlayer;
+import battle.ComputerAI;
+import bruteForceAI.BruteForceAI;
 
 @SuppressWarnings("serial")
-public class Player extends BPlayer implements Comparable<Player>{
+public class LeaguePlayer extends BPlayer implements Comparable<LeaguePlayer>{
 	
 	public int score;
 	
-	public Player() {}
+	public LeaguePlayer() {}
 	
-	public Player(String name, boolean human) {
-		super(name, human);
+	public LeaguePlayer(String name) {
+		super(name);
 		score = 0;
 	}
 
@@ -23,8 +25,8 @@ public class Player extends BPlayer implements Comparable<Player>{
 	}
 
 	@Override
-	public int compareTo(Player o) {
-		Player p = (Player)o;
+	public int compareTo(LeaguePlayer o) {
+		LeaguePlayer p = (LeaguePlayer)o;
 		return p.score - score;
 	}
 	

@@ -39,13 +39,13 @@ public class BattleFirstButtonBox extends Box {
 		if(MainFrame.instance.currentBox == MainFrame.instance.battleBox) {
 			if (Game.ins.battle.state == Battle.choosingActiveEffectState) {
 				if (!Game.ins.battle.players[Game.ins.battle.turn].isHuman()) {
-					BattleExecutorManual.computerAI.play(Game.ins.battle);
+					Game.ins.battle.computerAIs[1].play(Game.ins.battle);
 				}
 			} else if (Game.ins.battle.state == Battle.choosingTargetCardState) {
 				if (Game.ins.battle.players[Game.ins.battle.decidingPlayer].isHuman()) {
 					Game.ins.battle.setChosenTarget(-1);
 				} else {
-					BattleExecutorManual.computerAI.chooseTarget(Game.ins.battle);
+					Game.ins.battle.computerAIs[1].chooseTarget(Game.ins.battle);
 				}
 			} else if (Game.ins.battle.state == Battle.executingActionState) {
 				Game.ins.battle.executeAction();

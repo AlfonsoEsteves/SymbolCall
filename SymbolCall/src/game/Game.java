@@ -9,6 +9,7 @@ import battle.BPlayer;
 import battle.Battle;
 import battle.Card;
 import battle.Rnd;
+import bruteForceAI.BruteForceAI;
 import loader.BossLoader;
 import loader.CardLoader;
 import loader.DeckLoader;
@@ -34,7 +35,7 @@ public class Game implements Serializable{
 	
 	public LinkedList<Card> computerCards;
 	
-	public List<Player> players;
+	public List<LeaguePlayer> players;
 
 	public int gold;
 	
@@ -55,7 +56,7 @@ public class Game implements Serializable{
 		players = new ArrayList<>();
 
 		for (int i = 0; i < cumputerPlayers; i++) {
-			Player player = new Player("player_" + rnd.nextInt(1000), false);
+			LeaguePlayer player = new LeaguePlayer("player_" + rnd.nextInt(1000));
 			player.deck = createRandomDeck();
 			players.add(player);
 		}

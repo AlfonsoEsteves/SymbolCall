@@ -1,5 +1,7 @@
 package randomAI;
 
+import java.util.Random;
+
 import battle.BCard;
 import battle.Battle;
 import battle.ComputerAI;
@@ -7,10 +9,16 @@ import battle.Effect;
 import battle.Rnd;
 
 public class RandomAI extends ComputerAI{
+	
+	private Random rnd;
+	
+	public RandomAI(Random rnd) {
+		this.rnd = rnd;
+	}
 
 	@Override
 	public void play(Battle battle) {
-		if(Rnd.nextInt(2)==0) {
+		if(rnd.nextInt(2)==0) {
 			if(!playFromZone(battle, Battle.handZone)) {
 				if(!playFromZone(battle, Battle.fieldZone)) {
 					battle.passTurn();
@@ -28,12 +36,12 @@ public class RandomAI extends ComputerAI{
 
 	private boolean playFromZone(Battle battle, int zone) {
 		if(!battle.zones[battle.turn][zone].isEmpty()) {
-			int r1=Rnd.nextInt(battle.zones[battle.turn][zone].size());
+			int r1=rnd.nextInt(battle.zones[battle.turn][zone].size());
 			for(int i=0;i<battle.zones[battle.turn][zone].size();i++) {
 				int c=battle.zones[battle.turn][zone].get((r1+i)%battle.zones[battle.turn][zone].size());
 				BCard card=battle.cards[c];
 				if(card.turn) {
-					int r2=Rnd.nextInt(card.model.effects.size());
+					int r2=rnd.nextInt(card.model.effects.size());
 					for(int j=0;j<card.model.effects.size();j++) {
 						int effectNumber=(r2+j)%card.model.effects.size();
 						Effect effect=card.model.effects.get(effectNumber);
@@ -76,7 +84,7 @@ public class RandomAI extends ComputerAI{
 			target=-1;
 		}
 		else {
-			target=battle.zones[player][zone].get(Rnd.nextInt(battle.zones[player][zone].size()));
+			target=battle.zones[player][zone].get(rnd.nextInt(battle.zones[player][zone].size()));
 		}
 		battle.setChosenTarget(target);
 	}

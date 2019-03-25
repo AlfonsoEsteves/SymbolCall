@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.LinkedList;
+import java.util.List;
 
 import battle.Card;
 import bruteForceAI.BruteForceAI;
@@ -22,7 +23,7 @@ public class DeckLoader {
 			    if (file.isFile()) {
 			        BufferedReader in = new BufferedReader(new FileReader(file.getAbsolutePath()));
 			        String name=file.getName().split("\\.")[0];
-			    	BPlayer player=new BPlayer(name, false);
+			    	BPlayer player=new BPlayer(name);
 			        String line;
 			        while((line = in.readLine()) != null)
 			        {
@@ -45,7 +46,7 @@ public class DeckLoader {
 		}
 	}
 	
-	public static LinkedList<Card> getPlayer(String name) {
+	public static List<Card> getPlayer(String name) {
 		for(BPlayer player : decks) {
 			if(player.name.equals(name)) {
 				return player.deck;
