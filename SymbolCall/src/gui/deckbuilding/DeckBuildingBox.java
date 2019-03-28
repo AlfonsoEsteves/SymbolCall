@@ -68,10 +68,10 @@ public class DeckBuildingBox extends Box {
 				Card deckCard = (Card) deck.getSelectedValue();
 				Card inventoryCard = (Card) inventory.getSelectedValue();
 				if(deckCard != null && inventoryCard != null) {
-					Game.ins.humanPlayer.deck.remove(deckCard);
-					Game.ins.humanPlayer.inventory.add(deckCard);
-					Game.ins.humanPlayer.inventory.remove(inventoryCard);
-					Game.ins.humanPlayer.deck.add(inventoryCard);
+					Game.instance.humanPlayer.deck.remove(deckCard);
+					Game.instance.humanPlayer.inventory.add(deckCard);
+					Game.instance.humanPlayer.inventory.remove(inventoryCard);
+					Game.instance.humanPlayer.deck.add(inventoryCard);
 					MainFrame.instance.refresh();
 				}
 			}
@@ -89,7 +89,7 @@ public class DeckBuildingBox extends Box {
 		AbstractButtonBox buyButton = new AbstractButtonBox("Buy", 800, 400, 100, 50, null) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				Game.ins.buyAvailableToBuy();
+				Game.instance.buyAvailableToBuy();
 				MainFrame.instance.refresh();
 			}
 		};
@@ -110,10 +110,10 @@ public class DeckBuildingBox extends Box {
 
 	@Override
 	public void refresh() {
-		deck.setListData(Game.ins.humanPlayer.deck.toArray());
-		inventory.setListData(Game.ins.humanPlayer.inventory.toArray());
+		deck.setListData(Game.instance.humanPlayer.deck.toArray());
+		inventory.setListData(Game.instance.humanPlayer.inventory.toArray());
 
-		battleCardBoxBuy.card = new BCard(Game.ins.availableToBuy);
+		battleCardBoxBuy.card = new BCard(Game.instance.availableToBuy);
 		battleCardBoxBuy.refresh();
 
 		refreshInventoryCard();
@@ -139,7 +139,7 @@ public class DeckBuildingBox extends Box {
 	@Override
 	public void paint(Graphics graphics) {
 		graphics.setColor(Color.black);
-		graphics.drawString("Gold: " + Game.ins.gold, 600, 500);
+		graphics.drawString("Gold: " + Game.instance.gold, 600, 500);
 		paintChildren(graphics);
 	}
 

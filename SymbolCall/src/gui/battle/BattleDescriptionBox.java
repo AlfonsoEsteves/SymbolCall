@@ -17,7 +17,7 @@ public class BattleDescriptionBox extends Box {
 	public void paint(Graphics graphics) {
 		graphics.drawRect(0, 0, getWidth()-1, getHeight()-1);
 		String turnString;
-		if(Game.ins.battle.turn==0) {
+		if(Game.instance.battle.turn==0) {
 			turnString="Bottom player's turn";
 		}
 		else {
@@ -25,10 +25,10 @@ public class BattleDescriptionBox extends Box {
 		}
 		graphics.drawString(turnString, 14, 35);
 		String stateString="";
-		if(Game.ins.battle.state==Battle.executingActionState) {
+		if(Game.instance.battle.state==Battle.executingActionState) {
 			stateString="Executing chain of actions";
 		}
-		if(Game.ins.battle.state==Battle.choosingTargetCardState) {
+		if(Game.instance.battle.state==Battle.choosingTargetCardState) {
 			stateString="Choosing target";
 		}
 		graphics.drawString(stateString, 14, 65);	

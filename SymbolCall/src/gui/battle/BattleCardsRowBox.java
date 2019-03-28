@@ -33,13 +33,13 @@ public class BattleCardsRowBox extends Box {
 	@Override
 	public void refresh() {
 		int space=BattleCardBox.cardWidth+2;
-		if(Game.ins.battle.zones[player][zone].size()>5) {
-			space=(getWidth()-5)/Game.ins.battle.zones[player][zone].size()-1;
+		if(Game.instance.battle.zones[player][zone].size()>5) {
+			space=(getWidth()-5)/Game.instance.battle.zones[player][zone].size()-1;
 		}
 		int cardX=3;
 		for(int i=0;i<Battle.handAndFieldMaxSize;i++){
-			if(i<Game.ins.battle.zones[player][zone].size()){
-				battleCardBoxes[i].card=Game.ins.battle.cards[Game.ins.battle.zones[player][zone].get(i)];
+			if(i<Game.instance.battle.zones[player][zone].size()){
+				battleCardBoxes[i].card=Game.instance.battle.cards[Game.instance.battle.zones[player][zone].get(i)];
 				battleCardBoxes[i].setBounds(cardX, 0, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
 				battleCardBoxes[i].setVisible(true);
 				battleCardBoxes[i].refresh();

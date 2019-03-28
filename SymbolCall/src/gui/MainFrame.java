@@ -4,8 +4,6 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import game.Game;
-import game.ThreadManager;
 import gui.battle.BattleBox;
 import gui.deckbuilding.DeckBuildingBox;
 import gui.main.MainBox;
@@ -23,7 +21,11 @@ public class MainFrame extends JFrame {
 	public BattleBox battleBox;
 	public DeckBuildingBox deckBuildingBox;
 
-	public void initialize() {
+	public static void instantiate() {
+		instance = new MainFrame();
+	}
+
+	private MainFrame() {
 		setUndecorated(true);
 		setSize(width, height);
 		setLayout(null);
@@ -34,17 +36,7 @@ public class MainFrame extends JFrame {
 		deckBuildingBox = new DeckBuildingBox(0, 0, width, height, null);
 		setMinimumSize(new Dimension(width, height));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		enterBox(mainBox);
 		setVisible(true);
-	}
-
-	public static void main(String[] args) {
-		Game.ins.initialize();
-		instance = new MainFrame();
-		instance.initialize();
-		
-		//This will run forever
-		ThreadManager.ins.runGame();
 	}
 
 	public void enterBox(Box box) {

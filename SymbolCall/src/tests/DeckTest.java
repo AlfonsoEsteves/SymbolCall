@@ -1,4 +1,4 @@
-package automatic;
+package tests;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -6,10 +6,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
+import battle.Player;
 import battle.Battle;
 import battle.ComputerAI;
-import battle.Rnd;
-import battle.BPlayer;
 import bruteForceAI.BruteForceAI;
 import game.Game;
 import game.ThreadManager;
@@ -19,29 +18,29 @@ import loader.DeckLoader;
 @SuppressWarnings("serial")
 public class DeckTest {
 
-	public static final int repetitions = 30;
+	public static final int repetitions = 4;
 	
 	public static LinkedList<TestedPlayer> testPlayers;
 	
 	public static void main(String[] args){
-		Game.ins.rnd = new Rnd();
+		Game.instantiate();
 		
 		CardLoader.loadCards();
 		DeckLoader.loadDecks();
 		
 		testPlayers=new LinkedList<>();
-		for(BPlayer player : DeckLoader.decks){
+		for(Player player : DeckLoader.decks){
 			TestedPlayer testPlayer=new TestedPlayer(player.name, player.deck) {
 				@Override
-				public ComputerAI instantiateComputerAI(Random rnd) {
-					return new BruteForceAI();
+				public ComputerAI instantiateComputerAI(int player, Random rnd) {
+					return new BruteForceAI(player);
 				}
 			};
 			testPlayers.add(testPlayer);
 		}
 
-		List<BPlayer> players1 = new ArrayList<>();
-		List<BPlayer> players2 = new ArrayList<>();
+		List<Player> players1 = new ArrayList<>();
+		List<Player> players2 = new ArrayList<>();
 		
 		for(int i=0;i<repetitions;i++){
 			for(TestedPlayer testPlayer1 : testPlayers){
@@ -55,8 +54,9 @@ public class DeckTest {
 		}
 		
 		int[] startingPlayers = IntStream.generate(() -> 0).limit(players1.size()).toArray();
+		int[] rndSeeds = IntStream.generate(() -> Game.instance.rnd.nextInt()).limit(players1.size()).toArray();
 		long ini = System.nanoTime();
-		List<Battle> battles = ThreadManager.ins.executeBattles(players1, players2, startingPlayers);
+		List<Battle> battles = ThreadManager.ins.executeBattles(players1, players2, startingPlayers, rndSeeds);
 		long end = System.nanoTime();
 		System.out.println("Time: " + ((end - ini) / 1000000000));		
 		

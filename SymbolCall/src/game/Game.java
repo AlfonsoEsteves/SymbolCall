@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import battle.BPlayer;
+import battle.Player;
 import battle.Battle;
 import battle.Card;
 import battle.Rnd;
+import bruteForceAI.BruteForceAI;
+import bruteForceAI.BruteForceAI.BruteForceAIFactory;
 import loader.BossLoader;
 import loader.CardLoader;
 import loader.DeckLoader;
@@ -17,18 +19,28 @@ import loader.ImageLoader;
 @SuppressWarnings("serial")
 public class Game implements Serializable{
 	
-	public static Game ins = new Game();
+	public static Game instance;
+	
+	public static void instantiate() {
+		instance = new Game();
+		
+		CardLoader.loadCards();
+		ImageLoader.loadImages();
+		BossLoader.loadBosses();
+		DeckLoader.loadDecks();
+
+		instance.rnd = new Rnd();
+	}
 	
 	public static final int initialGold = 15;
 	public static final int cardCost = 12;
-
 	public static final int cumputerPlayers = 49;
 	
 	public Rnd rnd;
 
 	public HumanPlayer humanPlayer;
 	
-	public LinkedList<BPlayer> bosses;
+	public LinkedList<Player> bosses;
 	
 	public LinkedList<Card> playerCards;
 	
@@ -42,50 +54,30 @@ public class Game implements Serializable{
 
 	public transient Battle battle;
 	
-	public Game() {}
-
-	public void initialize() {
-		CardLoader.loadCards();
-		ImageLoader.loadImages();
-		BossLoader.loadBosses();
-		DeckLoader.loadDecks();
-		
-		rnd = new Rnd();
-
+	public void initializeCircumstances() {
 		players = new ArrayList<>();
 
 		for (int i = 0; i < cumputerPlayers; i++) {
-			LeaguePlayer player = new LeaguePlayer("player_" + rnd.nextInt(1000));
-			player.deck = createRandomDeck();
+			LeaguePlayer player = new LeaguePlayer(new BruteForceAIFactory(), rnd.nextInt());
 			players.add(player);
 		}
 
-		humanPlayer = new HumanPlayer("human_player");
-		humanPlayer.deck = createRandomDeck();
+		humanPlayer = new HumanPlayer(rnd.nextInt(1000000));
 		players.add(humanPlayer);
 		
 		gold = initialGold;
-		availableToBuy = Game.ins.playerCards.get(rnd.nextInt(Game.ins.playerCards.size()));
-	}
-
-	private LinkedList<Card> createRandomDeck() {
-		LinkedList<Card> deck = new LinkedList<>();
-		for (int i = 0; i < Battle.deckSize; i++) {
-			Card card = Game.ins.playerCards.get(rnd.nextInt(Game.ins.playerCards.size()));
-			deck.add(card);
-		}
-		return deck;
+		availableToBuy = Game.instance.playerCards.get(rnd.nextInt(Game.instance.playerCards.size()));
 	}
 	
 	public void updateAvailableToBuy() {
-		availableToBuy = Game.ins.playerCards.get(rnd.nextInt(Game.ins.playerCards.size()));
+		availableToBuy = Game.instance.playerCards.get(rnd.nextInt(Game.instance.playerCards.size()));
 	}
 	
 	public void buyAvailableToBuy() {
 		if(gold > cardCost) {
 			gold -= cardCost;
-			Game.ins.humanPlayer.inventory.add(availableToBuy);
-			availableToBuy = Game.ins.playerCards.get(rnd.nextInt(Game.ins.playerCards.size()));
+			Game.instance.humanPlayer.inventory.add(availableToBuy);
+			availableToBuy = Game.instance.playerCards.get(rnd.nextInt(Game.instance.playerCards.size()));
 		}
 	}
 }

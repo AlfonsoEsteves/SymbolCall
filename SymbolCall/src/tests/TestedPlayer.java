@@ -1,16 +1,17 @@
-package automatic;
+package tests;
 
 import battle.Battle;
 import battle.Card;
 import battle.ComputerAI;
+import battle.ComputerAI.ComputerAIFactory;
 
 import java.util.List;
 import java.util.Random;
 
-import battle.BPlayer;
+import battle.Player;
 
 @SuppressWarnings("serial")
-public abstract class TestedPlayer extends BPlayer{
+public class TestedPlayer extends Player{
 	
 	public int wonGamesAsFirst;
 	public int wonGamesAsSecond;
@@ -26,9 +27,8 @@ public abstract class TestedPlayer extends BPlayer{
 	public double[] wonGamesByCards;
 	public double[] totalGamesByCards;
 	
-	public TestedPlayer(String name, List<Card> deck){
-		super(name);
-		this.deck = deck;
+	public TestedPlayer(ComputerAIFactory computerAIFactory, String deckName){
+		super(computerAIFactory, deckName, 0);
 		wonGamesByCards=new double[Battle.deckSize];
 		totalGamesByCards=new double[Battle.deckSize];
 	}
@@ -60,7 +60,4 @@ public abstract class TestedPlayer extends BPlayer{
 	public double averageLoseTurns(){
 		return (double)loseTurnsCount/(double)lostGames();
 	}
-	
-	@Override
-	public abstract ComputerAI instantiateComputerAI(Random rnd);
 }

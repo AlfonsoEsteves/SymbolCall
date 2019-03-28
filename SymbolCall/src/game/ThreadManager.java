@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -12,14 +11,14 @@ import java.util.concurrent.Future;
 import java.util.concurrent.Semaphore;
 import java.util.stream.IntStream;
 
-import battle.BPlayer;
+import battle.Player;
 import battle.Battle;
 import persistence.Persistence;
 
 public class ThreadManager {
 	
 	//This does not count the AWT thread and ThreadManager thread itself
-	public static final int numberOfThreads = 3;
+	public static final int numberOfThreads = 1;
 	
 	public static ThreadManager ins = new ThreadManager(); 
 	
@@ -39,11 +38,11 @@ public class ThreadManager {
 			try {
 				roundCanBeStarted.acquire();
 				
-				LinkedList<BPlayer> players1 = new LinkedList<>();
-				LinkedList<BPlayer> players2 = new LinkedList<>();
-				for(int i = 0; i < Game.ins.players.size() / 2; i++) {
-					LeaguePlayer player1 = Game.ins.players.get(i * 2);
-					LeaguePlayer player2 = Game.ins.players.get(i * 2 + 1);
+				LinkedList<Player> players1 = new LinkedList<>();
+				LinkedList<Player> players2 = new LinkedList<>();
+				for(int i = 0; i < Game.instance.players.size() / 2; i++) {
+					LeaguePlayer player1 = Game.instance.players.get(i * 2);
+					LeaguePlayer player2 = Game.instance.players.get(i * 2 + 1);
 					if (player1.isHuman() || player2.isHuman()) {
 						players1.addFirst(player1);
 						players2.addFirst(player2);
@@ -54,8 +53,9 @@ public class ThreadManager {
 					}
 				}
 				
-				int[] startingPlayers = IntStream.generate(() -> Game.ins.rnd.nextInt(2)).limit(players1.size()).toArray();
-				List<Battle> battles = executeBattles(players1, players2, startingPlayers);
+				int[] startingPlayers = IntStream.generate(() -> Game.instance.rnd.nextInt(2)).limit(players1.size()).toArray();
+				int[] rndSeeds = IntStream.generate(() -> Game.instance.rnd.nextInt()).limit(players1.size()).toArray();
+				List<Battle> battles = executeBattles(players1, players2, startingPlayers, rndSeeds);
 				
 				//Wait for battle to finish and process results
 				for(Battle battle : battles) {
@@ -70,9 +70,9 @@ public class ThreadManager {
 					}
 				}
 
-				Collections.sort(Game.ins.players);
+				Collections.sort(Game.instance.players);
 				
-				Game.ins.updateAvailableToBuy();
+				Game.instance.updateAvailableToBuy();
 
 				// Autosave
 				Persistence.serialize("autosave");
@@ -86,23 +86,23 @@ public class ThreadManager {
 	
 	// Starts executing the battles in the order of the lists
 	// If you want the player's battle to be initialized right away, put it first in the lists
-	public List<Battle> executeBattles(List<BPlayer> players1, List<BPlayer> players2, int[] startingPlayers) {
+	public List<Battle> executeBattles(List<Player> players1, List<Player> players2, int[] startingPlayers, int[] rndSeeds) {
 		List<Battle> battles = new ArrayList<>();
 
 		List<Future<Battle>> battleFutures = new ArrayList<>();
 		
 		// Initialize the rest of the battles
 		for (int i = 0; i < players1.size(); i ++) {
-			BPlayer player1 = players1.get(i);
-			BPlayer player2 = players2.get(i);
+			Player player1 = players1.get(i);
+			Player player2 = players2.get(i);
 			int startingPlayer = startingPlayers[i];
-			Random battleRandom = Game.ins.rnd.newRandom();
+			int rndSeed = rndSeeds[i];
 			Future<Battle> battleFuture;
 			if (player1.isHuman() || player2.isHuman()) {
-				battleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattle(player1, player2, startingPlayer, battleRandom));
+				battleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattle(player1, player2, startingPlayer, rndSeed));
 			}
 			else {
-				battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(player1, player2, startingPlayer, battleRandom));	
+				battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(player1, player2, startingPlayer, rndSeed));	
 			}
 			battleFutures.add(battleFuture);
 		}

@@ -18,7 +18,7 @@ public class Statistics {
 		BossLoader.loadBosses();
 		DeckLoader.loadDecks();
 		
-		LinkedList<Card> set=Filter.filter(Game.ins.playerCards);
+		LinkedList<Card> set=Filter.filter(Game.instance.playerCards);
 		
 		showStatistics(set);
 	}

@@ -9,7 +9,7 @@ public class BCard {
 	public int zone;
 	public boolean turn;
 	
-	//This attribute is only relevant when the card is in the hand
+	//This attribute is relevant when the card is in the hand
 	public boolean visible;
 	
 	//This attribute is to collect statistics

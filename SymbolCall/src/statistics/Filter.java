@@ -6,7 +6,7 @@ import battle.Action;
 import battle.Battle;
 import battle.Card;
 import battle.Effect;
-import battle.BPlayer;
+import battle.Player;
 import loader.DeckLoader;
 
 public class Filter {
@@ -155,7 +155,7 @@ public class Filter {
 
 	public static boolean wanted(Card card) {
 		boolean unwanted = false;
-		for (BPlayer player : DeckLoader.decks) {
+		for (Player player : DeckLoader.decks) {
 			for (Card card2 : player.deck) {
 				if (card2.name.equals(card.name)) {
 					unwanted = true;

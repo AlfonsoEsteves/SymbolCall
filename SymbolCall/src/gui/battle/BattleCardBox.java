@@ -106,25 +106,25 @@ public class BattleCardBox extends Box {
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		if(Game.ins.battle.turn==0 && Game.ins.battle.state==Battle.choosingTargetCardState) {
+		if(Game.instance.battle.turn==0 && Game.instance.battle.state==Battle.choosingTargetCardState) {
 			int zone;
-			if(Game.ins.battle.choosingTargetStateAction.type==Battle.atkAction) {
+			if(Game.instance.battle.choosingTargetStateAction.type==Battle.atkAction) {
 				zone=Battle.fieldZone;
 			}
-			else if(Game.ins.battle.choosingTargetStateAction.type==Battle.wdrAction) {
+			else if(Game.instance.battle.choosingTargetStateAction.type==Battle.wdrAction) {
 				zone=Battle.fieldZone;
 			}
-			else if(Game.ins.battle.choosingTargetStateAction.type==Battle.invAction) {
+			else if(Game.instance.battle.choosingTargetStateAction.type==Battle.invAction) {
 				zone=Battle.handZone;
 			}
-			else if(Game.ins.battle.choosingTargetStateAction.type==Battle.dscAction) {
+			else if(Game.instance.battle.choosingTargetStateAction.type==Battle.dscAction) {
 				zone=Battle.handZone;
 			}
 			else {
 				throw new RuntimeException();
 			}
 			if(card.zone==zone) {
-				Game.ins.battle.setChosenTarget(card.battleId);
+				Game.instance.battle.setChosenTarget(card.battleId,  Battle.noneAISimulating);
 				MainFrame.instance.refresh();
 			}
 		}

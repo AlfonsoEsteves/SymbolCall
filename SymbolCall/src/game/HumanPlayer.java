@@ -14,35 +14,27 @@ public class HumanPlayer extends LeaguePlayer {
 	public HumanPlayer() {
 	}
 	
-	public HumanPlayer(String name) {
-		super(name);
+	public HumanPlayer(int seed) {
+		super(null, seed);
+		// I use seed + 1 to avoid selecting the same cards for the deck and for the inventory
+		Random rnd = new Random(seed + 1);
 		inventory = new LinkedList<>();
 		for (int i = 0; i < 5; i++) {
-			Card card = Game.ins.playerCards.get(Game.ins.rnd.nextInt(Game.ins.playerCards.size()));
+			Card card = Game.instance.playerCards.get(rnd.nextInt(Game.instance.playerCards.size()));
 			inventory.add(card);
 		}
 	}
-	
+
 	@Override
 	public void addWin() {
 		super.addWin();
-		Game.ins.gold += 10;
+		Game.instance.gold += 10;
 	}
 	
 	@Override
 	public void addDefeat() {
 		super.addDefeat();
-		Game.ins.gold += 3;
-	}
-
-	@Override
-	public boolean isHuman() {
-		return true;
-	}
-
-	@Override
-	public ComputerAI instantiateComputerAI(Random rnd) {
-		return null;
+		Game.instance.gold += 3;
 	}
 	
 }

@@ -99,7 +99,7 @@ public class ImageLoader {
 			    if (file.isFile()) {
 			    	String cardName=file.getName().split("\\.")[0];
 			    	boolean found=false;
-			    	for(Card card : Game.ins.playerCards) {
+			    	for(Card card : Game.instance.playerCards) {
 			    		if(card.name.equals(cardName)) {
 			    			card.image=ImageIO.read(new File(file.getAbsolutePath()));
 					        card.background=cardFront[card.name.toCharArray()[0]%6];
@@ -117,7 +117,7 @@ public class ImageLoader {
 			    if (file.isFile()) {
 			    	String cardName=file.getName().split("\\.")[0];
 			    	boolean found=false;
-			    	for(Card card : Game.ins.computerCards) {
+			    	for(Card card : Game.instance.computerCards) {
 			    		if(card.name.equals(cardName)) {
 			    			card.image=ImageIO.read(new File(file.getAbsolutePath()));
 			    			found=true;

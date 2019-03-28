@@ -10,10 +10,17 @@ import battle.Rnd;
 
 public class RandomAI extends ComputerAI{
 	
+	public static class RandomAIFactory extends ComputerAIFactory{
+		public ComputerAI create(int player, int rndSeed) {
+			return new RandomAI(player, rndSeed);
+		}
+	}
+	
 	private Random rnd;
 	
-	public RandomAI(Random rnd) {
-		this.rnd = rnd;
+	public RandomAI(int player, int rndSeed) {
+		super(player);
+		rnd = new Random(rndSeed);
 	}
 
 	@Override
@@ -86,7 +93,7 @@ public class RandomAI extends ComputerAI{
 		else {
 			target=battle.zones[player][zone].get(rnd.nextInt(battle.zones[player][zone].size()));
 		}
-		battle.setChosenTarget(target);
+		battle.setChosenTarget(target, Battle.noneAISimulating);
 	}
 
 }

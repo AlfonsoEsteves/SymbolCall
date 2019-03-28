@@ -1,21 +1,19 @@
 package game;
 
-import java.util.Random;
-
-import battle.BPlayer;
+import battle.Player;
 import battle.Battle;
 
 public class BattleExecutorManual {
 
 	public static BattleExecutorManual instance = new BattleExecutorManual();
 
-	public Battle executeBattle(BPlayer player1, BPlayer player2, int startingPlayer, Random battleRandom) {
+	public Battle executeBattle(Player player1, Player player2, int startingPlayer, int rndSeed) {
 		
-		BPlayer humanPlayer = player1.isHuman() ? player1 : player2;
-		BPlayer computerPlayer = player1.isHuman() ? player2 : player1;
+		Player humanPlayer = player1.isHuman() ? player1 : player2;
+		Player computerPlayer = player1.isHuman() ? player2 : player1;
 
 		// Initialize battle
-		Game.ins.battle = new Battle(humanPlayer, computerPlayer, startingPlayer, battleRandom);
+		Game.instance.battle = new Battle(humanPlayer, computerPlayer, startingPlayer, rndSeed);
 
 		// The GUI is notified that it can go on with the battle
 		ThreadManager.ins.humanBattleCanBeStarted.release();
@@ -27,7 +25,7 @@ public class BattleExecutorManual {
 			e.printStackTrace();
 		}
 
-		return Game.ins.battle;
+		return Game.instance.battle;
 	}
 
 }

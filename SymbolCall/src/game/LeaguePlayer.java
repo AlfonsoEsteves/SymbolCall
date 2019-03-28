@@ -1,16 +1,17 @@
 package game;
 
-import battle.BPlayer;
+import battle.ComputerAI.ComputerAIFactory;
+import battle.Player;
 
 @SuppressWarnings("serial")
-public class LeaguePlayer extends BPlayer implements Comparable<LeaguePlayer>{
+public class LeaguePlayer extends Player implements Comparable<LeaguePlayer>{
 	
 	public int score;
 	
 	public LeaguePlayer() {}
-	
-	public LeaguePlayer(String name) {
-		super(name);
+
+	public LeaguePlayer(ComputerAIFactory computerAIFactory, int seed) {
+		super(computerAIFactory, null, seed);
 		score = 0;
 	}
 

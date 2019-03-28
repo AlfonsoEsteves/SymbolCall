@@ -1,60 +1,46 @@
-package automatic;
+package tests;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.IntStream;
 
-import battle.BPlayer;
 import battle.Battle;
-import battle.ComputerAI;
-import battle.Rnd;
-import bruteForceAI.BruteForceAI;
+import battle.Player;
+import bruteForceAI.BruteForceAI.BruteForceAIFactory;
 import game.Game;
 import game.ThreadManager;
 import loader.CardLoader;
 import loader.DeckLoader;
-import randomAI.RandomAI;
+import randomAI.RandomAI.RandomAIFactory;
 
-@SuppressWarnings("serial")
 public class AITest {
 
-	public static final int repetitions = 3;
+	public static final int repetitions = 10;
 
 	public static LinkedList<TestedPlayer> brutePlayers;
 	public static LinkedList<TestedPlayer> randomPlayers;
 
 	public static void main(String[] args) {
-		Game.ins.rnd = new Rnd();
+		Game.instantiate();
 		
 		CardLoader.loadCards();
 		DeckLoader.loadDecks();
 		
 		brutePlayers = new LinkedList<>();
-		for (BPlayer player : DeckLoader.decks) {
-			TestedPlayer brutePlayer = new TestedPlayer("BruteForceAI-" + player.name, player.deck) {
-				@Override
-				public ComputerAI instantiateComputerAI(Random rnd) {
-					return new BruteForceAI();
-				}
-			};
+		for (String deckName : DeckLoader.decks.keySet()) {
+			TestedPlayer brutePlayer = new TestedPlayer(new BruteForceAIFactory(), deckName);
 			brutePlayers.add(brutePlayer);
 		}
 
 		randomPlayers = new LinkedList<>();
-		for (BPlayer player : DeckLoader.decks) {
-			TestedPlayer randomPlayer = new TestedPlayer("RandomAI-" + player.name, player.deck) {
-				@Override
-				public ComputerAI instantiateComputerAI(Random rnd) {
-					return new RandomAI(rnd);
-				}
-			};
+		for (String deckName : DeckLoader.decks.keySet()) {
+			TestedPlayer randomPlayer = new TestedPlayer(new RandomAIFactory(), deckName);
 			randomPlayers.add(randomPlayer);
 		}
 
-		List<BPlayer> players1 = new ArrayList<>();
-		List<BPlayer> players2 = new ArrayList<>();
+		List<Player> players1 = new ArrayList<>();
+		List<Player> players2 = new ArrayList<>();
 
 		for (int i = 0; i < repetitions; i++) {
 			for (TestedPlayer testPlayer1 : brutePlayers) {
@@ -66,8 +52,9 @@ public class AITest {
 		}
 
 		int[] startingPlayers = IntStream.generate(() -> 0).limit(players1.size()).toArray();
+		int[] rndSeeds = IntStream.generate(() -> Game.instance.rnd.nextInt()).limit(players1.size()).toArray();
 		long ini = System.nanoTime();
-		List<Battle> battles = ThreadManager.ins.executeBattles(players1, players2, startingPlayers);
+		List<Battle> battles = ThreadManager.ins.executeBattles(players1, players2, startingPlayers, rndSeeds);
 		long end = System.nanoTime();
 		System.out.println("Time: " + ((end - ini) / 1000000000));
 		

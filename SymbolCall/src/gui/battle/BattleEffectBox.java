@@ -38,7 +38,7 @@ public class BattleEffectBox extends Box {
 		boolean grayed=false;
 		Effect effect=card.model.effects.get(effectNumber);
 		if(effect.sequence.isEmpty()) {
-			if(!card.turn || Game.ins.battle.turn!=card.player) {
+			if(!card.turn || Game.instance.battle.turn!=card.player) {
 				grayed=true;
 			}
 		}
@@ -104,12 +104,12 @@ public class BattleEffectBox extends Box {
 		if(card.model.effects.size()<=effectNumber){
 			return;
 		}
-		if(Game.ins.battle.turn==0) {
-			if(Game.ins.battle.state==Battle.choosingActiveEffectState) {
+		if(Game.instance.battle.turn==0) {
+			if(Game.instance.battle.state==Battle.choosingActiveEffectState) {
 				if(card.player==0) {
 					Effect effect=card.model.effects.get(effectNumber);
 					if(card.turn && effect.zone==card.zone && effect.sequence.isEmpty()) {
-						Game.ins.battle.executeActiveEffect(card.battleId, effectNumber);
+						Game.instance.battle.executeActiveEffect(card.battleId, effectNumber);
 						MainFrame.instance.refresh();
 					}
 				}

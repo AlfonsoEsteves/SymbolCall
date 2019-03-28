@@ -8,12 +8,12 @@ import java.util.LinkedList;
 import battle.Card;
 import bruteForceAI.BruteForceAI;
 import game.Game;
-import battle.BPlayer;
+import battle.Player;
 
 public class BossLoader {
 	
 	public static void loadBosses() {
-		Game.ins.bosses=new LinkedList<>();
+		Game.instance.bosses=new LinkedList<>();
 		try {
 			File folder = new File(Path.path+"decks\\boss decks\\");
 			File[] listOfFiles = folder.listFiles();
@@ -21,7 +21,7 @@ public class BossLoader {
 			    if (file.isFile()) {
 			        BufferedReader in = new BufferedReader(new FileReader(file.getAbsolutePath()));
 			        String name=file.getName().split("\\.")[0];
-			    	BPlayer boss=new BPlayer(name);
+			    	Player boss=new Player(name);
 			        String line;
 			        while((line = in.readLine()) != null)
 			        {
@@ -32,7 +32,7 @@ public class BossLoader {
 			        	}
 			        }
 			        in.close();
-			        Game.ins.bosses.add(boss);
+			        Game.instance.bosses.add(boss);
 			    }
 			}
 		}

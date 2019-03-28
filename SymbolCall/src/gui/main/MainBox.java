@@ -71,7 +71,7 @@ public class MainBox extends Box {
 	
 	@Override
 	public void refresh() {
-		list.setListData(Game.ins.players.toArray());
+		list.setListData(Game.instance.players.toArray());
 	}
 	
 }

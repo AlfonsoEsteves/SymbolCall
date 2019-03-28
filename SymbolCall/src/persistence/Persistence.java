@@ -19,7 +19,7 @@ public class Persistence {
 			FileOutputStream fos = new FileOutputStream(path + fileName + ".ser");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-			oos.writeObject(Game.ins);
+			oos.writeObject(Game.instance);
 
 			fos.close();	
 			oos.close();
@@ -35,7 +35,7 @@ public class Persistence {
 			FileInputStream fis = new FileInputStream(path + fileName + ".ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
-			Game.ins = (Game) ois.readObject();
+			Game.instance = (Game) ois.readObject();
 
 			fis.close();
 			ois.close();

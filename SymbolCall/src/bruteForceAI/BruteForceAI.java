@@ -14,6 +14,12 @@ public class BruteForceAI extends ComputerAI {
 	public static final int leeway = 150;
 	public static final int nodesArraySize = maxCheckedNodes + leeway;
 	public static final int maxOptions = 50;
+	
+	public static class BruteForceAIFactory extends ComputerAIFactory{
+		public ComputerAI create(int player, int rndSeed) {
+			return new BruteForceAI(player, rndSeed);
+		}
+	}
 
 	public int checkedNodes;
 
@@ -30,20 +36,21 @@ public class BruteForceAI extends ComputerAI {
 	private LinkedList<Node> finalScoreCalculationQueue;
 
 	public LinkedList<Node> plan;
-	
+
 	private Node[] nodes;
-	
-	public BruteForceAI() {
+
+	public BruteForceAI(int player, int rndSeed) {
+		super(player);
 		for (int i = 0; i < maxOptions; i++) {
 			nodeStacks[i] = new LinkedList<>();
 		}
 		finalScoreCalculationStack = new LinkedList<>();
 		finalScoreCalculationQueue = new LinkedList<>();
 		plan = new LinkedList<>();
-		
-		nodes=new Node[BruteForceAI.nodesArraySize];
-		for(int i=0;i<BruteForceAI.nodesArraySize;i++){
-			nodes[i]=new Node();
+
+		nodes = new Node[BruteForceAI.nodesArraySize];
+		for (int i = 0; i < BruteForceAI.nodesArraySize; i++) {
+			nodes[i] = new Node();
 		}
 	}
 
@@ -53,9 +60,22 @@ public class BruteForceAI extends ComputerAI {
 			createPlan(battle);
 		}
 		Node node = plan.removeFirst();
+		//plan.clear();
+		
 		if (node.chosenCard == -1) {
 			battle.passTurn();
 		} else {
+			
+			
+			
+			
+			if(node.chosenEffect == -1) {
+				System.out.println();
+			}
+			
+			
+			
+			
 			battle.executeActiveEffect(node.chosenCard, node.chosenEffect);
 		}
 	}
@@ -66,7 +86,15 @@ public class BruteForceAI extends ComputerAI {
 			createPlan(battle);
 		}
 		Node node = plan.removeFirst();
-		battle.setChosenTarget(node.chosenCard);
+		//plan.clear();
+
+		// Here is where the AI actually makes its move, so it is not a simulation
+		battle.setChosenTarget(node.chosenCard, Battle.noneAISimulating);
+	}
+	
+	@Override
+	public void notifyUnexpectedEffectTriggered() {
+		plan.clear();
 	}
 
 	private void createPlan(Battle battle) {
@@ -208,13 +236,21 @@ public class BruteForceAI extends ComputerAI {
 			continueWithEffectsFrom(node, Battle.fieldZone);
 			continuePassingTurn(node);
 		} else {// choosing target card
-			int zone = Battle.fieldZone;
-			if (node.scenario.choosingTargetStateAction.type == Battle.invAction
-					|| node.scenario.choosingTargetStateAction.type == Battle.dscAction) {
-				zone = Battle.handZone;
+			switch (node.scenario.choosingTargetStateAction.type) {
+			case Battle.invAction:
+				continueWithTargetFrom(node, AIplayer, Battle.handZone);
+				break;
+			case Battle.atkAction:
+				continueWithTargetFrom(node, 1 - AIplayer, Battle.fieldZone);
+				break;
+			case Battle.dscAction:
+				continueWithTargetFrom(node, 1 - AIplayer, Battle.handZone);
+				break;
+			case Battle.wdrAction:
+				continueWithTargetFrom(node, AIplayer, Battle.fieldZone);
+				continueWithTargetFrom(node, 1 - AIplayer, Battle.fieldZone);
+				break;
 			}
-			continueWithTargetFrom(node, 0, zone);
-			continueWithTargetFrom(node, 1, zone);
 			continueWithNoTarget(node);
 		}
 		if (node.scenario.decidingPlayer == 0) {
@@ -233,7 +269,7 @@ public class BruteForceAI extends ComputerAI {
 					Battle newScenario = node.scenario.copy();
 					newScenario.executeActiveEffect(card.battleId, effectNumber);
 					while (newScenario.state == Battle.executingActionState) {
-						newScenario.executeAction();
+						newScenario.executeAction(AIplayer);
 						if (newScenario.winner() != -1) {
 							break;
 						}
@@ -249,18 +285,18 @@ public class BruteForceAI extends ComputerAI {
 
 	private void continuePassingTurn(Node node) {
 		Battle newScenario = node.scenario.copy();
-		newScenario.passTurnWithoutDrawing();
+		newScenario.passTurn();
 		Node newNode = getNewNode(newScenario, -1, -1, node.passedTurns + 1,
 				node.debuggingName + node.continuations.size());
 		node.continuations.addLast(newNode);
 	}
 
-	private void continueWithTargetFrom(Node node, int player, int zone) {
-		for (int c : node.scenario.zones[player][zone]) {
+	private void continueWithTargetFrom(Node node, int targetPlayer, int targetZone) {
+		for (int c : node.scenario.zones[targetPlayer][targetZone]) {
 			Battle newScenario = node.scenario.copy();
-			newScenario.setChosenTarget(c);
+			newScenario.setChosenTarget(c, AIplayer);
 			while (newScenario.state == Battle.executingActionState) {
-				newScenario.executeAction();
+				newScenario.executeAction(AIplayer);
 				if (newScenario.winner() != -1) {
 					break;
 				}
@@ -273,9 +309,9 @@ public class BruteForceAI extends ComputerAI {
 
 	private void continueWithNoTarget(Node node) {
 		Battle newScenario = node.scenario.copy();
-		newScenario.setChosenTarget(-1);
+		newScenario.setChosenTarget(-1, AIplayer);
 		while (newScenario.state == Battle.executingActionState) {
-			newScenario.executeAction();
+			newScenario.executeAction(AIplayer);
 			if (newScenario.winner() != -1) {
 				break;
 			}
@@ -284,26 +320,24 @@ public class BruteForceAI extends ComputerAI {
 				node.debuggingName + node.continuations.size());
 		node.continuations.addLast(newNode);
 	}
-	
+
 	public Node getNewNode(Battle scenario, int chosenCard, int chosenEffect, int passedTurns, String debuggingName) {
-		Node node=nodes[checkedNodes];
+		Node node = nodes[checkedNodes];
 		checkedNodes++;
 		node.continuations.clear();
-		node.debuggingName=debuggingName;
-		node.scenario=scenario;
-		node.chosenCard=chosenCard;
-		node.chosenEffect=chosenEffect;
-		node.passedTurns=passedTurns;
-		if(scenario.winner()!=-1 || passedTurns==2) {
-			node.finished=true;
+		node.debuggingName = debuggingName;
+		node.scenario = scenario;
+		node.chosenCard = chosenCard;
+		node.chosenEffect = chosenEffect;
+		node.passedTurns = passedTurns;
+		if (scenario.winner() != -1 || passedTurns == 2) {
+			node.finished = true;
+		} else {
+			node.finished = false;
 		}
-		else {
-			node.finished=false;
-		}
-		node.initialScore=BattleScoreCalculator.calculateInitialScore(scenario);
-		node.finalScore=-1;
+		node.initialScore = BattleScoreCalculator.calculateInitialScore(scenario, AIplayer);
+		node.finalScore = -1;
 		return node;
 	}
-
 
 }

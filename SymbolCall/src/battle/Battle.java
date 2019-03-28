@@ -8,36 +8,38 @@ import java.util.Random;
 @SuppressWarnings("unchecked")
 public class Battle {
 
-	public static int deckSize = 20;
-	public static int handAndFieldMaxSize = deckSize;
-	public static int cardMaxEffects = 3;
-	public static int symbolFamilies = 4;
-	public static int symbolFamilySubtypesPlusOne = 3;
+	public static final int deckSize = 20;
+	public static final int handAndFieldMaxSize = deckSize;
+	public static final int cardMaxEffects = 3;
+	public static final int symbolFamilies = 4;
+	public static final int symbolFamilySubtypesPlusOne = 3;
 
-	public static int choosingActiveEffectState = 0;
-	public static int choosingTargetCardState = 1;
-	public static int executingActionState = 2;
+	public static final int choosingActiveEffectState = 0;
+	public static final int choosingTargetCardState = 1;
+	public static final int executingActionState = 2;
 
-	public static int deckZone = 0;
-	public static int handZone = 1;
-	public static int fieldZone = 2;
+	public static final int deckZone = 0;
+	public static final int handZone = 1;
+	public static final int fieldZone = 2;
 
-	public static int atkAction = 0;
-	public static int invAction = 1;
-	public static int wdrAction = 2;
-	public static int dscAction = 3;
-	public static int cllAction = 4;
+	public static final int atkAction = 0;
+	public static final int invAction = 1;
+	public static final int wdrAction = 2;
+	public static final int dscAction = 3;
+	public static final int cllAction = 4;
 
-	public static int slTarget = 0;
-	public static int chTarget = 1;
-	public static int trTarget = 2;
-	public static int owTarget = 3;
-	public static int opTarget = 4;
+	public static final int slTarget = 0;
+	public static final int chTarget = 1;
+	public static final int trTarget = 2;
+	public static final int owTarget = 3;
+	public static final int opTarget = 4;
 
-	public static int rdSymbol = 0;
-	public static int grSymbol = 1;
-	public static int blSymbol = 2;
-	public static int ylSymbol = 3;
+	public static final int rdSymbol = 0;
+	public static final int grSymbol = 1;
+	public static final int blSymbol = 2;
+	public static final int ylSymbol = 3;
+	
+	public static final int noneAISimulating = -1;
 
 	public int[] healths = new int[2];
 	public BCard[] cards = new BCard[Battle.deckSize * 2];
@@ -47,7 +49,7 @@ public class Battle {
 	public LinkedList<ActionExecution> executionStack;
 	public LinkedList<Integer> calledSymbols;
 	public int state;
-	public BPlayer[] players;
+	public Player[] players;
 	public ComputerAI[] computerAIs;
 	public LinkedList<String> log;
 	public Action choosingTargetStateAction;
@@ -58,11 +60,11 @@ public class Battle {
 	public Battle() {
 	}
 
-	public Battle(BPlayer p1, BPlayer p2, int startingPlayer, Random rnd) {
-		this.rnd = rnd;
-		players = new BPlayer[] { p1, p2 };
+	public Battle(Player p1, Player p2, int startingPlayer, int rndSeed) {
+		this.rnd = new Random(rndSeed);
+		players = new Player[] { p1, p2 };
 		// I create new randoms for the AI, so they doesn't alter how the battle turns out
-		computerAIs = new ComputerAI[] {p1.instantiateComputerAI(new Random(rnd.nextLong())), p2.instantiateComputerAI(new Random(rnd.nextLong())) };
+		computerAIs = new ComputerAI[] {p1.instantiateComputerAI(0, rnd.nextInt()), p2.instantiateComputerAI(1, rnd.nextInt()) };
 		turn = startingPlayer;
 		decidingPlayer = turn;
 		executionStack = new LinkedList<>();
@@ -78,6 +80,8 @@ public class Battle {
 				draw(i);
 			}
 		}
+
+		System.out.println("new battle created: (" + p1.name + ", " + p2.name + ", " + startingPlayer +", " + rndSeed +")");
 	}
 
 	// Deep copy of the cards, because they have attributes
@@ -105,14 +109,6 @@ public class Battle {
 	}
 
 	public void passTurn() {
-		passTurnWithoutDrawing();
-		draw(turn);
-		turnCount++;
-		// System.out.println("Turn of "+playerNames[turn]);
-	}
-
-	// This method is used by the AI
-	public void passTurnWithoutDrawing() {
 		turn = 1 - turn;
 		for (int card : zones[turn][Battle.handZone]) {
 			cards[card].turn = true;
@@ -121,6 +117,8 @@ public class Battle {
 			cards[card].turn = true;
 		}
 		decidingPlayer = turn;
+		draw(turn);
+		turnCount++;
 	}
 
 	public void executeActiveEffect(int c, int effectNumber) {
@@ -133,11 +131,11 @@ public class Battle {
 		state = Battle.executingActionState;
 	}
 
-	public boolean executeAction() {
+	public boolean executeAction(int AISimulating) {
 		ActionExecution actionExecution = executionStack.getFirst();
 		boolean remove = true;
 		if (actionExecution.action.type == Battle.cllAction) {
-			callSymbol(actionExecution.action.info, actionExecution.executingCard);
+			callSymbol(actionExecution.action.info, actionExecution.executingCard, AISimulating);
 		} else {
 			if (actionExecution.action.info == Battle.owTarget) {
 				if (damagePlayer(cards[actionExecution.executingCard].player, actionExecution.action.amount)) {
@@ -188,7 +186,7 @@ public class Battle {
 	// If choosenTargetCard is -1, then it means the player didn't select a card
 	// If the action was an attack and the opponent's field is empty, a -1 means to
 	// attack directly at the opponent
-	public void setChosenTarget(int chosenTargetCard) {
+	public void setChosenTarget(int chosenTargetCard, int AISimulating) {
 		if (chosenTargetCard == -1) {
 			if (choosingTargetStateAction.type == Battle.atkAction
 					&& zones[1 - decidingPlayer][Battle.fieldZone].isEmpty()) {
@@ -202,7 +200,7 @@ public class Battle {
 					+ cards[chosenTargetCard]);
 		}
 		targetCard = chosenTargetCard;
-		executeAction();
+		executeAction(AISimulating);
 	}
 
 	private LinkedList<Integer> shuffle(List<Card> deck, int player) {
@@ -333,51 +331,72 @@ public class Battle {
 	// turn field
 	// waiting hand
 	// turn hand
-	private void callSymbol(int symbol, int triggeringCard) {
+	private void callSymbol(int symbol, int triggeringCard, int AISimulating) {
 		logMessage(cards[triggeringCard].model.name + " called a " + symbolString(symbol) + " symbol");
 		calledSymbols.addFirst(new Integer(symbol));
-		notifyNewSymbolToZone(zones[1 - turn][Battle.fieldZone], triggeringCard);
-		notifyNewSymbolToZone(zones[turn][Battle.fieldZone], triggeringCard);
-		notifyNewSymbolToZone(zones[1 - turn][Battle.handZone], triggeringCard);
-		notifyNewSymbolToZone(zones[turn][Battle.handZone], triggeringCard);
+		notifyNewSymbolToZone(zones[1 - turn][Battle.fieldZone], triggeringCard, AISimulating);
+		notifyNewSymbolToZone(zones[turn][Battle.fieldZone], triggeringCard, AISimulating);
+		notifyNewSymbolToZone(zones[1 - turn][Battle.handZone], triggeringCard, AISimulating);
+		notifyNewSymbolToZone(zones[turn][Battle.handZone], triggeringCard, AISimulating);
 	}
 
 	private String symbolString(int symbol) {
 		return "asd";
 	}
 
-	private void notifyNewSymbolToZone(LinkedList<Integer> zone, int triggeringCard) {
+	private void notifyNewSymbolToZone(LinkedList<Integer> zone, int triggeringCard, int AISimulating) {
 		for (int c : zone) {
 			BCard card = cards[c];
-			if (card.zone != Battle.deckZone) {
-				int effectNumber = 0;
-				for (Effect effect : card.model.effects) {
-					if (effect.zone == card.zone) {
-						if (!effect.sequence.isEmpty()) {
-							if (calledSymbols.size() >= effect.sequence.size()) {
-								boolean triggered = true;
-								int position = effect.sequence.size();
-								for (Integer neededSymbol : effect.sequence) {
-									position--;
-									Integer currentSymbol = calledSymbols.get(position);
-									if (neededSymbol % Battle.symbolFamilySubtypesPlusOne == 0) {
-										if (neededSymbol / Battle.symbolFamilySubtypesPlusOne != currentSymbol
-												/ Battle.symbolFamilySubtypesPlusOne) {
-											triggered = false;
-										}
-									} else {
-										if (!neededSymbol.equals(currentSymbol)) {
-											triggered = false;
+			if(AISimulating == noneAISimulating || card.visible || card.player == AISimulating) {
+				if (card.zone != Battle.deckZone) {
+					int effectNumber = 0;
+					for (Effect effect : card.model.effects) {
+						if (effect.zone == card.zone) {
+							if (!effect.sequence.isEmpty()) {
+								if (calledSymbols.size() >= effect.sequence.size()) {
+									boolean triggered = true;
+									int position = effect.sequence.size();
+									for (Integer neededSymbol : effect.sequence) {
+										position--;
+										Integer currentSymbol = calledSymbols.get(position);
+										if (neededSymbol % Battle.symbolFamilySubtypesPlusOne == 0) {
+											if (neededSymbol / Battle.symbolFamilySubtypesPlusOne != currentSymbol
+													/ Battle.symbolFamilySubtypesPlusOne) {
+												triggered = false;
+											}
+										} else {
+											if (!neededSymbol.equals(currentSymbol)) {
+												triggered = false;
+											}
 										}
 									}
-								}
-								if (triggered) {
-									addEffectToExecutionStack(card.battleId, effectNumber, triggeringCard);
+									if (triggered) {
+										if(AISimulating == noneAISimulating && !card.visible) {
+											computerAIs[1 - card.player].notifyUnexpectedEffectTriggered();
+											
+										}
+										addEffectToExecutionStack(card.battleId, effectNumber, triggeringCard);
+									}
 								}
 							}
 						}
+						effectNumber++;
 					}
-					effectNumber++;
+				}
+				else {
+					
+					
+					
+					
+					//si este else nunca se ejecuta sacar el if 
+					
+					
+					
+					
+					throw new RuntimeException("This shouldn't be executed");
+					
+					
+					
 				}
 			}
 		}

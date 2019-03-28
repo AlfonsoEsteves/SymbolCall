@@ -1,0 +1,10 @@
+The AI I will not consider every possibility:
+
+attack targeting own field:        NO
+attack targeting rival's field:   YES
+invoke targeting own hand:        YES
+invoke targeting rival's hard:     NO
+discard targeting own hand:        NO
+discard targeting rival's hand:   YES
+withdraw targeting own field:     YES
+withdraw targeting rival's field: YES
