@@ -33,13 +33,9 @@ public class MainBox extends Box {
 		AbstractButtonBox startBattleButtonBox = new AbstractButtonBox("Start Battle", 50, 50, 100, 100, null) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				ThreadManager.ins.roundCanBeStarted.release();
-				try {
-					ThreadManager.ins.humanBattleCanBeStarted.acquire();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				MainFrame.instance.enterBox(MainFrame.instance.battleBox);
+				ThreadManager.instance.roundCanBeStarted.release();
+				// The ThreadExecutor will call BattleExecutorManual
+				// And BattleExecutorManual will make the frame enter the battle box
 			}
 		};
 		add(startBattleButtonBox);

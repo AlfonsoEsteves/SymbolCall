@@ -27,8 +27,8 @@ public class TestedPlayer extends Player{
 	public double[] wonGamesByCards;
 	public double[] totalGamesByCards;
 	
-	public TestedPlayer(ComputerAIFactory computerAIFactory, String deckName){
-		super(computerAIFactory, deckName, 0);
+	public TestedPlayer(ComputerAIFactory computerAIFactory, String deckName, int rndSeed){
+		super(computerAIFactory, deckName, rndSeed);
 		wonGamesByCards=new double[Battle.deckSize];
 		totalGamesByCards=new double[Battle.deckSize];
 	}

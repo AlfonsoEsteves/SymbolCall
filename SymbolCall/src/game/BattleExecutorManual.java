@@ -1,26 +1,25 @@
 package game;
 
 import battle.Player;
+import gui.MainFrame;
 import battle.Battle;
 
-public class BattleExecutorManual {
+public class BattleExecutorManual extends BattleExecutor {
 
 	public static BattleExecutorManual instance = new BattleExecutorManual();
+	
+	private BattleExecutorManual() {}
 
+	@Override
 	public Battle executeBattle(Player player1, Player player2, int startingPlayer, int rndSeed) {
-		
-		Player humanPlayer = player1.isHuman() ? player1 : player2;
-		Player computerPlayer = player1.isHuman() ? player2 : player1;
 
-		// Initialize battle
-		Game.instance.battle = new Battle(humanPlayer, computerPlayer, startingPlayer, rndSeed);
+		Game.instance.battle = new Battle(player1, player2, startingPlayer, rndSeed);
 
-		// The GUI is notified that it can go on with the battle
-		ThreadManager.ins.humanBattleCanBeStarted.release();
+		MainFrame.instance.enterBox(MainFrame.instance.battleBox);
 
 		// The GUI should notify when the battle is over
 		try {
-			ThreadManager.ins.humanBattleHasFinished.acquire();
+			ThreadManager.instance.humanBattleHasFinished.acquire();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import battle.Player;
 import battle.Battle;
 import battle.Card;
+import battle.Player;
 import battle.Rnd;
-import bruteForceAI.BruteForceAI;
 import bruteForceAI.BruteForceAI.BruteForceAIFactory;
 import loader.BossLoader;
 import loader.CardLoader;

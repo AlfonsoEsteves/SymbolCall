@@ -23,9 +23,10 @@ public class MainFrame extends JFrame {
 
 	public static void instantiate() {
 		instance = new MainFrame();
+		instance.initialize();
 	}
 
-	private MainFrame() {
+	private void initialize() {
 		setUndecorated(true);
 		setSize(width, height);
 		setLayout(null);

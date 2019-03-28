@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Random;
 
 import battle.Card;
-import battle.ComputerAI;
 
 @SuppressWarnings("serial")
 public class HumanPlayer extends LeaguePlayer {

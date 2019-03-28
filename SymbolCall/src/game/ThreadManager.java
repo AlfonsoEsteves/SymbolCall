@@ -20,11 +20,10 @@ public class ThreadManager {
 	//This does not count the AWT thread and ThreadManager thread itself
 	public static final int numberOfThreads = 1;
 	
-	public static ThreadManager ins = new ThreadManager(); 
+	public static ThreadManager instance = new ThreadManager(); 
 	
 	private ExecutorService executorService;
 
-	public Semaphore humanBattleCanBeStarted = new Semaphore(0);
 	public Semaphore humanBattleHasFinished = new Semaphore(0);
 	public Semaphore roundCanBeStarted = new Semaphore(0);
 	public Semaphore roundHasFinished = new Semaphore(0);
@@ -53,9 +52,12 @@ public class ThreadManager {
 					}
 				}
 				
-				int[] startingPlayers = IntStream.generate(() -> Game.instance.rnd.nextInt(2)).limit(players1.size()).toArray();
-				int[] rndSeeds = IntStream.generate(() -> Game.instance.rnd.nextInt()).limit(players1.size()).toArray();
-				List<Battle> battles = executeBattles(players1, players2, startingPlayers, rndSeeds);
+				int size = players1.size();
+				int[] startingPlayers = IntStream.generate(() -> Game.instance.rnd.nextInt(2)).limit(size).toArray();
+				int[] rndSeeds = IntStream.generate(() -> Game.instance.rnd.nextInt()).limit(size).toArray();
+				BattleExecutor[] battleExecutors = Collections.nCopies(size, BattleExecutorAutomatic.instance).toArray(new BattleExecutor[size]);
+				battleExecutors[0] = BattleExecutorManual.instance;
+				List<Battle> battles = executeBattles(players1, players2, startingPlayers, rndSeeds, battleExecutors);
 				
 				//Wait for battle to finish and process results
 				for(Battle battle : battles) {
@@ -86,7 +88,7 @@ public class ThreadManager {
 	
 	// Starts executing the battles in the order of the lists
 	// If you want the player's battle to be initialized right away, put it first in the lists
-	public List<Battle> executeBattles(List<Player> players1, List<Player> players2, int[] startingPlayers, int[] rndSeeds) {
+	public List<Battle> executeBattles(List<Player> players1, List<Player> players2, int[] startingPlayers, int[] rndSeeds, BattleExecutor[] battleExecutors) {
 		List<Battle> battles = new ArrayList<>();
 
 		List<Future<Battle>> battleFutures = new ArrayList<>();
@@ -98,12 +100,10 @@ public class ThreadManager {
 			int startingPlayer = startingPlayers[i];
 			int rndSeed = rndSeeds[i];
 			Future<Battle> battleFuture;
-			if (player1.isHuman() || player2.isHuman()) {
-				battleFuture = executorService.submit(() -> BattleExecutorManual.instance.executeBattle(player1, player2, startingPlayer, rndSeed));
-			}
-			else {
-				battleFuture = executorService.submit(() -> BattleExecutorAutomatic.instance.executeBattle(player1, player2, startingPlayer, rndSeed));	
-			}
+			
+			BattleExecutor battleExecutor = battleExecutors[i];
+			battleFuture = executorService.submit(() -> battleExecutor.executeBattle(player1, player2, startingPlayer, rndSeed));
+			
 			battleFutures.add(battleFuture);
 		}
 		

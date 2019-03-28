@@ -3,10 +3,13 @@ package game;
 import battle.Player;
 import battle.Battle;
 
-public class BattleExecutorAutomatic {
+public class BattleExecutorAutomatic extends BattleExecutor {
 	
 	public static BattleExecutorAutomatic instance = new BattleExecutorAutomatic();
+	
+	private BattleExecutorAutomatic() {}
 
+	@Override
 	public Battle executeBattle(Player p1, Player p2, int startingPlayer, int rndSeed) {
 
 		Battle battle = new Battle(p1, p2, startingPlayer, rndSeed);

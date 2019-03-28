@@ -12,7 +12,7 @@ public class Main {
 		MainFrame.instance.enterBox(MainFrame.instance.mainBox);
 		
 		//This will run forever
-		ThreadManager.ins.runGame();
+		ThreadManager.instance.runGame();
 	}
 
 }

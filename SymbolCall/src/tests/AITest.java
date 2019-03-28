@@ -1,6 +1,7 @@
 package tests;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -8,6 +9,8 @@ import java.util.stream.IntStream;
 import battle.Battle;
 import battle.Player;
 import bruteForceAI.BruteForceAI.BruteForceAIFactory;
+import game.BattleExecutor;
+import game.BattleExecutorAutomatic;
 import game.Game;
 import game.ThreadManager;
 import loader.CardLoader;
@@ -29,13 +32,13 @@ public class AITest {
 		
 		brutePlayers = new LinkedList<>();
 		for (String deckName : DeckLoader.decks.keySet()) {
-			TestedPlayer brutePlayer = new TestedPlayer(new BruteForceAIFactory(), deckName);
+			TestedPlayer brutePlayer = new TestedPlayer(new BruteForceAIFactory(), deckName, 0);
 			brutePlayers.add(brutePlayer);
 		}
 
 		randomPlayers = new LinkedList<>();
 		for (String deckName : DeckLoader.decks.keySet()) {
-			TestedPlayer randomPlayer = new TestedPlayer(new RandomAIFactory(), deckName);
+			TestedPlayer randomPlayer = new TestedPlayer(new RandomAIFactory(), deckName, Game.instance.rnd.nextInt());
 			randomPlayers.add(randomPlayer);
 		}
 
@@ -51,10 +54,12 @@ public class AITest {
 			}
 		}
 
-		int[] startingPlayers = IntStream.generate(() -> 0).limit(players1.size()).toArray();
-		int[] rndSeeds = IntStream.generate(() -> Game.instance.rnd.nextInt()).limit(players1.size()).toArray();
+		int size = players1.size();
+		int[] startingPlayers = IntStream.generate(() -> 0).limit(size).toArray();
+		int[] rndSeeds = IntStream.generate(() -> Game.instance.rnd.nextInt()).limit(size).toArray();
+		BattleExecutor[] battleExecutors = Collections.nCopies(size, BattleExecutorAutomatic.instance).toArray(new BattleExecutor[size]);		
 		long ini = System.nanoTime();
-		List<Battle> battles = ThreadManager.ins.executeBattles(players1, players2, startingPlayers, rndSeeds);
+		List<Battle> battles = ThreadManager.instance.executeBattles(players1, players2, startingPlayers, rndSeeds, battleExecutors);
 		long end = System.nanoTime();
 		System.out.println("Time: " + ((end - ini) / 1000000000));
 		

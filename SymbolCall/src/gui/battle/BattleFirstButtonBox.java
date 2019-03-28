@@ -38,13 +38,13 @@ public class BattleFirstButtonBox extends Box {
 		if(MainFrame.instance.currentBox == MainFrame.instance.battleBox) {
 			if (Game.instance.battle.state == Battle.choosingActiveEffectState) {
 				if (!Game.instance.battle.players[Game.instance.battle.turn].isHuman()) {
-					Game.instance.battle.computerAIs[1].play(Game.instance.battle);
+					Game.instance.battle.computerAIs[Game.instance.battle.turn].play(Game.instance.battle);
 				}
 			} else if (Game.instance.battle.state == Battle.choosingTargetCardState) {
 				if (Game.instance.battle.players[Game.instance.battle.decidingPlayer].isHuman()) {
 					Game.instance.battle.setChosenTarget(-1,  Battle.noneAISimulating);
 				} else {
-					Game.instance.battle.computerAIs[1].chooseTarget(Game.instance.battle);
+					Game.instance.battle.computerAIs[Game.instance.battle.turn].chooseTarget(Game.instance.battle);
 				}
 			} else if (Game.instance.battle.state == Battle.executingActionState) {
 				Game.instance.battle.executeAction(Battle.noneAISimulating);
@@ -52,9 +52,9 @@ public class BattleFirstButtonBox extends Box {
 			if (Game.instance.battle.winner() == -1) {
 				MainFrame.instance.refresh();
 			} else {
-				ThreadManager.ins.humanBattleHasFinished.release();
+				ThreadManager.instance.humanBattleHasFinished.release();
 				try {
-					ThreadManager.ins.roundHasFinished.acquire();
+					ThreadManager.instance.roundHasFinished.acquire();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
