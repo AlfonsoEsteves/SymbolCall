@@ -60,7 +60,7 @@ public class BruteForceAI extends ComputerAI {
 			createPlan(battle);
 		}
 		Node node = plan.removeFirst();
-		//plan.clear();
+		plan.clear();
 		
 		if (node.chosenCard == -1) {
 			battle.passTurn();
@@ -82,11 +82,11 @@ public class BruteForceAI extends ComputerAI {
 
 	@Override
 	public void chooseTarget(Battle battle) {
-		if (plan.isEmpty()) {
+ 		if (plan.isEmpty()) {
 			createPlan(battle);
 		}
 		Node node = plan.removeFirst();
-		//plan.clear();
+		plan.clear();
 
 		// Here is where the AI actually makes its move, so it is not a simulation
 		battle.setChosenTarget(node.chosenCard, Battle.noneAISimulating);
@@ -160,7 +160,7 @@ public class BruteForceAI extends ComputerAI {
 		// That is why I select the following nodes only up to my rival's first move
 		Node node = firstNode;
 		while (true) {
-			if (node.scenario.decidingPlayer != battle.decidingPlayer || node.scenario.winner() != -1) {
+			if (node.scenario.turn != AIplayer || node.scenario.winner() != -1) {
 				break;
 			} else {
 				node = node.bestContinuation;
@@ -184,7 +184,7 @@ public class BruteForceAI extends ComputerAI {
 	}
 
 	private void debugPrintFinalScore(Node node) {
-		System.out.println(node.debuggingName + " P:" + node.scenario.decidingPlayer + "   ini:" + node.initialScore
+		System.out.println(node.debuggingName + " P:" + node.scenario.turn + "   ini:" + node.initialScore
 				+ "   fin:" + node.finalScore);
 		if (!node.continuations.isEmpty()) {
 			for (Node continuation : node.continuations) {
@@ -253,7 +253,7 @@ public class BruteForceAI extends ComputerAI {
 			}
 			continueWithNoTarget(node);
 		}
-		if (node.scenario.decidingPlayer == 0) {
+		if (node.scenario.turn == 0) {
 			Collections.sort(node.continuations, (a, b) -> (a.initialScore < b.initialScore ? -1 : 1));
 		} else {
 			Collections.sort(node.continuations, (a, b) -> (a.initialScore > b.initialScore ? -1 : 1));

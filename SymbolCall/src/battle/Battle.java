@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import bruteForceAI.BruteForceAI;
+
 @SuppressWarnings("unchecked")
 public class Battle {
 
@@ -45,7 +47,6 @@ public class Battle {
 	public BCard[] cards = new BCard[Battle.deckSize * 2];
 	public LinkedList<Integer>[][] zones = new LinkedList[2][3];
 	public int turn;
-	public int decidingPlayer;// Usually it is equals to the turn, unless the opponent has to choose a target
 	public LinkedList<ActionExecution> executionStack;
 	public LinkedList<Integer> calledSymbols;
 	public int state;
@@ -55,6 +56,7 @@ public class Battle {
 	public Action choosingTargetStateAction;
 	public int targetCard = -1;
 	public int turnCount;
+	public int eventNumber;
 	public Random rnd;
 
 	public Battle() {
@@ -66,10 +68,10 @@ public class Battle {
 		// I create new randoms for the AI, so they doesn't alter how the battle turns out
 		computerAIs = new ComputerAI[] {p1.instantiateComputerAI(0, rnd.nextInt()), p2.instantiateComputerAI(1, rnd.nextInt()) };
 		turn = startingPlayer;
-		decidingPlayer = turn;
 		executionStack = new LinkedList<>();
 		calledSymbols = new LinkedList<>();
 		log = new LinkedList<>();
+		eventNumber = 0;
 		turnCount = 0;
 		for (int i = 0; i < 2; i++) {
 			healths[i] = 150;
@@ -101,7 +103,6 @@ public class Battle {
 		battle.calledSymbols = (LinkedList<Integer>) calledSymbols.clone();
 		battle.players = players;
 		battle.turn = turn;
-		battle.decidingPlayer = decidingPlayer;
 		battle.state = state;
 		battle.choosingTargetStateAction = choosingTargetStateAction;
 		battle.targetCard = targetCard;
@@ -116,7 +117,6 @@ public class Battle {
 		for (int card : zones[turn][Battle.fieldZone]) {
 			cards[card].turn = true;
 		}
-		decidingPlayer = turn;
 		draw(turn);
 		turnCount++;
 	}
@@ -153,14 +153,13 @@ public class Battle {
 				if (state != Battle.choosingTargetCardState) {
 					state = Battle.choosingTargetCardState;
 					choosingTargetStateAction = actionExecution.action;
-					decidingPlayer = cards[actionExecution.executingCard].player;
 					remove = false;
 				} else {
 					if (targetCard != -1) {
 						executeActionOverCard(actionExecution.action, targetCard);
 					} else {
 						if (actionExecution.action.type == Battle.atkAction
-								&& zones[1 - decidingPlayer][Battle.fieldZone].isEmpty()) {
+								&& zones[1 - turn][Battle.fieldZone].isEmpty()) {
 							if (damagePlayer(1 - cards[actionExecution.executingCard].player,
 									actionExecution.action.amount)) {
 								return true;
@@ -177,7 +176,6 @@ public class Battle {
 			executionStack.remove(actionExecution);
 			if (executionStack.isEmpty()) {
 				state = Battle.choosingActiveEffectState;
-				decidingPlayer = turn;
 			}
 		}
 		return false;
@@ -189,15 +187,15 @@ public class Battle {
 	public void setChosenTarget(int chosenTargetCard, int AISimulating) {
 		if (chosenTargetCard == -1) {
 			if (choosingTargetStateAction.type == Battle.atkAction
-					&& zones[1 - decidingPlayer][Battle.fieldZone].isEmpty()) {
-				logMessage(players[decidingPlayer].name + " chose to attack directly to the opponent");
+					&& zones[1 - turn][Battle.fieldZone].isEmpty()) {
+				logMessage(players[turn].name + " chose to attack directly to the opponent");
 			} else {
 				logMessage(
-						players[decidingPlayer].name + " chose not to " + actionString(choosingTargetStateAction.type));
+						players[turn].name + " chose not to " + actionString(choosingTargetStateAction.type));
 			}
 		} else {
-			logMessage(players[decidingPlayer].name + " chose to " + actionString(choosingTargetStateAction.type) + " "
-					+ cards[chosenTargetCard]);
+			logMessage(players[turn].name + " chose to " + actionString(choosingTargetStateAction.type) + " "
+					+ cards[chosenTargetCard].model.name);
 		}
 		targetCard = chosenTargetCard;
 		executeAction(AISimulating);
@@ -341,7 +339,7 @@ public class Battle {
 	}
 
 	private String symbolString(int symbol) {
-		return "asd";
+		return "S" + symbol;
 	}
 
 	private void notifyNewSymbolToZone(LinkedList<Integer> zone, int triggeringCard, int AISimulating) {
@@ -371,9 +369,8 @@ public class Battle {
 										}
 									}
 									if (triggered) {
-										if(AISimulating == noneAISimulating && !card.visible) {
+										if(AISimulating == noneAISimulating && !card.visible && card.player != turn) {
 											computerAIs[1 - card.player].notifyUnexpectedEffectTriggered();
-											
 										}
 										addEffectToExecutionStack(card.battleId, effectNumber, triggeringCard);
 									}
@@ -416,7 +413,8 @@ public class Battle {
 
 	private void logMessage(String message) {
 		if (log != null) {
-			// System.out.println(message);
+			eventNumber++;
+			// System.out.println("[" + eventNumber + " turn: " + turn + "] " + message);
 			log.addLast(message);
 		}
 	}

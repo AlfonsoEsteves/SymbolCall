@@ -41,7 +41,7 @@ public class BattleFirstButtonBox extends Box {
 					Game.instance.battle.computerAIs[Game.instance.battle.turn].play(Game.instance.battle);
 				}
 			} else if (Game.instance.battle.state == Battle.choosingTargetCardState) {
-				if (Game.instance.battle.players[Game.instance.battle.decidingPlayer].isHuman()) {
+				if (Game.instance.battle.players[Game.instance.battle.turn].isHuman()) {
 					Game.instance.battle.setChosenTarget(-1,  Battle.noneAISimulating);
 				} else {
 					Game.instance.battle.computerAIs[Game.instance.battle.turn].chooseTarget(Game.instance.battle);
@@ -73,9 +73,9 @@ public class BattleFirstButtonBox extends Box {
 				graphics.drawString("Next opponent's move", 14, 19);
 			}
 		} else if (Game.instance.battle.state == Battle.choosingTargetCardState) {
-			if (Game.instance.battle.players[Game.instance.battle.decidingPlayer].isHuman()) {
+			if (Game.instance.battle.players[Game.instance.battle.turn].isHuman()) {
 				if (Game.instance.battle.choosingTargetStateAction.type == Battle.atkAction
-						&& Game.instance.battle.zones[1 - Game.instance.battle.decidingPlayer][Battle.fieldZone].isEmpty()) {
+						&& Game.instance.battle.zones[1 - Game.instance.battle.turn][Battle.fieldZone].isEmpty()) {
 					graphics.drawString("Attack directly", 14, 19);
 				} else {
 					graphics.drawString("Don't choose anything", 14, 19);

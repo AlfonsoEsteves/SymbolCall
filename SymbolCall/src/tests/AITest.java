@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 import battle.Battle;
 import battle.Player;
-import bruteForceAI.BruteForceAI.BruteForceAIFactory;
+import zAI.ZAI.ZAIFactory;
 import game.BattleExecutor;
 import game.BattleExecutorAutomatic;
 import game.Game;
@@ -32,7 +32,7 @@ public class AITest {
 		
 		brutePlayers = new LinkedList<>();
 		for (String deckName : DeckLoader.decks.keySet()) {
-			TestedPlayer brutePlayer = new TestedPlayer(new BruteForceAIFactory(), deckName, 0);
+			TestedPlayer brutePlayer = new TestedPlayer(new ZAIFactory(), deckName, 0);
 			brutePlayers.add(brutePlayer);
 		}
 

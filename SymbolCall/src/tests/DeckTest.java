@@ -17,6 +17,7 @@ import game.Game;
 import game.ThreadManager;
 import loader.CardLoader;
 import loader.DeckLoader;
+import zAI.ZAI.ZAIFactory;;
 
 @SuppressWarnings("serial")
 public class DeckTest {
@@ -33,7 +34,7 @@ public class DeckTest {
 		
 		testPlayers=new LinkedList<>();
 		for(String deckName : DeckLoader.decks.keySet()){
-			TestedPlayer testPlayer=new TestedPlayer(new BruteForceAIFactory(), deckName, 0);
+			TestedPlayer testPlayer=new TestedPlayer(new ZAIFactory(), deckName, 0);
 			testPlayers.add(testPlayer);
 		}
 
