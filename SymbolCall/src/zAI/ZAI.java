@@ -12,7 +12,7 @@ import bruteForceAI.BattleScoreCalculator;
 
 public class ZAI extends ComputerAI {
 
-	public static final int maxTakenOptions = 8;
+	public static final int maxTakenOptions = 40;
 	public static final int maxConsideredOptions = 100;
 
 	public static class ZAIFactory extends ComputerAIFactory {
