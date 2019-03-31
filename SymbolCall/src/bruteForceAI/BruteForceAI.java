@@ -65,17 +65,6 @@ public class BruteForceAI extends ComputerAI {
 		if (node.chosenCard == -1) {
 			battle.passTurn();
 		} else {
-			
-			
-			
-			
-			if(node.chosenEffect == -1) {
-				System.out.println();
-			}
-			
-			
-			
-			
 			battle.executeActiveEffect(node.chosenCard, node.chosenEffect);
 		}
 	}

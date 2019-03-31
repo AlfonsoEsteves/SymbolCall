@@ -14,7 +14,7 @@ public class StatisticsBox extends Box{
 	public StatisticsBox(int width, int height){
 		super(0, 0, width, height, null);
 		int count=0;
-		//LinkedList<Card> from=DeckLoader.getPlayer("White dragon");
+		//LinkedList<Card> from=DeckLoader.getPlayer("White_dragon");
 		LinkedList<Card> from=Game.instance.playerCards;
 		LinkedList<Card> cards=Filter.filter(from);
 		for(Card card : cards) {

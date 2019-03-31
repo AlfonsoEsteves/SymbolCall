@@ -28,6 +28,7 @@ public class BCard {
 		card.player=player;
 		card.zone=zone;
 		card.turn=turn;		
+		card.visible = visible;
 		return card;
 	}
 	

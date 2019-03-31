@@ -12,7 +12,7 @@ import bruteForceAI.BattleScoreCalculator;
 
 public class ZAI extends ComputerAI {
 
-	public static final int maxTakenOptions = 32;
+	public static final int maxTakenOptions = 8;
 	public static final int maxConsideredOptions = 100;
 
 	public static class ZAIFactory extends ComputerAIFactory {
@@ -23,20 +23,11 @@ public class ZAI extends ComputerAI {
 
 	private LinkedList<ZNode> expandedOptions;
 
-	// This stack is used to add the ZNodes to the finalScoreCalculationQueue in the
-	// right order
-	private LinkedList<ZNode> finalScoreCalculationStack;
-
-	// I iterate over this queue to calculate the final score
-	private LinkedList<ZNode> finalScoreCalculationQueue;
-
 	public LinkedList<ZNode> plan;
 
 	public ZAI(int player, int rndSeed) {
 		super(player);
 		expandedOptions = new LinkedList<>();
-		finalScoreCalculationStack = new LinkedList<>();
-		finalScoreCalculationQueue = new LinkedList<>();
 		plan = new LinkedList<>();
 	}
 
@@ -45,18 +36,11 @@ public class ZAI extends ComputerAI {
 		if (plan.isEmpty()) {
 			createPlan(battle);
 		}
-		ZNode ZNode = plan.removeFirst();
-		//plan.clear();
-
-		if (ZNode.chosenCard == -1) {
+		ZNode node = plan.removeFirst();
+		if (node.chosenCard == -1) {
 			battle.passTurn();
 		} else {
-
-			if (ZNode.chosenEffect == -1) {
-				System.out.println();
-			}
-
-			battle.executeActiveEffect(ZNode.chosenCard, ZNode.chosenEffect);
+			battle.executeActiveEffect(node.chosenCard, node.chosenEffect);
 		}
 	}
 
@@ -91,7 +75,9 @@ public class ZAI extends ComputerAI {
 		ZNode bestOption = finalOptions.get(0);
 
 		while (bestOption.previous != null) {
-			plan.addFirst(bestOption);
+			if (bestOption.previous.scenario.turn == AIplayer) {
+				plan.addFirst(bestOption);
+			}
 			bestOption = bestOption.previous;
 		}
 	}
@@ -106,8 +92,9 @@ public class ZAI extends ComputerAI {
 		while (!bestOptions.isEmpty()) {
 			while (!bestOptions.isEmpty()) {
 				ZNode ZNode = bestOptions.removeFirst();
-				if (ZNode.scenario.turn == player) {
-					checkZNode(ZNode);
+				if (ZNode.scenario.turn == player && !ZNode.finished) {
+					expandedOptions.clear();
+					expandZNode(ZNode);
 					consideredOptions.addAll(expandedOptions);
 				} else {
 					consideredOptions.add(ZNode);
@@ -145,14 +132,7 @@ public class ZAI extends ComputerAI {
 		});
 	}
 
-	private void checkZNode(ZNode ZNode) {
-		if (!ZNode.finished) {
-			expandZNode(ZNode);
-		}
-	}
-
 	private void expandZNode(ZNode ZNode) {
-		expandedOptions.clear();
 		if (ZNode.scenario.state == Battle.choosingActiveEffectState) {
 			continueWithEffectsFrom(ZNode, Battle.handZone);
 			continueWithEffectsFrom(ZNode, Battle.fieldZone);

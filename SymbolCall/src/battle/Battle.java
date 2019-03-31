@@ -229,7 +229,7 @@ public class Battle {
 			BCard card = cards[c];
 			card.zone = Battle.handZone;
 			card.health = card.model.maxHealth;
-			card.visible = true;//card.visible = false;
+			card.visible = false;
 			card.turn = true;
 			card.drawn = true;
 			zones[player][Battle.handZone].addLast(c);

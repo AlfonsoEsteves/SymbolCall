@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 import battle.Battle;
 import battle.Player;
 import zAI.ZAI.ZAIFactory;
+import bruteForceAI.BruteForceAI.BruteForceAIFactory;
 import game.BattleExecutor;
 import game.BattleExecutorAutomatic;
 import game.Game;
@@ -19,7 +20,7 @@ import randomAI.RandomAI.RandomAIFactory;
 
 public class AITest {
 
-	public static final int repetitions = 10;
+	public static final int repetitions = 1;
 
 	public static LinkedList<TestedPlayer> brutePlayers;
 	public static LinkedList<TestedPlayer> randomPlayers;
@@ -35,12 +36,18 @@ public class AITest {
 			TestedPlayer brutePlayer = new TestedPlayer(new ZAIFactory(), deckName, 0);
 			brutePlayers.add(brutePlayer);
 		}
-
+		
 		randomPlayers = new LinkedList<>();
+		for (String deckName : DeckLoader.decks.keySet()) {
+			TestedPlayer randomPlayer = new TestedPlayer(new BruteForceAIFactory(), deckName, 0);
+			randomPlayers.add(randomPlayer);
+		}
+
+		/*randomPlayers = new LinkedList<>();
 		for (String deckName : DeckLoader.decks.keySet()) {
 			TestedPlayer randomPlayer = new TestedPlayer(new RandomAIFactory(), deckName, Game.instance.rnd.nextInt());
 			randomPlayers.add(randomPlayer);
-		}
+		}*/
 
 		List<Player> players1 = new ArrayList<>();
 		List<Player> players2 = new ArrayList<>();
