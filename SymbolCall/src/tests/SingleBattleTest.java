@@ -12,15 +12,14 @@ public class SingleBattleTest {
 	
 	public static void main(String[] args) {		
 		Game.instantiate();
-		
-		Player player1 = new Player(new ZAIFactory(), "Swamp", 0);
-		Player player2 = new Player(new ZAIFactory(), "Juan_rd_gr", 0);
+		Player player1 = new Player(new ZAIFactory(), "Activo_fuerte_rd_bl_yl", 0);
+		Player player2 = new Player(new ZAIFactory(), "White dragon", 0);
 		int startingPlayer = 0;
-		int rndSeed = 1518684459;
+		int rndSeed = 1749553447;
 		
 		MainFrame.instantiate();
 		
-		Battle battle = BattleExecutorAutomatic.instance.executeBattle(player1, player2, startingPlayer, rndSeed);
+		Battle battle = BattleExecutorManual.instance.executeBattle(player1, player2, startingPlayer, rndSeed);
 		
 		System.out.println("Battle finished, winner: " + battle.winner());
 	}

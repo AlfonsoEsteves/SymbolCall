@@ -22,10 +22,10 @@ public class Player implements Serializable{
 	public Player(ComputerAIFactory computerAIFactory, String deckName, int seed) {
 		this.computerAIFactory = computerAIFactory;
 		if(computerAIFactory == null) {
-			name = "Human_";
+			name = "H_";
 		}
 		else {
-			name = "Computer_";
+			name = "C_";
 		}
 		if(deckName != null) {
 			name += deckName;
