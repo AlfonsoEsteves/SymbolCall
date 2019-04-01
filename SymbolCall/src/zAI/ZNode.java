@@ -1,7 +1,5 @@
 package zAI;
 
-import java.util.LinkedList;
-
 import battle.Battle;
 
 public class ZNode {

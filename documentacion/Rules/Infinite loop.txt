@@ -1,0 +1,5 @@
+I can not allow infinite recursion to happen.
+How am I gonna prevent it?
+I don't want to create specific game rules for this.
+So this is going to be prevented by just not introducing cards that could make it happen.
+I a loop is created, the cards have to either damage them selves, damage the player, or change area, so the passive effect is not enabled anymore.
