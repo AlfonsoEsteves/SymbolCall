@@ -1,0 +1,40 @@
+Example:
+<<<<<
+1
+
+hand effect:
+[]
+atta op 15
+disc sl
+
+hand effect:
+[rd]
+atta ow 3
+
+hand effect:
+[bl]
+atta ow 3
+>>>>>
+This card should be used immediately, when it is drawn.
+
+Example:
+<<<<<
+18
+
+hand effect:
+[]
+invo sl
+call rd
+call gr
+call bl
+
+field effect:
+[rd gr bl]
+atta sl 17
+
+field effect:
+[]
+atta op 26
+>>>>>
+If this card is invoked without interrupting the sequence, it will end up with 1 health.
+Being in the field with 1HP should be worse than bing in the hand. 
