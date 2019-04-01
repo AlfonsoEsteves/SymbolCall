@@ -9,12 +9,6 @@ public abstract class ComputerAI{
 		public abstract ComputerAI create(int player, int rndSeed);
 	}
 	
-	public static class NullComputerAIFactory extends ComputerAIFactory{
-		public ComputerAI create(int player, int rndSeed) {
-			return null;
-		}
-	}
-	
 	public int AIplayer;
 	
 	public ComputerAI(int AIplayer) {
