@@ -3,11 +3,11 @@
 hand effect:
 [r1 r2]
 invo sl
-atta ch 9
+atta ch 10
 
 field effect:
 [r2 r1]
-atta op 9
+atta op 10
 
 description:
 Makes some damage at invocation.

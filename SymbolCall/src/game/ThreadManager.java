@@ -18,7 +18,7 @@ import persistence.Persistence;
 public class ThreadManager {
 
 	// This does not count the AWT thread and ThreadManager thread itself
-	public static final int numberOfThreads = 1;
+	public static final int numberOfThreads = 4;
 
 	public static ThreadManager instance = new ThreadManager();
 

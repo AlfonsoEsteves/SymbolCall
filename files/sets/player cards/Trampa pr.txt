@@ -1,4 +1,4 @@
-9
+10
 
 hand effect:
 []
@@ -6,11 +6,11 @@ invo sl
 
 field effect:
 [y0]
-atta tr 4
+atta tr 5
 
 field effect:
 [g0]
-atta tr 4
+atta tr 5
 
 description:
 This is a field card.

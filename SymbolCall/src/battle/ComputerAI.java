@@ -9,7 +9,7 @@ public abstract class ComputerAI{
 		public abstract ComputerAI create(int player, int rndSeed);
 	}
 	
-	public class NullComputerAIFactory extends ComputerAIFactory{
+	public static class NullComputerAIFactory extends ComputerAIFactory{
 		public ComputerAI create(int player, int rndSeed) {
 			return null;
 		}

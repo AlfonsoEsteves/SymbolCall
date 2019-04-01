@@ -1,6 +1,7 @@
 package statistics;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import battle.Action;
 import battle.Battle;
@@ -18,18 +19,18 @@ public class Statistics {
 		BossLoader.loadBosses();
 		DeckLoader.loadDecks();
 		
-		LinkedList<Card> set=Filter.filter(Game.instance.playerCards);
+		List<Card> set=Filter.filter(Game.instance.playerCards);
 		
 		showStatistics(set);
 	}
 	
-	private static void showStatistics(LinkedList<Card> cards){
+	private static void showStatistics(List<Card> cards){
 		System.out.println("Cards count: "+cards.size());
 		symbolsStatistics(cards);
 		health(cards);
 	}
 
-	private static void health(LinkedList<Card> cards) {		
+	private static void health(List<Card> cards) {		
 		System.out.println();
 		System.out.println("Amount of cards by health:");
 		int[] health=new int[100];
@@ -43,7 +44,7 @@ public class Statistics {
 		}
 	}
 
-	private static void symbolsStatistics(LinkedList<Card> cards) {
+	private static void symbolsStatistics(List<Card> cards) {
 		System.out.println();
 		System.out.println("Needed and produced symbols:");
 		int[] needed=new int[16];

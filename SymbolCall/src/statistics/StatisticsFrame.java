@@ -2,6 +2,7 @@ package statistics;
 
 import javax.swing.JFrame;
 
+import game.Game;
 import loader.CardLoader;
 import loader.DeckLoader;
 import loader.ImageLoader;
@@ -29,9 +30,7 @@ public class StatisticsFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-		CardLoader.loadCards();
-		ImageLoader.loadImages();
-		DeckLoader.loadDecks();
+    	Game.instantiate();
     	new StatisticsFrame();
     }
 }

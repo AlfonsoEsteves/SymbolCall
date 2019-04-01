@@ -8,6 +8,9 @@ import battle.Battle;
 import battle.ComputerAI;
 import battle.Effect;
 
+/*
+ * This AI supports that the deciding player may changed, if a select target action is triggered.
+ */
 public class BruteForceAI extends ComputerAI {
 
 	public static final int maxCheckedNodes = 3500;

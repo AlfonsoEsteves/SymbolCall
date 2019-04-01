@@ -13,8 +13,8 @@ import gui.battle.BattleEffectBox;
 
 public class StatisticsCardBox extends Box {
 
-	public static int cardHeight = 154;
-	public static int cardWidth = 125;
+	public static int cardHeight = 174;
+	public static int cardWidth = 135;
 	public static int effectWidth = 30;
 	
 	

@@ -18,6 +18,6 @@ atta op 22
 description:
 This card is complemented by "Desert wanderer"
 When you have both in the hand, you have to choose which one you will invoke.
-You could still incoke the other with "Summoner".
+You could still invoke the other with "Summoner".
 One is offensive (low health, direct damage)
 The other is defensive (more health, field damage)

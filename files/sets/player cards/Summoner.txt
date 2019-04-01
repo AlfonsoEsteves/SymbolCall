@@ -1,4 +1,4 @@
-9
+10
 
 hand effect:
 [r1 g1 g1]

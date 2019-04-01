@@ -1,12 +1,12 @@
 package statistics;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import battle.Action;
 import battle.Battle;
 import battle.Card;
 import battle.Effect;
-import battle.Player;
 import loader.DeckLoader;
 
 public class Filter {
@@ -24,10 +24,10 @@ public class Filter {
 	public static int symbol2 = -1;// Battle.rdSymbol;
 	public static int symbol3 = -1;// Battle.aqSymbol;
 
-	public static LinkedList<Card> filter(LinkedList<Card> list) {
-		LinkedList<Card> result = new LinkedList<>();
+	public static List<Card> filter(List<Card> list) {
+		List<Card> result = new LinkedList<>();
 		for (Card card : list) {
-			if (hasPassiveThatChoosesTarget(card)) {
+			if (none(card)) {
 				result.add(card);
 			}
 		}
@@ -155,8 +155,8 @@ public class Filter {
 
 	public static boolean wanted(Card card) {
 		boolean unwanted = false;
-		for (Player player : DeckLoader.decks) {
-			for (Card card2 : player.deck) {
+		for (String deckName : DeckLoader.decks.keySet()) {
+			for (Card card2 : DeckLoader.decks.get(deckName)) {
 				if (card2.name.equals(card.name)) {
 					unwanted = true;
 				}

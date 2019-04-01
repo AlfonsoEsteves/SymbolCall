@@ -10,9 +10,13 @@ import battle.ComputerAI;
 import battle.Effect;
 import bruteForceAI.BattleScoreCalculator;
 
+/*
+ * This AI is based on the fact the the deciding player does not change in a turn.
+ * If a select target action is triggered, it is always going to be selected by the turn owner.
+ */
 public class ZAI extends ComputerAI {
 
-	public static final int maxTakenOptions = 40;
+	public static final int maxTakenOptions = 30;
 	public static final int maxConsideredOptions = 100;
 
 	public static class ZAIFactory extends ComputerAIFactory {
