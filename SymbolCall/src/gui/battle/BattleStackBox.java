@@ -19,8 +19,8 @@ public class BattleStackBox extends Box {
 	
 	public static int entryHeight=75;
 
-	public BattleStackBox(int x, int y, int width, int height, Box container) {
-		super(x, y, width, height, container);
+	public BattleStackBox(int x, int y, int width, int height) {
+		super(x, y, width, height);
 	}
 	
 	@Override

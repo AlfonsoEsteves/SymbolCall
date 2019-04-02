@@ -8,11 +8,11 @@ public class BattleRightBox extends Box {
 	private BattleLogBox battleLogBox;
 	private BattleOptionsBox battleOptionsBox;
 
-	public BattleRightBox(int x, int y, int width, int height, Box container) {
-		super(x, y, width, height, container);
-		battleHealthBox=new BattleHealthBox(0, 0, width, BattleBox.mediumSize, this);
-		battleLogBox=new BattleLogBox(0, BattleBox.mediumSize, width, height-BattleBox.mediumSize*2, this);
-		battleOptionsBox=new BattleOptionsBox(0, height-BattleBox.mediumSize, width, BattleBox.mediumSize, this);	
+	public BattleRightBox(int x, int y, int width, int height) {
+		super(x, y, width, height);
+		battleHealthBox=new BattleHealthBox(0, 0, width, BattleBox.mediumSize);
+		battleLogBox=new BattleLogBox(0, BattleBox.mediumSize, width, height-BattleBox.mediumSize*2);
+		battleOptionsBox=new BattleOptionsBox(0, height-BattleBox.mediumSize, width, BattleBox.mediumSize);	
 	}
 
 }

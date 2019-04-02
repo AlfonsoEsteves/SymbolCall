@@ -8,7 +8,7 @@ import javax.swing.ListSelectionModel;
 
 import game.Game;
 import game.ThreadManager;
-import gui.AbstractButtonBox;
+import gui.BoxButton;
 import gui.Box;
 import gui.MainFrame;
 import persistence.Persistence;
@@ -18,8 +18,8 @@ public class MainBox extends Box {
 	
 	private JList<Object> list;
 	
-	public MainBox(int x, int y, int width, int height, Box container){
-		super(x, y, width, height, container);
+	public MainBox(int x, int y, int width, int height){
+		super(x, y, width, height);
 		
 		list = new JList<Object>();
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -30,7 +30,7 @@ public class MainBox extends Box {
 		listScroller.setBounds(300, 10, 120, 200);
 		add(listScroller);
 		
-		AbstractButtonBox startBattleButtonBox = new AbstractButtonBox("Start Battle", 50, 50, 100, 100, null) {
+		BoxButton startBattleButtonBox = new BoxButton("Start Battle", 50, 50, 100, 100) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				ThreadManager.instance.roundCanBeStarted.release();
@@ -40,7 +40,7 @@ public class MainBox extends Box {
 		};
 		add(startBattleButtonBox);
 		
-		AbstractButtonBox deckBuildingButtonBox = new AbstractButtonBox("Deck Building", 120, 250, 100, 100, null) {			
+		BoxButton deckBuildingButtonBox = new BoxButton("Deck Building", 120, 250, 100, 100) {			
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				MainFrame.instance.enterBox(MainFrame.instance.deckBuildingBox);
@@ -48,7 +48,7 @@ public class MainBox extends Box {
 		};
 		add(deckBuildingButtonBox);
 		
-		AbstractButtonBox saveButtonBox = new AbstractButtonBox("Save", 920, 350, 100, 100, null) {			
+		BoxButton saveButtonBox = new BoxButton("Save", 920, 350, 100, 100) {			
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Persistence.serialize("save");
@@ -56,7 +56,7 @@ public class MainBox extends Box {
 		};
 		add(saveButtonBox);
 		
-		AbstractButtonBox loadButtonBox = new AbstractButtonBox("Load", 920, 450, 100, 100, null) {			
+		BoxButton loadButtonBox = new BoxButton("Load", 920, 450, 100, 100) {			
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Persistence.deserialize("save");

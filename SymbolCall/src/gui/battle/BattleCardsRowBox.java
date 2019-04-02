@@ -17,15 +17,15 @@ public class BattleCardsRowBox extends Box {
 	private BattleCardBox[] battleCardBoxes=new BattleCardBox[Battle.handAndFieldMaxSize];
 	private boolean atTop;
 	
-	public BattleCardsRowBox(int x, int y, int width, int height, BattleMiddleBox container, int player, int zone, boolean atTop){
-		super(x, y, width, height, container);
+	public BattleCardsRowBox(int x, int y, int width, int height, int player, int zone, boolean atTop){
+		super(x, y, width, height);
 		this.container=container;
 		this.player=player;
 		this.zone=zone;
 		this.atTop=atTop;
 		battleCardBoxes=new BattleCardBox[Battle.handAndFieldMaxSize];
 		for(int i=0;i<Battle.handAndFieldMaxSize;i++){
-			battleCardBoxes[i]=new BattleCardBox(this);
+			battleCardBoxes[i]=new BattleCardBox();
 			add(battleCardBoxes[i]);
 		}
 	}

@@ -5,12 +5,12 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
-public abstract class AbstractButtonBox extends Box {
+public abstract class BoxButton extends Box {
 	
 	private String text;
 
-	public AbstractButtonBox(String text, int x, int y, int width, int height, Box container) {
-		super(x, y, width, height, container);
+	public BoxButton(String text, int x, int y, int width, int height) {
+		super(x, y, width, height);
 		this.text = text;
 	}
 

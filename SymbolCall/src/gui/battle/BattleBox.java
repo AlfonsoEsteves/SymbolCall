@@ -13,11 +13,11 @@ public class BattleBox extends Box {
 	public BattleMiddleBox battleMiddleBox;
 	public BattleRightBox battleRightBox;
 	
-	public BattleBox(int x, int y, int width, int height, Box container){
-		super(x, y, width, height, container);
-		battleLeftBox=new BattleLeftBox(0, 0, sidePanelSize, height, this);
-		battleMiddleBox=new BattleMiddleBox(sidePanelSize, 0, width-sidePanelSize*2, height, this);
-		battleRightBox=new BattleRightBox(width-sidePanelSize, 0, sidePanelSize, height, this);
+	public BattleBox(int x, int y, int width, int height){
+		super(x, y, width, height);
+		battleLeftBox=new BattleLeftBox(0, 0, sidePanelSize, height);
+		battleMiddleBox=new BattleMiddleBox(sidePanelSize, 0, width-sidePanelSize*2, height);
+		battleRightBox=new BattleRightBox(width-sidePanelSize, 0, sidePanelSize, height);
 	}
 	
 	@Override

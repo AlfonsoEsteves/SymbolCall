@@ -9,8 +9,8 @@ import gui.Box;
 @SuppressWarnings("serial")
 public class BattleThirdButtonBox extends Box {
 
-	public BattleThirdButtonBox(int x, int y, int width, int height, Box container) {
-		super(x, y, width, height, container);
+	public BattleThirdButtonBox(int x, int y, int width, int height) {
+		super(x, y, width, height);
 	}
 
 	@Override

@@ -12,16 +12,9 @@ import javax.swing.event.MouseInputListener;
 @SuppressWarnings("serial")
 public abstract class Box extends JPanel implements MouseInputListener, KeyListener {
 
-	public Box container;
-
-	public Box(int x, int y, int width, int height, Box container) {
+	public Box(int x, int y, int width, int height) {
 		setBounds(x, y, width, height);
 		setLayout(null);
-
-		this.container = container;
-		if (container != null) {
-			container.add(this);
-		}
 
 		// Mouse listeners need to be added to themselves to have the correct mouse
 		// position values
@@ -46,8 +39,9 @@ public abstract class Box extends JPanel implements MouseInputListener, KeyListe
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if (container != null) {
-			container.mouseEntered(e);
+		if(getParent() instanceof Box){
+			Box box = (Box)getParent();
+			box.mouseEntered(e);
 		}
 	}
 

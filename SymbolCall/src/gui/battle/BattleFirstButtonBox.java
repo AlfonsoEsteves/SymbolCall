@@ -13,8 +13,8 @@ import gui.MainFrame;
 @SuppressWarnings("serial")
 public class BattleFirstButtonBox extends Box {
 
-	public BattleFirstButtonBox(int x, int y, int width, int height, Box container) {
-		super(x, y, width, height, container);
+	public BattleFirstButtonBox(int x, int y, int width, int height) {
+		super(x, y, width, height);
 	}
 
 	@Override

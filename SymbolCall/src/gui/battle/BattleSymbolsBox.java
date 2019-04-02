@@ -10,8 +10,8 @@ import loader.ImageLoader;
 @SuppressWarnings("serial")
 public class BattleSymbolsBox extends Box {
 
-	public BattleSymbolsBox(int x, int y, int width, int height, Box container) {
-		super(x, y, width, height, container);
+	public BattleSymbolsBox(int x, int y, int width, int height) {
+		super(x, y, width, height);
 	}
 	
 	@Override

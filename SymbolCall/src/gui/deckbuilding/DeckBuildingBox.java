@@ -13,7 +13,7 @@ import javax.swing.event.ListSelectionListener;
 import battle.BCard;
 import battle.Card;
 import game.Game;
-import gui.AbstractButtonBox;
+import gui.BoxButton;
 import gui.Box;
 import gui.MainFrame;
 import gui.battle.BattleCardBox;
@@ -27,8 +27,8 @@ public class DeckBuildingBox extends Box {
 	public BattleCardBox battleCardBoxInventory;
 	public BattleCardBox battleCardBoxDeck;
 
-	public DeckBuildingBox(int x, int y, int width, int height, Box container) {
-		super(x, y, width, height, container);
+	public DeckBuildingBox(int x, int y, int width, int height) {
+		super(x, y, width, height);
 
 		deck = new JList<Object>();
 		deck.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -62,7 +62,7 @@ public class DeckBuildingBox extends Box {
 		inventoryScroller.setBounds(250, 10, 120, 200);
 		add(inventoryScroller);
 
-		AbstractButtonBox switchCardsButton = new AbstractButtonBox("Switch Cards", 300, 300, 100, 50, null) {
+		BoxButton switchCardsButton = new BoxButton("Switch Cards", 300, 300, 100, 50) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Card deckCard = (Card) deck.getSelectedValue();
@@ -78,7 +78,7 @@ public class DeckBuildingBox extends Box {
 		};
 		add(switchCardsButton);
 
-		AbstractButtonBox goBackButton = new AbstractButtonBox("Go Back", 100, 600, 100, 50, null) {
+		BoxButton goBackButton = new BoxButton("Go Back", 100, 600, 100, 50) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				MainFrame.instance.enterBox(MainFrame.instance.mainBox);
@@ -86,7 +86,7 @@ public class DeckBuildingBox extends Box {
 		};
 		add(goBackButton);
 
-		AbstractButtonBox buyButton = new AbstractButtonBox("Buy", 800, 400, 100, 50, null) {
+		BoxButton buyButton = new BoxButton("Buy", 800, 400, 100, 50) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Game.instance.buyAvailableToBuy();
@@ -95,15 +95,15 @@ public class DeckBuildingBox extends Box {
 		};
 		add(buyButton);
 
-		battleCardBoxBuy = new BattleCardBox(this);
+		battleCardBoxBuy = new BattleCardBox();
 		battleCardBoxBuy.setBounds(830, 30, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
 		add(battleCardBoxBuy);
 
-		battleCardBoxInventory = new BattleCardBox(this);
+		battleCardBoxInventory = new BattleCardBox();
 		battleCardBoxInventory.setBounds(30, 30, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
 		add(battleCardBoxInventory);
 
-		battleCardBoxDeck = new BattleCardBox(this);
+		battleCardBoxDeck = new BattleCardBox();
 		battleCardBoxDeck.setBounds(530, 30, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
 		add(battleCardBoxDeck);
 	}

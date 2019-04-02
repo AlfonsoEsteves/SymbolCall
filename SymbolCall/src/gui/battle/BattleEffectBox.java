@@ -26,8 +26,8 @@ public class BattleEffectBox extends Box {
 	public BCard card;
 	public int effectNumber;
 
-	public BattleEffectBox(int x, int y, int width, int height, Box container) {
-		super(x, y, width, height, container);
+	public BattleEffectBox(int x, int y, int width, int height) {
+		super(x, y, width, height);
 	}
 
 	@Override

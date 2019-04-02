@@ -8,8 +8,8 @@ import gui.Box;
 @SuppressWarnings("serial")
 public class BattleHealthBox extends Box {
 
-	public BattleHealthBox(int x, int y, int width, int height, Box container) {
-		super(x, y, width, height, container);
+	public BattleHealthBox(int x, int y, int width, int height) {
+		super(x, y, width, height);
 	}
 
 	@Override

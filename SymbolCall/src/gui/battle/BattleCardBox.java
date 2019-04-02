@@ -28,12 +28,11 @@ public class BattleCardBox extends Box {
 	public BCard card;
 	public Box container;
 
-	public BattleCardBox(Box container) {
-		super(0, 0, 0, 0, container);
-		this.container=container;
+	public BattleCardBox() {
+		super(0, 0, 0, 0);
 		battleEffectBoxs=new LinkedList<>();
 		for(int i=0;i<Battle.cardMaxEffects;i++) {
-			BattleEffectBox battleEffectBox=new BattleEffectBox(0, 0, BattleEffectBox.effectWidth, BattleEffectBox.effectHeight, this);
+			BattleEffectBox battleEffectBox=new BattleEffectBox(0, 0, BattleEffectBox.effectWidth, BattleEffectBox.effectHeight);
 			battleEffectBoxs.addLast(battleEffectBox);
 			battleEffectBox.effectNumber=i;
 		}

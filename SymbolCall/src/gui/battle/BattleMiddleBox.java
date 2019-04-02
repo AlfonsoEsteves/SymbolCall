@@ -13,12 +13,12 @@ public class BattleMiddleBox extends Box {
 	
 	public boolean atTop;//Indicates if the rows should be printed from the top or the bottom
 
-	public BattleMiddleBox(int x, int y, int width, int height, Box container) {
-		super(x, y, width, height, container);
-		battleCardsRowBox1=new BattleCardsRowBox(0, 3, width, BattleCardBox.cardHeight, this, 1, Battle.handZone, true);
-		battleCardsRowBox2=new BattleCardsRowBox(0, BattleCardBox.cardHeight+5, width, BattleCardBox.cardHeight, this, 1, Battle.fieldZone, false);
-		battleCardsRowBox3=new BattleCardsRowBox(0, (BattleCardBox.cardHeight+2)*2+3, width, BattleCardBox.cardHeight, this, 0, Battle.fieldZone, false);
-		battleCardsRowBox4=new BattleCardsRowBox(0, (BattleCardBox.cardHeight+2)*3+3, width, BattleCardBox.cardHeight, this, 0, Battle.handZone, false);
+	public BattleMiddleBox(int x, int y, int width, int height) {
+		super(x, y, width, height);
+		battleCardsRowBox1=new BattleCardsRowBox(0, 3, width, BattleCardBox.cardHeight, 1, Battle.handZone, true);
+		battleCardsRowBox2=new BattleCardsRowBox(0, BattleCardBox.cardHeight+5, width, BattleCardBox.cardHeight, 1, Battle.fieldZone, false);
+		battleCardsRowBox3=new BattleCardsRowBox(0, (BattleCardBox.cardHeight+2)*2+3, width, BattleCardBox.cardHeight, 0, Battle.fieldZone, false);
+		battleCardsRowBox4=new BattleCardsRowBox(0, (BattleCardBox.cardHeight+2)*3+3, width, BattleCardBox.cardHeight, 0, Battle.handZone, false);
 	}
 	
 	@Override

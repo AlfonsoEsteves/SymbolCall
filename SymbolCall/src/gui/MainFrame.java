@@ -32,9 +32,9 @@ public class MainFrame extends JFrame {
 		setLayout(null);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		mainBox = new MainBox(0, 0, width, height, null);
-		battleBox = new BattleBox(0, 0, width, height, null);
-		deckBuildingBox = new DeckBuildingBox(0, 0, width, height, null);
+		mainBox = new MainBox(0, 0, width, height);
+		battleBox = new BattleBox(0, 0, width, height);
+		deckBuildingBox = new DeckBuildingBox(0, 0, width, height);
 		setMinimumSize(new Dimension(width, height));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setVisible(true);
