@@ -3,9 +3,6 @@ package statistics;
 import javax.swing.JFrame;
 
 import game.Game;
-import loader.CardLoader;
-import loader.DeckLoader;
-import loader.ImageLoader;
 
 @SuppressWarnings("serial")
 public class StatisticsFrame extends JFrame {

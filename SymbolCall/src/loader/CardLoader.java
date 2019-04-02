@@ -9,7 +9,6 @@ import battle.Action;
 import battle.Battle;
 import battle.Card;
 import battle.Effect;
-import battle.Rnd;
 import bruteForceAI.CardScoreCalculator;
 import game.Game;
 

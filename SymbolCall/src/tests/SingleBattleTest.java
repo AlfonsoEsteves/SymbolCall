@@ -2,10 +2,10 @@ package tests;
 
 import battle.Battle;
 import battle.Player;
-import zAI.ZAI.ZAIFactory;
 import game.BattleExecutorManual;
 import game.Game;
 import gui.MainFrame;
+import zAI.ZAI.ZAIFactory;
 
 public class SingleBattleTest {
 	

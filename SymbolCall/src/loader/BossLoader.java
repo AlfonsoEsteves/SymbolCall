@@ -6,9 +6,8 @@ import java.io.FileReader;
 import java.util.LinkedList;
 
 import battle.Card;
-import bruteForceAI.BruteForceAI;
-import game.Game;
 import battle.Player;
+import game.Game;
 
 public class BossLoader {
 	

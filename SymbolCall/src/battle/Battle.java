@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import bruteForceAI.BruteForceAI;
-
 @SuppressWarnings("unchecked")
 public class Battle {
 

@@ -11,8 +11,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.Semaphore;
 import java.util.stream.IntStream;
 
-import battle.Player;
 import battle.Battle;
+import battle.Player;
 import persistence.Persistence;
 
 public class ThreadManager {

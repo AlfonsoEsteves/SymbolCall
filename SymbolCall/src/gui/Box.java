@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -28,6 +29,12 @@ public abstract class Box extends JPanel implements MouseInputListener, KeyListe
 	}
 
 	public void refresh() {
+		for(Component component : getComponents()) {
+			if(component instanceof Box){
+				Box box = (Box)component;
+				box.refresh();
+			}
+		}
 	}
 
 	@Override

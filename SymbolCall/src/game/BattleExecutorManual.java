@@ -1,8 +1,8 @@
 package game;
 
+import battle.Battle;
 import battle.Player;
 import gui.MainFrame;
-import battle.Battle;
 
 public class BattleExecutorManual extends BattleExecutor {
 

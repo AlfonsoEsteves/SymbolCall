@@ -13,8 +13,8 @@ import javax.swing.event.ListSelectionListener;
 import battle.BCard;
 import battle.Card;
 import game.Game;
-import gui.BoxButton;
 import gui.Box;
+import gui.BoxButton;
 import gui.MainFrame;
 import gui.battle.BattleCardBox;
 

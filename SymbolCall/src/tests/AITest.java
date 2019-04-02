@@ -8,7 +8,6 @@ import java.util.stream.IntStream;
 
 import battle.Battle;
 import battle.Player;
-import zAI.ZAI.ZAIFactory;
 import bruteForceAI.BruteForceAI.BruteForceAIFactory;
 import game.BattleExecutor;
 import game.BattleExecutorAutomatic;
@@ -16,7 +15,7 @@ import game.Game;
 import game.ThreadManager;
 import loader.CardLoader;
 import loader.DeckLoader;
-import randomAI.RandomAI.RandomAIFactory;
+import zAI.ZAI.ZAIFactory;
 
 public class AITest {
 

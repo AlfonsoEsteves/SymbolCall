@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.IntStream;
 
-import battle.Player;
 import battle.Battle;
-import battle.ComputerAI;
-import bruteForceAI.BruteForceAI.BruteForceAIFactory;
+import battle.Player;
 import game.BattleExecutor;
 import game.BattleExecutorAutomatic;
 import game.Game;

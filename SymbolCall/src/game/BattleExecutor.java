@@ -1,7 +1,7 @@
 package game;
 
-import battle.Player;
 import battle.Battle;
+import battle.Player;
 
 public abstract class BattleExecutor {
 

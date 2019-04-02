@@ -8,8 +8,8 @@ import javax.swing.ListSelectionModel;
 
 import game.Game;
 import game.ThreadManager;
-import gui.BoxButton;
 import gui.Box;
+import gui.BoxButton;
 import gui.MainFrame;
 import persistence.Persistence;
 

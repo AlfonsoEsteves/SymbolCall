@@ -13,13 +13,11 @@ public class BattleCardsRowBox extends Box {
 	
 	private int player;
 	private int zone;
-	private BattleMiddleBox container;
 	private BattleCardBox[] battleCardBoxes=new BattleCardBox[Battle.handAndFieldMaxSize];
 	private boolean atTop;
 	
 	public BattleCardsRowBox(int x, int y, int width, int height, int player, int zone, boolean atTop){
 		super(x, y, width, height);
-		this.container=container;
 		this.player=player;
 		this.zone=zone;
 		this.atTop=atTop;
@@ -59,7 +57,8 @@ public class BattleCardsRowBox extends Box {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		container.atTop=atTop;
+		BattleMiddleBox battleMiddleBox = (BattleMiddleBox)getParent();
+		battleMiddleBox.atTop=atTop;
 		MainFrame.instance.refresh();
 	}
 

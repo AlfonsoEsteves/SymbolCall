@@ -6,7 +6,6 @@ import battle.BCard;
 import battle.Battle;
 import battle.ComputerAI;
 import battle.Effect;
-import battle.Rnd;
 
 public class RandomAI extends ComputerAI {
 

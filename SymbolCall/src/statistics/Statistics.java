@@ -1,6 +1,5 @@
 package statistics;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import battle.Action;

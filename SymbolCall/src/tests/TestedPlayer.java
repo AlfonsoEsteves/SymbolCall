@@ -1,13 +1,7 @@
 package tests;
 
 import battle.Battle;
-import battle.Card;
-import battle.ComputerAI;
 import battle.ComputerAI.ComputerAIFactory;
-
-import java.util.List;
-import java.util.Random;
-
 import battle.Player;
 
 @SuppressWarnings("serial")

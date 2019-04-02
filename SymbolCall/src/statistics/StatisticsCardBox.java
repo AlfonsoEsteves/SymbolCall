@@ -23,10 +23,9 @@ public class StatisticsCardBox extends Box {
 	public BCard card;
 	public Box container;
 
-	public StatisticsCardBox(int x, int y, int width, int height, Box container, BCard card) {
-		super(x, y, width, height, container);
+	public StatisticsCardBox(int x, int y, int width, int height, BCard card) {
+		super(x, y, width, height);
 		this.card = card;
-		this.container=container;
 		battleEffectBoxs=new LinkedList<>();
 		int maxActions = 0;
 		for (Effect effect : card.model.effects) {
@@ -40,7 +39,7 @@ public class StatisticsCardBox extends Box {
 		int effectNumber=0;
 		for(Effect effect : card.model.effects) {
 			int effectHeight=effect.actions.size()*BattleEffectBox.actionHeight+6;
-			BattleEffectBox battleEffectBox = new BattleEffectBox(effectX, effectY, effectWidth, effectHeight, this);
+			BattleEffectBox battleEffectBox = new BattleEffectBox(effectX, effectY, effectWidth, effectHeight);
 			battleEffectBox.card = card;
 			battleEffectBox.effectNumber = effectNumber;
 			battleEffectBoxs.addLast(battleEffectBox);
