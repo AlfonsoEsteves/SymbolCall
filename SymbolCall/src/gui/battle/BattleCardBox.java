@@ -10,12 +10,12 @@ import java.awt.event.MouseEvent;
 import battle.BCard;
 import battle.Battle;
 import battle.Effect;
-import bruteForceAI.CardScoreCalculator;
 import game.Game;
 import gui.Box;
 import gui.FontList;
 import gui.ImageDrawer;
 import gui.MainFrame;
+import zAI.CardScoreCalculator;
 
 @SuppressWarnings("serial")
 public class BattleCardBox extends Box {

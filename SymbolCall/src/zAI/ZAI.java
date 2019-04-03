@@ -8,7 +8,6 @@ import battle.BCard;
 import battle.Battle;
 import battle.ComputerAI;
 import battle.Effect;
-import bruteForceAI.BattleScoreCalculator;
 
 /*
  * This AI is based on the fact the the deciding player does not change in a turn.

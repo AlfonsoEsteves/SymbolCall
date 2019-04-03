@@ -1,9 +1,9 @@
+/gui/
 /loader/
+/persistence/
+/randomAI/
 /statistics/
 /tests/
 /zAI/
-/gui/
-/game/
-/battle/
-/randomAI/
-/PENDING
+/ai/
+/bruteForceAI/

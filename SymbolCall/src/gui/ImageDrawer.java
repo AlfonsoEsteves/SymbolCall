@@ -4,8 +4,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 public class ImageDrawer {
-	public static void drawImage(Image image, int x, int y, int width, int height, Graphics graphics){
-		if(image!=null) {
+	public static void drawImage(Image image, int x, int y, int width, int height, Graphics graphics) {
+		if (image != null) {
 			double neededRatio = (double) height / (double) width;
 			double imageRatio = (double) image.getHeight(null) / (double) image.getWidth(null);
 			int sourceX1 = 0;
@@ -21,8 +21,7 @@ public class ImageDrawer {
 				sourceX1 = (image.getWidth(null) - sourceWidth) / 2;
 				sourceX2 = sourceX1 + sourceWidth;
 			}
-			graphics.drawImage(image, x, y, x + width, y + height, sourceX1,
-					sourceY1, sourceX2, sourceY2, null);
+			graphics.drawImage(image, x, y, x + width, y + height, sourceX1, sourceY1, sourceX2, sourceY2, null);
 		}
 	}
 }

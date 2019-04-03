@@ -1,6 +1,7 @@
-package bruteForceAI;
+package zAI;
 
 import battle.Battle;
+import bruteForceAI.AIValues;
 
 public class BattleScoreCalculator {
 

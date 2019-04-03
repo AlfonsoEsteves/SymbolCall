@@ -1,10 +1,11 @@
-package bruteForceAI;
+package zAI;
 
 import battle.Action;
 import battle.BCard;
 import battle.Battle;
 import battle.Card;
 import battle.Effect;
+import bruteForceAI.AIValues;
 
 public class CardScoreCalculator {
 	

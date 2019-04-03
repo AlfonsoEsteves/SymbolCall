@@ -24,6 +24,4 @@ public class StatisticsBox extends Box{
 		}
 	}
 	
-	
-
 }

@@ -9,8 +9,8 @@ import battle.Action;
 import battle.Battle;
 import battle.Card;
 import battle.Effect;
-import bruteForceAI.CardScoreCalculator;
 import game.Game;
+import zAI.CardScoreCalculator;
 
 public class CardLoader {
 

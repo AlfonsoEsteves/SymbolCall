@@ -7,6 +7,7 @@ import battle.BCard;
 import battle.Battle;
 import battle.ComputerAI;
 import battle.Effect;
+import zAI.BattleScoreCalculator;
 
 /*
  * This AI supports that the deciding player may changed, if a select target action is triggered.
