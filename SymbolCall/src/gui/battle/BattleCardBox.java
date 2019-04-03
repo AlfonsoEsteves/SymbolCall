@@ -36,6 +36,45 @@ public class BattleCardBox extends Box {
 	}
 
 	@Override
+	public void mousePressed(MouseEvent arg0) {
+		if (Game.instance.battle.turn == 0 && Game.instance.battle.state == Battle.choosingTargetCardState) {
+			int zone;
+			if (Game.instance.battle.choosingTargetStateAction.type == Battle.atkAction) {
+				zone = Battle.fieldZone;
+			} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.wdrAction) {
+				zone = Battle.fieldZone;
+			} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.invAction) {
+				zone = Battle.handZone;
+			} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.dscAction) {
+				zone = Battle.handZone;
+			} else {
+				throw new RuntimeException();
+			}
+			if (card.zone == zone) {
+				Game.instance.battle.setChosenTarget(card.battleId, Battle.noneAISimulating);
+				MainFrame.instance.refresh();
+			}
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		Box parent = (Box) getParent();
+		parent.setComponentZOrder(this, 0);
+		parent.mouseEntered(e);
+		repaint();
+	}
+
+	@Override
+	public void refresh() {
+		for (Component component : getComponents()) {
+			BattleEffectBox battleEffectBox = (BattleEffectBox)component;
+			battleEffectBox.card = card;
+		}
+		repaint();
+	}
+
+	@Override
 	public void paint(Graphics g) {
 		Graphics2D graphics = (Graphics2D) g;
 		if (card != null) {
@@ -100,45 +139,11 @@ public class BattleCardBox extends Box {
 				paintChildren(graphics);
 			}
 		}
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		if (Game.instance.battle.turn == 0 && Game.instance.battle.state == Battle.choosingTargetCardState) {
-			int zone;
-			if (Game.instance.battle.choosingTargetStateAction.type == Battle.atkAction) {
-				zone = Battle.fieldZone;
-			} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.wdrAction) {
-				zone = Battle.fieldZone;
-			} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.invAction) {
-				zone = Battle.handZone;
-			} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.dscAction) {
-				zone = Battle.handZone;
-			} else {
-				throw new RuntimeException();
-			}
-			if (card.zone == zone) {
-				Game.instance.battle.setChosenTarget(card.battleId, Battle.noneAISimulating);
-				MainFrame.instance.refresh();
-			}
-		}
-	}
-
-	@Override
-	public void refresh() {
-		for (Component component : getComponents()) {
-			BattleEffectBox battleEffectBox = (BattleEffectBox)component;
-			battleEffectBox.card = card;
-		}
-		repaint();
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		Box parent = (Box) getParent();
-		parent.setComponentZOrder(this, 0);
-		parent.mouseEntered(e);
-		repaint();
+		
+		
+		//TODO-ALF borrar esto!
+		graphics.setColor(Color.BLACK);
+		graphics.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
 	}
 
 }

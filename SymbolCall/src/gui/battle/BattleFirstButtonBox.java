@@ -8,10 +8,11 @@ import battle.Battle;
 import game.Game;
 import game.ThreadManager;
 import gui.Box;
+import gui.BoxButton;
 import gui.MainFrame;
 
 @SuppressWarnings("serial")
-public class BattleFirstButtonBox extends Box {
+public class BattleFirstButtonBox extends BoxButton {
 
 	public BattleFirstButtonBox(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -64,28 +65,28 @@ public class BattleFirstButtonBox extends Box {
 	}
 
 	@Override
-	public void paint(Graphics graphics) {
-		graphics.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
+	public String getText() {
 		if (Game.instance.battle.state == Battle.choosingActiveEffectState) {
 			if (Game.instance.battle.players[Game.instance.battle.turn].isHuman()) {
-				graphics.drawString("Pass turn", 14, 19);
+				return "Pass turn";
 			} else {
-				graphics.drawString("Next opponent's move", 14, 19);
+				return "Next opponent's move";
 			}
 		} else if (Game.instance.battle.state == Battle.choosingTargetCardState) {
 			if (Game.instance.battle.players[Game.instance.battle.turn].isHuman()) {
 				if (Game.instance.battle.choosingTargetStateAction.type == Battle.atkAction
 						&& Game.instance.battle.zones[1 - Game.instance.battle.turn][Battle.fieldZone].isEmpty()) {
-					graphics.drawString("Attack directly", 14, 19);
+					return "Attack directly";
 				} else {
-					graphics.drawString("Don't choose anything", 14, 19);
+					return "Don't choose anything";
 				}
 			} else {
-				graphics.drawString("Next (op choosing)", 14, 19);
+				return "Next (op choosing)";
 			}
 		} else if (Game.instance.battle.state == Battle.executingActionState) {
-			graphics.drawString("Next action", 14, 19);
+			return "Next action";
 		}
+		return null;
 	}
 
 }

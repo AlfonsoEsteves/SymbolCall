@@ -34,7 +34,7 @@ public class DeckBuildingBox extends Box {
 		deck.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		deck.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		deck.setVisibleRowCount(-1);
-		
+
 		ListSelectionListener deckSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
 				refreshDeckCard();
@@ -50,7 +50,7 @@ public class DeckBuildingBox extends Box {
 		inventory.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		inventory.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		inventory.setVisibleRowCount(-1);
-		
+
 		ListSelectionListener inventorySelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
 				refreshInventoryCard();
@@ -62,12 +62,12 @@ public class DeckBuildingBox extends Box {
 		inventoryScroller.setBounds(250, 10, 120, 200);
 		add(inventoryScroller);
 
-		BoxButton switchCardsButton = new BoxButton("Switch Cards", 300, 300, 100, 50) {
+		BoxButton switchCardsButton = new BoxButton(300, 300, 100, 50) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Card deckCard = (Card) deck.getSelectedValue();
 				Card inventoryCard = (Card) inventory.getSelectedValue();
-				if(deckCard != null && inventoryCard != null) {
+				if (deckCard != null && inventoryCard != null) {
 					Game.instance.humanPlayer.deck.remove(deckCard);
 					Game.instance.humanPlayer.inventory.add(deckCard);
 					Game.instance.humanPlayer.inventory.remove(inventoryCard);
@@ -75,22 +75,37 @@ public class DeckBuildingBox extends Box {
 					MainFrame.instance.refresh();
 				}
 			}
+
+			@Override
+			public String getText() {
+				return "Switch Cards";
+			}
 		};
 		add(switchCardsButton);
 
-		BoxButton goBackButton = new BoxButton("Go Back", 100, 600, 100, 50) {
+		BoxButton goBackButton = new BoxButton(100, 600, 100, 50) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				MainFrame.instance.enterBox(MainFrame.instance.mainBox);
 			}
+
+			@Override
+			public String getText() {
+				return "Go Back";
+			}
 		};
 		add(goBackButton);
 
-		BoxButton buyButton = new BoxButton("Buy", 800, 400, 100, 50) {
+		BoxButton buyButton = new BoxButton(800, 400, 100, 50) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Game.instance.buyAvailableToBuy();
 				MainFrame.instance.refresh();
+			}
+
+			@Override
+			public String getText() {
+				return "Buy";
 			}
 		};
 		add(buyButton);
@@ -119,7 +134,7 @@ public class DeckBuildingBox extends Box {
 		refreshInventoryCard();
 		refreshDeckCard();
 	}
-	
+
 	private void refreshInventoryCard() {
 		Card inventoryCard = (Card) inventory.getSelectedValue();
 		if (inventoryCard != null) {
@@ -127,7 +142,7 @@ public class DeckBuildingBox extends Box {
 			battleCardBoxInventory.refresh();
 		}
 	}
-	
+
 	private void refreshDeckCard() {
 		Card deckCard = (Card) deck.getSelectedValue();
 		if (deckCard != null) {

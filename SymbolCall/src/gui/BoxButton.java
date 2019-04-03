@@ -6,23 +6,22 @@ import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
 public abstract class BoxButton extends Box {
-	
-	private String text;
 
-	public BoxButton(String text, int x, int y, int width, int height) {
+	public BoxButton(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		this.text = text;
 	}
 
 	@Override
 	public abstract void mousePressed(MouseEvent arg0);
+
+	public abstract String getText();
 	
 	@Override
 	public void paint(Graphics graphics) {
 		graphics.setColor(Color.orange);
 		graphics.fillRect(0, 0, getWidth()-1, getHeight()-1);
 		graphics.setColor(Color.black);
-		graphics.drawString(text, 0, getHeight() / 2);
+		graphics.drawString(getText(), 0, getHeight() / 2);
 	}
 
 }

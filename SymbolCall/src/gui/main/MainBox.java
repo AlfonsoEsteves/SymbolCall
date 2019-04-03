@@ -30,36 +30,56 @@ public class MainBox extends Box {
 		listScroller.setBounds(300, 10, 120, 200);
 		add(listScroller);
 		
-		BoxButton startBattleButtonBox = new BoxButton("Start Battle", 50, 50, 100, 100) {
+		BoxButton startBattleButtonBox = new BoxButton(50, 50, 100, 100) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				ThreadManager.instance.roundCanBeStarted.release();
 				// The ThreadExecutor will call BattleExecutorManual
 				// And BattleExecutorManual will make the frame enter the battle box
 			}
+
+			@Override
+			public String getText() {
+				return "Start Battle";
+			}
 		};
 		add(startBattleButtonBox);
 		
-		BoxButton deckBuildingButtonBox = new BoxButton("Deck Building", 120, 250, 100, 100) {			
+		BoxButton deckBuildingButtonBox = new BoxButton(120, 250, 100, 100) {			
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				MainFrame.instance.enterBox(MainFrame.instance.deckBuildingBox);
 			}
+
+			@Override
+			public String getText() {
+				return "Deck Building";
+			}
 		};
 		add(deckBuildingButtonBox);
 		
-		BoxButton saveButtonBox = new BoxButton("Save", 920, 350, 100, 100) {			
+		BoxButton saveButtonBox = new BoxButton(920, 350, 100, 100) {			
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Persistence.serialize("save");
 			}
+
+			@Override
+			public String getText() {
+				return "Save";
+			}
 		};
 		add(saveButtonBox);
 		
-		BoxButton loadButtonBox = new BoxButton("Load", 920, 450, 100, 100) {			
+		BoxButton loadButtonBox = new BoxButton(920, 450, 100, 100) {			
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Persistence.deserialize("save");
+			}
+
+			@Override
+			public String getText() {
+				return "Load";
 			}
 		};
 		add(loadButtonBox);

@@ -1,13 +1,11 @@
 package gui.battle;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 
-import gui.Box;
+import gui.BoxButton;
 
 @SuppressWarnings("serial")
-public class BattleThirdButtonBox extends Box {
+public class BattleThirdButtonBox extends BoxButton {
 
 	public BattleThirdButtonBox(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -19,10 +17,8 @@ public class BattleThirdButtonBox extends Box {
 	}
 
 	@Override
-	public void paint(Graphics graphics) {
-		graphics.setColor(Color.orange);
-		graphics.fillRect(0, 0, getWidth()-1, getHeight()-1);
-		paintChildren(graphics);
+	public String getText() {
+		return "Surrender";
 	}
 
 }
