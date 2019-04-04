@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
+import javax.swing.RepaintManager;
 import javax.swing.event.MouseInputListener;
 
 @SuppressWarnings("serial")
@@ -16,6 +17,9 @@ public abstract class Box extends JPanel implements MouseInputListener, KeyListe
 	public Box(int x, int y, int width, int height) {
 		setBounds(x, y, width, height);
 		setLayout(null);
+		
+		RepaintManager.currentManager(this).markCompletelyClean(this);
+		
 
 		// Mouse listeners need to be added to themselves to have the correct mouse
 		// position values

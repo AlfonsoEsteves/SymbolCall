@@ -31,7 +31,6 @@ public class MainFrame extends JFrame {
 		setSize(width, height);
 		setLayout(null);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		mainBox = new MainBox(0, 0, width, height);
 		battleBox = new BattleBox(0, 0, width, height);
 		deckBuildingBox = new DeckBuildingBox(0, 0, width, height);
@@ -43,9 +42,6 @@ public class MainFrame extends JFrame {
 	public void enterBox(Box box) {
 		exitCurrentBox();
 		currentBox = box;
-		add(currentBox);
-        setFocusable(true);
-        requestFocusInWindow();
 		refresh();
 	}
 
@@ -55,9 +51,12 @@ public class MainFrame extends JFrame {
 			currentBox = null;
 		}
 	}
-
+	
 	public void refresh() {
+		remove(currentBox);
 		currentBox.refresh();
+		add(currentBox);
+		validate();
 		repaint();
 	}
 }
