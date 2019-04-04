@@ -40,23 +40,17 @@ public class MainFrame extends JFrame {
 	}
 
 	public void enterBox(Box box) {
-		exitCurrentBox();
-		currentBox = box;
-		refresh();
-	}
-
-	public void exitCurrentBox() {
 		if(currentBox != null) {
 			remove(currentBox);
-			currentBox = null;
 		}
-	}
-	
-	public void refresh() {
-		remove(currentBox);
+		currentBox = box;
 		currentBox.refresh();
 		add(currentBox);
-		validate();
+		validate(); // This is needed so lists always show their content
 		repaint();
+	}
+
+	public void refresh() {
+		enterBox(currentBox);
 	}
 }
