@@ -33,7 +33,6 @@ public class BattleStackBox extends Box {
 		int cardY=15-entryHeight;
 		int actionY=0;
 		for(ActionExecution actionExecution : Game.instance.battle.executionStack) {
-			//Action action=actionExecution.action;
 			Effect effect=Game.instance.battle.cards[actionExecution.executingCard].model.effects.get(actionExecution.executingEffect);
 			if(effect!=lastEffect || actionExecution.executingCard!=lastCard) {
 				lastEffect=effect;

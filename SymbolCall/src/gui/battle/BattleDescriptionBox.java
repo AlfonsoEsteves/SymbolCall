@@ -15,23 +15,22 @@ public class BattleDescriptionBox extends Box {
 
 	@Override
 	public void paint(Graphics graphics) {
-		graphics.drawRect(0, 0, getWidth()-1, getHeight()-1);
+		graphics.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 		String turnString;
-		if(Game.instance.battle.turn==0) {
-			turnString="Bottom player's turn";
-		}
-		else {
-			turnString="Top player's turn";
+		if (Game.instance.battle.turn == 0) {
+			turnString = "Bottom player's turn";
+		} else {
+			turnString = "Top player's turn";
 		}
 		graphics.drawString(turnString, 14, 35);
-		String stateString="";
-		if(Game.instance.battle.state==Battle.executingActionState) {
-			stateString="Executing chain of actions";
+		String stateString = "";
+		if (Game.instance.battle.state == Battle.executingActionState) {
+			stateString = "Executing chain of actions";
 		}
-		if(Game.instance.battle.state==Battle.choosingTargetCardState) {
-			stateString="Choosing target";
+		if (Game.instance.battle.state == Battle.choosingTargetCardState) {
+			stateString = "Choosing target";
 		}
-		graphics.drawString(stateString, 14, 65);	
+		graphics.drawString(stateString, 14, 65);
 	}
 
 }

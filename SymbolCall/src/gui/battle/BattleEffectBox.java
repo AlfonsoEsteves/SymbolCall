@@ -51,6 +51,7 @@ public class BattleEffectBox extends Box {
 		else {
 			graphics.drawImage(ImageLoader.availableEffect, 0, 6, null);
 		}		
+		//TODO-ALF REMOVE THIS LINES
 		/*graphics.setColor(Color.RED);
 		graphics.drawRect(0, 6, getWidth()-1, getHeight()-7);*/
 		int effectPartY = actionsStart[effect.actions.size()-1];

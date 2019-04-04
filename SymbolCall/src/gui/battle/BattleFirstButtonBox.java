@@ -1,13 +1,11 @@
 package gui.battle;
 
-import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import battle.Battle;
 import game.Game;
 import game.ThreadManager;
-import gui.Box;
 import gui.BoxButton;
 import gui.MainFrame;
 

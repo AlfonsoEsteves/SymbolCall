@@ -8,7 +8,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
-import javax.swing.RepaintManager;
 import javax.swing.event.MouseInputListener;
 
 @SuppressWarnings("serial")
@@ -29,6 +28,8 @@ public abstract class Box extends JPanel implements MouseInputListener, KeyListe
 		}
 	}
 
+	// Refresh should not attempt to draw anything
+	// It just settles stuff, and refresh its children
 	public void refresh() {
 		for(Component component : getComponents()) {
 			if(component instanceof Box){
