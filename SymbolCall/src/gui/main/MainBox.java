@@ -58,6 +58,19 @@ public class MainBox extends Box {
 		};
 		add(deckBuildingButtonBox);
 		
+		BoxButton buyCardButtonBox = new BoxButton(240, 250, 100, 100) {			
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				MainFrame.instance.enterBox(MainFrame.instance.buyCardBox);
+			}
+
+			@Override
+			public String getText() {
+				return "Buy Card";
+			}
+		};
+		add(buyCardButtonBox);
+		
 		BoxButton saveButtonBox = new BoxButton(920, 350, 100, 100) {			
 			@Override
 			public void mousePressed(MouseEvent arg0) {

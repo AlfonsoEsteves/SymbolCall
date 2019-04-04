@@ -1,7 +1,5 @@
 package gui.deckbuilding;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JList;
@@ -23,7 +21,6 @@ public class DeckBuildingBox extends Box {
 
 	public JList<Object> deck;
 	public JList<Object> inventory;
-	public BattleCardBox battleCardBoxBuy;
 	public BattleCardBox battleCardBoxInventory;
 	public BattleCardBox battleCardBoxDeck;
 
@@ -96,24 +93,6 @@ public class DeckBuildingBox extends Box {
 		};
 		add(goBackButton);
 
-		BoxButton buyButton = new BoxButton(800, 400, 100, 50) {
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				Game.instance.buyAvailableToBuy();
-				MainFrame.instance.refresh();
-			}
-
-			@Override
-			public String getText() {
-				return "Buy";
-			}
-		};
-		add(buyButton);
-
-		battleCardBoxBuy = new BattleCardBox();
-		battleCardBoxBuy.setBounds(830, 30, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
-		add(battleCardBoxBuy);
-
 		battleCardBoxInventory = new BattleCardBox();
 		battleCardBoxInventory.setBounds(30, 30, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
 		add(battleCardBoxInventory);
@@ -127,9 +106,6 @@ public class DeckBuildingBox extends Box {
 	public void refresh() {
 		deck.setListData(Game.instance.humanPlayer.deck.toArray());
 		inventory.setListData(Game.instance.humanPlayer.inventory.toArray());
-
-		battleCardBoxBuy.card = new BCard(Game.instance.availableToBuy);
-		battleCardBoxBuy.refresh();
 
 		refreshInventoryCard();
 		refreshDeckCard();
@@ -149,13 +125,6 @@ public class DeckBuildingBox extends Box {
 			battleCardBoxDeck.card = new BCard(deckCard);
 			battleCardBoxDeck.refresh();
 		}
-	}
-
-	@Override
-	public void paint(Graphics graphics) {
-		graphics.setColor(Color.black);
-		graphics.drawString("Gold: " + Game.instance.gold, 600, 500);
-		paintChildren(graphics);
 	}
 
 }
