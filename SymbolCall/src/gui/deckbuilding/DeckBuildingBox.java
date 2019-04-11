@@ -2,12 +2,6 @@ package gui.deckbuilding;
 
 import java.awt.event.MouseEvent;
 
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import battle.BCard;
 import battle.Card;
 import game.Game;
@@ -18,69 +12,36 @@ import gui.battle.BattleCardBox;
 
 @SuppressWarnings("serial")
 public class DeckBuildingBox extends Box {
+	
+	public static final int verticalCardCount = 3;
+	public static final int horizontalCardCount = 9;
+	
+	public static final int cardWidth = 135;
+	public static final int cardHeight = 170;
 
-	public JList<Object> deck;
-	public JList<Object> inventory;
-	public BattleCardBox battleCardBoxInventory;
-	public BattleCardBox battleCardBoxDeck;
+	public BattleCardBox[][] battleCardBoxesInventory;
+	public BattleCardBox[] battleCardBoxesDeck;
 
 	public DeckBuildingBox(int x, int y, int width, int height) {
 		super(x, y, width, height);
-
-		deck = new JList<Object>();
-		deck.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		deck.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		deck.setVisibleRowCount(-1);
-
-		ListSelectionListener deckSelectionListener = new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent listSelectionEvent) {
-				refreshDeckCard();
+		
+		battleCardBoxesInventory = new BattleCardBox[horizontalCardCount][verticalCardCount];
+		for(int i = 0;i<horizontalCardCount;i++) {
+			for(int j = 0;j<verticalCardCount;j++) {
+				battleCardBoxesInventory[i][j] = new BattleCardBox();
+				battleCardBoxesInventory[i][j].setBounds(80 + i * cardWidth, 220 + j * cardHeight, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
+				add(battleCardBoxesInventory[i][j]);
 			}
-		};
-		deck.addListSelectionListener(deckSelectionListener);
+		}
+		
+		battleCardBoxesDeck = new BattleCardBox[horizontalCardCount];
+		for(int i = 0;i<horizontalCardCount;i++) {
+			battleCardBoxesDeck[i] = new BattleCardBox();
+			battleCardBoxesDeck[i].setBounds(80 + i * cardWidth, 0, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
+			add(battleCardBoxesDeck[i]);
+		}
 
-		JScrollPane deckScroller = new JScrollPane(deck);
-		deckScroller.setBounds(400, 10, 120, 200);
-		add(deckScroller);
-
-		inventory = new JList<Object>();
-		inventory.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		inventory.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		inventory.setVisibleRowCount(-1);
-
-		ListSelectionListener inventorySelectionListener = new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent listSelectionEvent) {
-				refreshInventoryCard();
-			}
-		};
-		inventory.addListSelectionListener(inventorySelectionListener);
-
-		JScrollPane inventoryScroller = new JScrollPane(inventory);
-		inventoryScroller.setBounds(250, 10, 120, 200);
-		add(inventoryScroller);
-
-		BoxButton switchCardsButton = new BoxButton(300, 300, 100, 50) {
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				Card deckCard = (Card) deck.getSelectedValue();
-				Card inventoryCard = (Card) inventory.getSelectedValue();
-				if (deckCard != null && inventoryCard != null) {
-					Game.instance.humanPlayer.deck.remove(deckCard);
-					Game.instance.humanPlayer.inventory.add(deckCard);
-					Game.instance.humanPlayer.inventory.remove(inventoryCard);
-					Game.instance.humanPlayer.deck.add(inventoryCard);
-					MainFrame.instance.refresh();
-				}
-			}
-
-			@Override
-			public String getText() {
-				return "Switch Cards";
-			}
-		};
-		add(switchCardsButton);
-
-		BoxButton goBackButton = new BoxButton(100, 600, 100, 50) {
+		BoxButton goBackButton = new BoxButton(10, 700, 60, 50) {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				MainFrame.instance.enterBox(MainFrame.instance.mainBox);
@@ -92,39 +53,34 @@ public class DeckBuildingBox extends Box {
 			}
 		};
 		add(goBackButton);
-
-		battleCardBoxInventory = new BattleCardBox();
-		battleCardBoxInventory.setBounds(30, 30, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
-		add(battleCardBoxInventory);
-
-		battleCardBoxDeck = new BattleCardBox();
-		battleCardBoxDeck.setBounds(530, 30, BattleCardBox.cardWidth, BattleCardBox.cardHeight);
-		add(battleCardBoxDeck);
+		
+		refresh();
 	}
 
 	@Override
 	public void refresh() {
-		deck.setListData(Game.instance.humanPlayer.deck.toArray());
-		inventory.setListData(Game.instance.humanPlayer.inventory.toArray());
-
-		refreshInventoryCard();
-		refreshDeckCard();
-	}
-
-	private void refreshInventoryCard() {
-		Card inventoryCard = (Card) inventory.getSelectedValue();
-		if (inventoryCard != null) {
-			battleCardBoxInventory.card = new BCard(inventoryCard);
-			battleCardBoxInventory.refresh();
+		for(int j = 0;j<verticalCardCount;j++) {
+			for(int i = 0;i<horizontalCardCount;i++) {
+				int index = j*horizontalCardCount + i;
+				if(index < Game.instance.humanPlayer.inventory.size()) {
+					Card inventoryCard = Game.instance.humanPlayer.inventory.get(index);
+					battleCardBoxesInventory[i][j].card = new BCard(inventoryCard);
+					battleCardBoxesInventory[i][j].refresh();
+				}
+				else {
+					battleCardBoxesInventory[i][j].card = null;
+				}
+			}
+		}
+		for(int j = 0;j<horizontalCardCount;j++) {
+			if(j < Game.instance.humanPlayer.deck.size()) {
+				Card inventoryCard = Game.instance.humanPlayer.deck.get(j);
+				battleCardBoxesDeck[j].card = new BCard(inventoryCard);
+				battleCardBoxesDeck[j].refresh();
+			}
+			else {
+				battleCardBoxesDeck[j].card = null;
+			}
 		}
 	}
-
-	private void refreshDeckCard() {
-		Card deckCard = (Card) deck.getSelectedValue();
-		if (deckCard != null) {
-			battleCardBoxDeck.card = new BCard(deckCard);
-			battleCardBoxDeck.refresh();
-		}
-	}
-
 }

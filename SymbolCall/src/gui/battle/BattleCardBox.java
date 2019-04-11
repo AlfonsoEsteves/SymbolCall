@@ -71,9 +71,6 @@ public class BattleCardBox extends Box {
 			BattleEffectBox battleEffectBox = (BattleEffectBox)component;
 			battleEffectBox.card = card;
 		}
-		
-		//TODO-ALF QUITAR ESTE REPAINT DEL REFRESH
-		repaint();
 	}
 
 	@Override
@@ -141,10 +138,6 @@ public class BattleCardBox extends Box {
 				paintChildren(graphics);
 			}
 		}
-		
-		//TODO-ALF borrar esto!
-		graphics.setColor(Color.BLACK);
-		graphics.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
 	}
 
 }
