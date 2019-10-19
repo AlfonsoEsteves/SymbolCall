@@ -66,9 +66,11 @@ public class DeckBuildingBox extends Box {
 					Card inventoryCard = Game.instance.humanPlayer.inventory.get(index);
 					battleCardBoxesInventory[i][j].card = new BCard(inventoryCard);
 					battleCardBoxesInventory[i][j].refresh();
+					battleCardBoxesInventory[i][j].setVisible(true);
 				}
 				else {
 					battleCardBoxesInventory[i][j].card = null;
+					battleCardBoxesInventory[i][j].setVisible(false);
 				}
 			}
 		}
@@ -77,9 +79,11 @@ public class DeckBuildingBox extends Box {
 				Card inventoryCard = Game.instance.humanPlayer.deck.get(j);
 				battleCardBoxesDeck[j].card = new BCard(inventoryCard);
 				battleCardBoxesDeck[j].refresh();
+				battleCardBoxesDeck[j].setVisible(true);
 			}
 			else {
 				battleCardBoxesDeck[j].card = null;
+				battleCardBoxesDeck[j].setVisible(false);
 			}
 		}
 	}
