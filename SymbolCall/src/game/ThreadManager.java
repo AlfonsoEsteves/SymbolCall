@@ -59,10 +59,15 @@ public class ThreadManager {
 				for (int i = 0; i < Game.instance.players.size() / 2; i++) {
 					LeaguePlayer player1 = Game.instance.players.get(i * 2);
 					LeaguePlayer player2 = Game.instance.players.get(i * 2 + 1);
-					if (player1.isHuman() || player2.isHuman()) {
+					if (player1.isHuman()) {
 						players1.addFirst(player1);
 						players2.addFirst(player2);
-					} else {
+					}
+					else if (player2.isHuman()) {
+						players1.addFirst(player2);
+						players2.addFirst(player1);
+					}
+					else {
 						players1.addLast(player1);
 						players2.addLast(player2);
 					}

@@ -367,7 +367,7 @@ public class Battle {
 										}
 									}
 									if (triggered) {
-										if(AISimulating == noneAISimulating && !card.visible && card.player != turn) {
+										if(AISimulating == noneAISimulating && !card.visible && card.player != turn && computerAIs[1 - card.player] != null) {
 											computerAIs[1 - card.player].notifyUnexpectedEffectTriggered();
 										}
 										addEffectToExecutionStack(card.battleId, effectNumber, triggeringCard);
