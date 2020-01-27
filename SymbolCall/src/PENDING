@@ -1,14 +1,9 @@
 
-
-
-
 Me parece que el juego es un poco abrumador:
   mucha info
   mochas opciones
   muchos efectos encadenados, de los cuales es un embole llevarles el track a todos
   muy largo las partidas y los turnos
-  
-  
   
   
 Opciones:
@@ -17,7 +12,14 @@ Opciones:
   
   
   
+ya saque las cartas que tiene varios choose attaks en el mismo efecto
+  
   
 mmm, 
   capas si limito el numero de cartas en el campo (a 5 talvez)
     haga que sea conveniente tener cartas suicidas
+    
+
+cuando se invoca una 6ta carta, la mas vieja en el campo es destruida
+cuando se saca una 6ta carta, la mas viea en la mano es descartada
+  esto disminulle el numero de decisiones, y de informacion en el campo

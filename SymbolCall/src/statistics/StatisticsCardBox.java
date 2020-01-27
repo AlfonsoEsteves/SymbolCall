@@ -11,14 +11,13 @@ import gui.Box;
 import gui.ImageDrawer;
 import gui.battle.BattleEffectBox;
 
-public class StatisticsCardBox extends Box {
+public class StatisticsCardBox  {
 
-	public static int cardHeight = 174;
-	public static int cardWidth = 135;
+	public static int cardHeight = 201;
+	public static int cardWidth = 139;
 	public static int effectWidth = 30;
 	
-	
-	public LinkedList<BattleEffectBox> battleEffectBoxs;
+	/*public LinkedList<BattleEffectBox> battleEffectBoxs;
 
 	public BCard card;
 	public Box container;
@@ -103,6 +102,6 @@ public class StatisticsCardBox extends Box {
 			graphics.drawString("H "+hs, 5, 39);
 			paintChildren(graphics);
 		}
-	}
+	}*/
 
 }

@@ -6,8 +6,7 @@ invo sl
 
 field effect:
 []
-atta ch 3
-atta ch 4
+atta ch 7
 
 field effect:
 [y0]

@@ -6,9 +6,8 @@ invo sl
 
 field effect:
 []
-atta ch 4
 call g2
-atta ch 5
+atta ch 9
 
 description:
 This is a field card.

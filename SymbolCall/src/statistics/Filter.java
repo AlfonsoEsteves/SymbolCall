@@ -20,9 +20,9 @@ public class Filter {
 	public static int action1 = Battle.dscAction;
 	public static int action2 = Battle.wdrAction;
 
-	public static int symbol1 = Battle.ylSymbol;
-	public static int symbol2 = -1;// Battle.rdSymbol;
-	public static int symbol3 = -1;// Battle.aqSymbol;
+	public static int symbol1 = Battle.rdSymbol;
+	public static int symbol2 = -1;//Battle.rdSymbol;
+	public static int symbol3 = -1;//Battle.blSymbol;
 
 	public static List<Card> filter(List<Card> list) {
 		List<Card> result = new LinkedList<>();
@@ -66,13 +66,15 @@ public class Filter {
 	public static boolean hasSymbol(Card card) {
 		for (Effect effect : card.effects) {
 			for (Integer integer : effect.sequence) {
-				if (integer == symbol1 || integer == symbol2 || integer == symbol3) {
+				int color = integer / Battle.symbolFamilySubtypesPlusOne;
+				if (color == symbol1 || color == symbol2 || color == symbol3) {
 					return true;
 				}
 			}
 			for (Action action : effect.actions) {
 				if (action.type == Battle.cllAction) {
-					if (action.info == symbol1 || action.info == symbol2 || action.info == symbol3) {
+					int color = action.info / Battle.symbolFamilySubtypesPlusOne;
+					if (color == symbol1 || color == symbol2 || color == symbol3) {
 						return true;
 					}
 				}
@@ -153,16 +155,16 @@ public class Filter {
 		return false;
 	}
 
-	public static boolean wanted(Card card) {
-		boolean unwanted = false;
+	public static boolean unwanted(Card card) {
+		boolean wanted = false;
 		for (String deckName : DeckLoader.decks.keySet()) {
 			for (Card card2 : DeckLoader.decks.get(deckName)) {
 				if (card2.name.equals(card.name)) {
-					unwanted = true;
+					wanted = true;
 				}
 			}
 		}
-		return unwanted;
+		return !wanted;
 	}
 
 	public static boolean none(Card card) {

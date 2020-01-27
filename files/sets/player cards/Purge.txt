@@ -1,0 +1,13 @@
+1
+
+hand effect:
+[]
+call g1
+atta ch 11
+disc sl
+
+description:
+This is the first card that is the first hand damage discard card
+
+interesting:
+85

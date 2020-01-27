@@ -12,8 +12,7 @@ invo sl
 
 field effect:
 []
-atta ch 5
-atta ch 7
+atta ch 12
 
 description:
 This is a strong field card.
