@@ -15,6 +15,7 @@ import gui.Box;
 import gui.FontList;
 import gui.ImageDrawer;
 import gui.MainFrame;
+import gui.deckbuilding.DeckBuildingBox;
 import zAI.CardScoreCalculator;
 
 @SuppressWarnings("serial")
@@ -37,23 +38,28 @@ public class BattleCardBox extends Box {
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		if (Game.instance.battle.turn == 0 && Game.instance.battle.state == Battle.choosingTargetCardState) {
-			int zone;
-			if (Game.instance.battle.choosingTargetStateAction.type == Battle.atkAction) {
-				zone = Battle.fieldZone;
-			} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.wdrAction) {
-				zone = Battle.fieldZone;
-			} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.invAction) {
-				zone = Battle.handZone;
-			} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.dscAction) {
-				zone = Battle.handZone;
-			} else {
-				throw new RuntimeException();
+		if(Game.instance.battle != null) {
+			if (Game.instance.battle.turn == 0 && Game.instance.battle.state == Battle.choosingTargetCardState) {
+				int zone;
+				if (Game.instance.battle.choosingTargetStateAction.type == Battle.atkAction) {
+					zone = Battle.fieldZone;
+				} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.wdrAction) {
+					zone = Battle.fieldZone;
+				} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.invAction) {
+					zone = Battle.handZone;
+				} else if (Game.instance.battle.choosingTargetStateAction.type == Battle.dscAction) {
+					zone = Battle.handZone;
+				} else {
+					throw new RuntimeException();
+				}
+				if (card.zone == zone) {
+					Game.instance.battle.setChosenTarget(card.battleId, Battle.noneAISimulating);
+					MainFrame.instance.refresh();
+				}
 			}
-			if (card.zone == zone) {
-				Game.instance.battle.setChosenTarget(card.battleId, Battle.noneAISimulating);
-				MainFrame.instance.refresh();
-			}
+		}
+		else {
+			DeckBuildingBox.instance.clickedCard(this);
 		}
 	}
 

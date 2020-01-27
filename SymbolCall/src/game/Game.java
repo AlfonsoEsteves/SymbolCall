@@ -33,7 +33,7 @@ public class Game implements Serializable{
 	
 	public static final int initialGold = 15;
 	public static final int cardCost = 12;
-	public static final int cumputerPlayers = 10;
+	public static final int cumputerPlayers = 9;
 	
 	public Rnd rnd;
 

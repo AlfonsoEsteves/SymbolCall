@@ -15,7 +15,7 @@ public class Player implements Serializable{
 
 	public String name;
 	public List<Card> deck;
-	public transient ComputerAIFactory computerAIFactory;
+	public ComputerAIFactory computerAIFactory;
 	
 	public Player() {}
 	

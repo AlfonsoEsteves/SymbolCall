@@ -1,5 +1,6 @@
 package bruteForceAI;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -19,7 +20,8 @@ public class BruteForceAI extends ComputerAI {
 	public static final int nodesArraySize = maxCheckedNodes + leeway;
 	public static final int maxOptions = 50;
 	
-	public static class BruteForceAIFactory extends ComputerAIFactory{
+	@SuppressWarnings("serial")
+	public static class BruteForceAIFactory extends ComputerAIFactory implements Serializable{
 		public ComputerAI create(int player, int rndSeed) {
 			return new BruteForceAI(player, rndSeed);
 		}

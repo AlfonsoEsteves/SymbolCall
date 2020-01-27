@@ -41,6 +41,8 @@ public abstract class Box extends JPanel implements MouseInputListener, KeyListe
 
 	@Override
 	public void paint(Graphics graphics) {
+		graphics.setColor(Color.LIGHT_GRAY);
+		graphics.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
 		graphics.setColor(Color.RED);
 		graphics.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 		paintChildren(graphics);
