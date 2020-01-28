@@ -40,6 +40,8 @@ public class Battle {
 	public static final int ylSymbol = 3;
 	
 	public static final int noneAISimulating = -1;
+	
+	public static final int maxCardsInZone = 5;
 
 	public int[] healths = new int[2];
 	public BCard[] cards = new BCard[Battle.deckSize * 2];
@@ -231,6 +233,10 @@ public class Battle {
 			card.turn = true;
 			card.drawn = true;
 			zones[player][Battle.handZone].addLast(c);
+			if(zones[player][Battle.handZone].size() > maxCardsInZone) {
+				Integer discarded = zones[player][Battle.handZone].removeFirst();
+				zones[player][Battle.deckZone].addLast(discarded);
+			}
 		} else {
 			System.out.println("Warning: EMPTY DECK");
 		}
@@ -280,6 +286,10 @@ public class Battle {
 				logMessage(card.model.name + " was invoked on the field");
 				zones[card.player][card.zone].remove((Object) c);
 				zones[card.player][Battle.fieldZone].addLast(c);
+				if(zones[card.player][Battle.fieldZone].size() > maxCardsInZone) {
+					Integer destroyed = zones[card.player][Battle.fieldZone].removeFirst();
+					zones[card.player][Battle.deckZone].addLast(destroyed);
+				}
 				card.zone = Battle.fieldZone;
 				card.health = card.model.maxHealth;
 				card.visible = true;
@@ -292,6 +302,10 @@ public class Battle {
 				card.health = card.model.maxHealth;
 				zones[card.player][card.zone].remove((Object) c);
 				zones[card.player][Battle.handZone].addLast(c);
+				if(zones[card.player][Battle.handZone].size() > maxCardsInZone) {
+					Integer discarded = zones[card.player][Battle.handZone].removeFirst();
+					zones[card.player][Battle.deckZone].addLast(discarded);
+				}
 				card.zone = Battle.handZone;
 			} else {
 				logMessage(card.model.name + " wasn't withdrawn because it already was in its player's hand");
