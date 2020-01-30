@@ -19,7 +19,7 @@ import zAI.ZAI.ZAIFactory;
 
 public class AITest {
 
-	public static final int repetitions = 30;
+	public static final int repetitions = 1;
 
 	public static LinkedList<TestedPlayer> brutePlayers;
 	public static LinkedList<TestedPlayer> randomPlayers;
