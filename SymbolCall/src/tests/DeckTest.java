@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 import battle.Battle;
@@ -18,7 +19,7 @@ import zAI.ZAI.ZAIFactory;;
 
 public class DeckTest {
 
-	public static final int repetitions = 5;
+	public static final int repetitions = 11;
 	
 	public static LinkedList<TestedPlayer> testPlayers;
 	

@@ -20,14 +20,14 @@ public class Filter {
 	public static int action1 = Battle.dscAction;
 	public static int action2 = Battle.wdrAction;
 
-	public static int symbol1 = Battle.rdSymbol;
+	public static int symbol1 = Battle.blSymbol;
 	public static int symbol2 = -1;//Battle.rdSymbol;
 	public static int symbol3 = -1;//Battle.blSymbol;
 
 	public static List<Card> filter(List<Card> list) {
 		List<Card> result = new LinkedList<>();
 		for (Card card : list) {
-			if (none(card)) {
+			if (unwanted(card)) {
 				result.add(card);
 			}
 		}

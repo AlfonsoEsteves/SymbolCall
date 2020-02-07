@@ -3,7 +3,7 @@
 hand effect:
 [y1 r1]
 invo sl
-call g1
+call b2
 
 field effect:
 []

@@ -1,0 +1,19 @@
+9
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+atta ch 4
+call y2
+
+field effect:
+[]
+atta ch 9
+atta sl 9
+call r2
+
+description:
+This card has a strong attack that autodestroys it.

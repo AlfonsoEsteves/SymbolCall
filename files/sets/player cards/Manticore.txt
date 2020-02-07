@@ -1,4 +1,4 @@
-14
+13
 
 hand effect:
 [b1]
@@ -16,4 +16,5 @@ atta ch 10
 call g2
 
 description:
-This card is like a hand trap
+This card is a bit of a hand trap. But its main purpuse
+is to be invoked by another card in the player's hand

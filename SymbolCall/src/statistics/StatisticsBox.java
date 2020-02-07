@@ -17,7 +17,7 @@ public class StatisticsBox extends Box{
 		int count=0;
 		List<Card> from=Filter.filter(Game.instance.playerCards);
 		List<Card> cards=Filter.filter(from);
-		//List<Card> cards=DeckLoader.decks.get("White_dragon");
+		//List<Card> cards=DeckLoader.decks.get("Dragon_aq_pr");
 		for(Card card : cards) {
 			BCard bcard=new BCard(card);
 			BattleCardBox battleCardBox = new BattleCardBox();

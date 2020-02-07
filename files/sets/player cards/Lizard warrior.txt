@@ -6,10 +6,9 @@ invo sl
 
 field effect:
 []
-atta sl 5
 call y1
 call g1
-atta sl 5
+atta sl 8
 
 field effect:
 [y1 g1]
@@ -20,5 +19,9 @@ It doesn't help the swamp monsters get triggered.
 But it does extra damage when it happens
 It also has an interestinc mechanic
 
-Interesting:
+interesting:
 84
+
+last change:
+merged the 2 self attacks into one
+total self damage from 10 to 8

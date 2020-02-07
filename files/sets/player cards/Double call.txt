@@ -1,4 +1,4 @@
-10
+9
 
 hand effect:
 []
@@ -17,3 +17,6 @@ call g1
 description:
 This is a very simple field card.
 You can choose between 2 equal attacks, that call different essences.
+
+last change:
+life from 10 to 9

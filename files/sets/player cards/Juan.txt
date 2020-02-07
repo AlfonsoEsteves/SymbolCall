@@ -4,7 +4,6 @@ hand effect:
 []
 call b1
 call g2
-call g2
 call r1
 
 field effect:

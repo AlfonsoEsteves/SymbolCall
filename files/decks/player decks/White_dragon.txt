@@ -8,16 +8,16 @@ Desert wanderer
 Purge
 Purge
 Damaatta
-Blonde archer
-Barely useful
+Damaatta
+Simple atta
 Simple atta
 Active dyer
-Active dyer
 Pegasus
-Trampa bl
-Trampa gr
-Trampa yl
-Trampa pr
+Pegasus
+Brother one
+Brother one
+Brother two
+Brother two
 
 description:
 

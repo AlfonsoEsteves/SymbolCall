@@ -1,0 +1,2 @@
+An effect can have multiple choose target actions
+  but all they apply on the same target which is selected only once

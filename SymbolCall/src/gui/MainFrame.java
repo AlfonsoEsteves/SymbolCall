@@ -4,6 +4,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import game.Game;
 import gui.battle.BattleBox;
 import gui.buycard.BuyCardBox;
 import gui.deckbuilding.DeckBuildingBox;
@@ -35,8 +36,10 @@ public class MainFrame extends JFrame {
 		setLocationRelativeTo(null);
 		mainBox = new MainBox(0, 0, width, height);
 		battleBox = new BattleBox(0, 0, width, height);
-		deckBuildingBox = new DeckBuildingBox(0, 0, width, height);
-		buyCardBox = new BuyCardBox(0, 0, width, height);
+		if(Game.instance.humanPlayer != null) {
+			deckBuildingBox = new DeckBuildingBox(0, 0, width, height);
+			buyCardBox = new BuyCardBox(0, 0, width, height);
+		}
 		setMinimumSize(new Dimension(width, height));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setVisible(true);

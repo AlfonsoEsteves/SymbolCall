@@ -83,7 +83,7 @@ public class BattleCardBox extends Box {
 	public void paint(Graphics g) {
 		Graphics2D graphics = (Graphics2D) g;
 		if (card != null) {
-			if (card.player == 1 && card.zone == Battle.handZone && !card.visible) {
+			if (card.player == 1 && card.zone == Battle.handZone && !card.visible && false) {
 				graphics.fillRect(1, 1, cardWidth, cardHeight);
 			} else {
 				graphics.setFont(FontList.arial12);

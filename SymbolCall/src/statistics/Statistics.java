@@ -10,13 +10,12 @@ import game.Game;
 import loader.BossLoader;
 import loader.CardLoader;
 import loader.DeckLoader;
+import loader.Path;
 
 public class Statistics {
 	
 	public static void main(String args[]) {
-		CardLoader.loadCards();
-		BossLoader.loadBosses();
-		DeckLoader.loadDecks();
+		Game.instantiate();
 		
 		List<Card> set=Filter.filter(Game.instance.playerCards);
 		
@@ -73,7 +72,7 @@ public class Statistics {
 		int totalNeeded=0;
 		int totalProducedAct=0;
 		int totalProducedPas=0;
-		for(int i=0;i<6;i++) {
+		for(int i=0;i<12;i++) {
 			totalNeeded+=needed[i];
 			totalProducedAct+=producedAct[i];
 			totalProducedPas+=producedPas[i];
@@ -84,23 +83,19 @@ public class Statistics {
 	}
 
 	private static String symbolString(int symbol) {
-		if(symbol==0) {
-			return "rd";
+		int family = symbol / Battle.symbolFamilySubtypesPlusOne;
+		int subType = symbol % Battle.symbolFamilySubtypesPlusOne;
+		if(family==0) {
+			return "rd" + symbol;
 		}
-		else if(symbol==1) {
-			return "gr";
+		else if(family==1) {
+			return "gr" + symbol;
 		}
-		else if(symbol==2) {
-			return "bl";
+		else if(family==2) {
+			return "bl" + symbol;
 		}
-		else if(symbol==3) {
-			return "yl";
-		}
-		else if(symbol==4) {
-			return "pr";
-		}
-		else if(symbol==5) {
-			return "aq";
+		else if(family==3) {
+			return "yl" + symbol;
 		}
 		else {
 			throw new RuntimeException();

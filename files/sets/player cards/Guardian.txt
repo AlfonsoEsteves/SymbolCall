@@ -1,14 +1,17 @@
-14
+15
 
 hand effect:
 [r1 r2]
 invo sl
-atta ch 10
+atta ch 12
 
 field effect:
 [r2 r1]
-atta op 10
+atta op 12
 
 description:
 Makes some damage at invocation.
 With the reversed sequence it does direct damage.
+
+last change:
+buffed all damage and health

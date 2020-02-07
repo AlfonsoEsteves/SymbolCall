@@ -2,8 +2,8 @@ Black dragon
 Black dragon
 Black dragon ritual
 Black dragon ritual
-BlackMage
-BlackMage
+Spearman
+Spearman
 Barely useful
 Barely useful
 Blonde archer
@@ -14,8 +14,8 @@ Damaatta
 Damaatta
 Passive dyer
 Passive dyer
+Knight
 Trampa gr
-Trampa bl
 Trampa rd
 Trampa yl
 

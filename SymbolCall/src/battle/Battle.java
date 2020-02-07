@@ -74,7 +74,7 @@ public class Battle {
 		eventNumber = 0;
 		turnCount = 0;
 		for (int i = 0; i < 2; i++) {
-			healths[i] = 150;
+			healths[i] = 125;
 			zones[i][Battle.handZone] = new LinkedList<>();
 			zones[i][Battle.fieldZone] = new LinkedList<>();
 			zones[i][Battle.deckZone] = shuffle(players[i].deck, i);
@@ -83,7 +83,7 @@ public class Battle {
 			}
 		}
 
-		System.out.println("new battle created: (" + p1.name + ", " + p2.name + ", " + startingPlayer +", " + rndSeed +")");
+		//System.out.println("new battle created: (" + p1.name + ", " + p2.name + ", " + startingPlayer +", " + rndSeed +")");
 	}
 
 	// Deep copy of the cards, because they have attributes

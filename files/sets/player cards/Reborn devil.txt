@@ -7,7 +7,7 @@ call g1
 
 field effect:
 []
-atta ch 5
+atta ch 6
 
 field effect:
 []

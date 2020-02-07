@@ -1,4 +1,4 @@
-13
+14
 
 hand effect:
 []
@@ -7,9 +7,12 @@ invo sl
 
 field effect:
 []
-atta sl 2
+atta sl 3
 atta ch 5
 
 description:
 This is a field card.
 It has a lot of health but gets damaged each time it attacks.
+
+last change:
+life from 13 to 14, self damage from 2 to 3

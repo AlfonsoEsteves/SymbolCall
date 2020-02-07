@@ -6,7 +6,7 @@ Bomba
 Brother one
 Brother two
 Forest maiden
-Forest maiden
+Insect warrior
 Werewolf
 Assassin
 Spearman
@@ -17,4 +17,4 @@ Duro
 Simple atta
 Costoso
 Trampa gr
-Trampa pr
+Trampa gr

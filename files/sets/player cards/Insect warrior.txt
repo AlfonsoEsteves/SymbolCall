@@ -1,0 +1,17 @@
+1
+
+hand effect:
+[]
+atta ch 10
+disc sl
+call b2
+
+
+hand effect:
+[]
+atta op 13
+disc sl
+call r2
+
+description:
+Hand card

@@ -1,4 +1,4 @@
-12
+11
 
 hand effect:
 []
@@ -13,7 +13,7 @@ invo sl
 field effect:
 []
 atta ch 6
-dama op 3
+dama op 4
 
 description:
 This is a field card.

@@ -6,11 +6,11 @@ invo sl
 
 field effect:
 []
-atta ch 5
+atta ch 6
 
 field effect:
 [g2]
-atta sl 4
+atta sl 6
 call r1
 call g2
 

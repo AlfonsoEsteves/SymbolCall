@@ -2,12 +2,12 @@
 
 hand effect:
 [y0]
-atta op 7
+atta op 6
 invo sl
 
 field effect:
 [y1]
-atta op 14
+atta op 13
 with sl
 
 description:

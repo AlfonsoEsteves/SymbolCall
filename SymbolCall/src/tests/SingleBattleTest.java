@@ -11,10 +11,10 @@ public class SingleBattleTest {
 	
 	public static void main(String[] args) {		
 		Game.instantiate();
-		Player player1 = new Player(null, "White_dragon", 0);
+		Player player1 = new Player(null, "Swamp", 0);
 		Player player2 = new Player(new ZAIFactory(), "Defensive_pr_yl_bl", 0);
 		int startingPlayer = 0;
-		int rndSeed = 4;
+		int rndSeed = 5;
 		
 		MainFrame.instantiate();
 		
