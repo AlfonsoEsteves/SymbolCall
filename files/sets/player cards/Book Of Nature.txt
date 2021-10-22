@@ -1,0 +1,13 @@
+6
+
+hand effect:
+[]
+invo sl
+
+field effect:
+[]
+call g2
+atta ch 9
+
+description:
+This is a field card with low health and high damage.
