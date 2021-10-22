@@ -37,7 +37,7 @@ public class ImageLoader {
 			}*/
 
 			targets=new BufferedImage[5];
-			String targetsPath=Path.path+"images\\targets\\";
+			String targetsPath=Path.path+"images/targets/";
 			targets[Battle.slTarget]=ImageIO.read(new File(targetsPath+"sl.png"));
 			targets[Battle.chTarget]=ImageIO.read(new File(targetsPath+"ch.png"));
 			targets[Battle.trTarget]=ImageIO.read(new File(targetsPath+"tr.png"));
@@ -47,7 +47,7 @@ public class ImageLoader {
 			bigSymbols=new Image[Battle.symbolFamilies*Battle.symbolFamilySubtypesPlusOne];
 			midSymbols=new Image[Battle.symbolFamilies*Battle.symbolFamilySubtypesPlusOne];
 			smallSymbols=new Image[Battle.symbolFamilies*Battle.symbolFamilySubtypesPlusOne];
-			String symbolsPath=Path.path+"images\\symbols\\";
+			String symbolsPath=Path.path+"images/symbols/";
 			
 			int bigSize=28;
 			for(int i=0;i<Battle.symbolFamilySubtypesPlusOne;i++) {
@@ -72,7 +72,7 @@ public class ImageLoader {
 				smallSymbols[Battle.ylSymbol*Battle.symbolFamilySubtypesPlusOne+i]=y.getScaledInstance(12, 12, Image.SCALE_SMOOTH);
 			}
 
-			String othersPath=Path.path+"images\\card background\\";
+			String othersPath=Path.path+"images/card background/";
 			cardFront=new Image[6];
 			cardFront[0]=ImageIO.read(new File(othersPath+"cardfront_rd.png"));
 			cardFront[1]=ImageIO.read(new File(othersPath+"cardfront_yl.png"));
@@ -93,7 +93,7 @@ public class ImageLoader {
 
 	private static void loadCardImages() {
 		try {
-			File folder = new File(Path.path+"images\\player cards");
+			File folder = new File(Path.path+"images/player cards");
 			File[] listOfFiles = folder.listFiles();
 			for (File file : listOfFiles) {
 			    if (file.isFile()) {
@@ -111,7 +111,7 @@ public class ImageLoader {
 			    	}
 			    }
 			}
-			folder = new File(Path.path+"images\\computer cards");
+			folder = new File(Path.path+"images/computer cards");
 			listOfFiles = folder.listFiles();
 			for (File file : listOfFiles) {
 			    if (file.isFile()) {

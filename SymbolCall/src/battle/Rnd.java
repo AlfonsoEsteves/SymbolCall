@@ -7,7 +7,7 @@ import java.util.Random;
 public class Rnd implements Serializable{
 	
 	//This attribute allows the class state to be persisted in the serialization
-	private int seed = 58;
+	private int seed = 59;
 	
 	public int nextInt(int x) {
 		reset();

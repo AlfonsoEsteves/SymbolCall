@@ -14,7 +14,7 @@ public class BossLoader {
 	public static void loadBosses() {
 		Game.instance.bosses=new LinkedList<>();
 		try {
-			File folder = new File(Path.path+"decks\\boss decks\\");
+			File folder = new File(Path.path+"decks/boss decks/");
 			File[] listOfFiles = folder.listFiles();
 			for (File file : listOfFiles) {
 			    if (file.isFile()) {

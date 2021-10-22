@@ -17,7 +17,7 @@ public class DeckLoader {
 	public static void loadDecks() {
 		decks=new HashMap<>();
 		try {
-			File folder = new File(Path.path+"decks\\player decks\\");
+			File folder = new File(Path.path+"decks/player decks/");
 			File[] listOfFiles = folder.listFiles();
 			for (File file : listOfFiles) {
 			    if (file.isFile()) {

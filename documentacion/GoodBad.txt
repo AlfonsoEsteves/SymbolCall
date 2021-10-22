@@ -7,7 +7,7 @@ To only make meaningful decisions
 The drawing is the only random part
 When your opponent reaches a point of strength, but you (with wit and luck) turn the situation around
   Most bad situations are turn-aroundable with wit and luck
-  The game outcome shouln't be decided in the first turns.
+  The game outcome shouldn't be decided in the first turns.
 The strong cards are the minority in the universe of cards.
   And they are also the minority in decks.
 A lot of functionally different cards.

@@ -15,8 +15,8 @@ import zAI.CardScoreCalculator;
 public class CardLoader {
 
 	public static void loadCards() {
-		Game.instance.playerCards = loadCardsAux(Path.path + "sets\\player cards");
-		Game.instance.computerCards = loadCardsAux(Path.path + "sets\\computer cards");
+		Game.instance.playerCards = loadCardsAux(Path.path + "sets/player cards");
+		Game.instance.computerCards = loadCardsAux(Path.path + "sets/computer cards");
 	}
 
 	private static LinkedList<Card> loadCardsAux(String location) {

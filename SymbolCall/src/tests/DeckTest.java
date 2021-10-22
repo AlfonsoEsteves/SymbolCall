@@ -19,7 +19,7 @@ import zAI.ZAI.ZAIFactory;;
 
 public class DeckTest {
 
-	public static final int repetitions = 11;
+	public static final int repetitions = 5;
 	
 	public static LinkedList<TestedPlayer> testPlayers;
 	
