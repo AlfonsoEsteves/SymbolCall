@@ -23,4 +23,4 @@ The extra card will have a health cost, and it will be very small if he is loosi
   I really dislike this idea, though. It it a weird rule.
 
 Another option is that each card looses 1 point of health each turn.
-  I like this much better
+  I like this very much either...

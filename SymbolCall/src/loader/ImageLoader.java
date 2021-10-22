@@ -96,7 +96,7 @@ public class ImageLoader {
 			File folder = new File(Path.path+"images/player cards");
 			File[] listOfFiles = folder.listFiles();
 			for (File file : listOfFiles) {
-			    if (file.isFile()) {
+			    if (file.isFile() && file.getName().contains("png")) {
 			    	String cardName=file.getName().split("\\.")[0];
 			    	boolean found=false;
 			    	for(Card card : Game.instance.playerCards) {

@@ -32,6 +32,8 @@ Capas agregar un indicador abajo del fancy name que diga, que tan interezante es
 
 CAPAS AGREGAR UN COMENTARIO: LAST CHANGE
 
+Agregar fecha de creación
+
 
 
 Agregar mas attackes trigger

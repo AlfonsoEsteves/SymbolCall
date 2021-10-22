@@ -11,9 +11,9 @@ discard is analogous to attack
   both send a card to the deck, if they are in the hand/field
 
 This way the field and the hand will be almost symmetrical.
-The only diffecences being:
+The only differences being:
  - drawn cards go to the hand
- - you can't directely destroy a field card, you need to remove all its health point
+ - you can't directly destroy a field card, you need to remove all its health point
 
 I almost made discard similar to withdraw and invoke
   It would destroy the card regardless of where it is.

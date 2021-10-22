@@ -20,8 +20,7 @@ Will withdrawn cards stay revealed?
   I guess, yes and yes
 
 Note that this affects a lot the effects that discard a target card.
-Regardless of whether there are some visibles or not, the player could still know that the (right/left) most cards
-  in his opponent hands are older and probably harder to invoke
+Regardless of whether there are some visibles or not, the player could still know that the (right/left) most cards in his opponent hands are older and probably harder to invoke
 
 Should I show all the opponent's cards when a choose-discard action is executed?
 I believe not, for 2 reasons:

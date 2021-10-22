@@ -8,4 +8,4 @@ Passive invocation doesn't make a card lose its turn.
 When the order of actions matter:
   call-call   yes
   call-other  yes
-  other-other no
+  other-other no         mmm how about damaging and invoking??

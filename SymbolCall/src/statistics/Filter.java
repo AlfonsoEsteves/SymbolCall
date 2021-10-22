@@ -27,7 +27,7 @@ public class Filter {
 	public static List<Card> filter(List<Card> list) {
 		List<Card> result = new LinkedList<>();
 		for (Card card : list) {
-			if (unwanted(card)) {
+			if (none(card)) {
 				result.add(card);
 			}
 		}

@@ -3,5 +3,5 @@ Similar to the actions in an effect.
 
 Besides the less actions and effects getting executed, the easier it is to keep track.
 
-So I should try not to add unecesary or irrelevant effects or actions.
+So I should try not to add unnecesary or irrelevant effects or actions.
   Like actions that do 1 damage.

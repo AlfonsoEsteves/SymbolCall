@@ -11,7 +11,7 @@ Yes, but there is something I need to decide:
 If in my turn I trigger one of my opponents cards, who will select the target when a target-action gets executed?
 2 options:
   Card owner: this can make the flow of the game "choppy", but is the traditional way in TCG.
-  Turn owner: this will be counter intuitive for some TGC players, but I think it is simpler (I play on my turn, you play in yout turn, and that is it).
+  Turn owner: this will be counter intuitive for some TGC players, but I think it is simpler (I play on my turn, you play in your turn, and that is it).
 I like more the second. For me it is important to make games quick and not too brain-expensive.
 If I make the turn change constantly between players it can make things more confusing, because it messes a little with the idea of turn.
   And it can also make the game more tiresome for the player. I think it is easy to plan your moves once and execute, than deciding multiple times what you are going to do each time the decision duty is given to you.
